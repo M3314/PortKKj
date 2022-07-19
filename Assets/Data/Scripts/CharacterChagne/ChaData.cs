@@ -41,13 +41,17 @@ public class ChaData : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        Move();
         WeaponAttackKey();
+        Move(); 
+        if(myAnim.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack"))
+        {
+            myAnim.SetBool("Run", false);
+            moveSpeed = 0.0f;
+        }
     }
 
     public void WeaponAttackKey()
     {
-      //  playerWeaponChangeData = Instantiate(Resources.Load("Datas/WeaponData")) as GameObject;
         if (playerWeaponChangeData.myWeaponType == WEAPONTYPE.SWORD)
         {
             AttackSword();
@@ -63,15 +67,14 @@ public class ChaData : MonoBehaviour
     }
     public void Move()
     {
-        transform.localPosition = ClampPosition(transform.localPosition);
 
+        transform.localPosition = ClampPosition(transform.localPosition);
         myAnim.SetBool("RUN", false);
         if (Input.GetKey(KeyCode.W))
         {
             Debug.Log("W 키를 눌렀습니다. 위로 이동합니다.");
             transform.position += Vector3.up * moveSpeed * Time.deltaTime;
             myAnim.SetBool("RUN", true);
-
         }
 
         if (Input.GetKey(KeyCode.S))
@@ -79,7 +82,6 @@ public class ChaData : MonoBehaviour
             Debug.Log("S 키를 눌렀습니다. 아래로 이동합니다.");
             transform.position += Vector3.down * moveSpeed * Time.deltaTime;
             myAnim.SetBool("RUN", true);
-
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -88,7 +90,6 @@ public class ChaData : MonoBehaviour
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
             transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             myAnim.SetBool("RUN", true);
-
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -116,21 +117,24 @@ public class ChaData : MonoBehaviour
             Debug.Log("J키를 입력했습니다. 칼로 근접공격합니다");
             myAnim.SetInteger("AttackType", AttackType++ % 2);
             myAnim.SetTrigger("SwordAttack");
-            CancelInvoke("Move");
+            myAnim.SetBool("RUN", false);
+            return;
+            //CancelInvoke("Move");
         }
+//        CancelInvoke("Move");
     }
+
+
 
     public void AttackSynthe()
     {
-    //    DontDestroyobject.instance.WEAPONTYPE = 1;
         if (!myAnim.GetBool("SyntheAttacking") && Input.GetKey(KeyCode.J))
         {
             Debug.Log("J키를 입력했습니다. 낫공격합니다");
             myAnim.SetInteger("AttackType", AttackType++ % 2);
             myAnim.SetTrigger("SyntheAttack");
-            myAnim.SetBool("RUN", true);
-
         }
+
     }
 
     public void ShotGunAttack()
@@ -138,10 +142,18 @@ public class ChaData : MonoBehaviour
         if (!myAnim.GetBool("ShotGunAttacking") && Input.GetKey(KeyCode.J))
         {
             Debug.Log("J키를 입력했습니다. 샷건으로 공격합니다");
-            //      myAnim.SetInteger("AttackType", AttackType++ % 2);
             myAnim.SetTrigger("ShotGunAttack");
             CancelInvoke("Move");
         }
+    }
+    public void PistolAttack()
+    {
+
+    }
+
+    public void DoubleInput()
+    {
+
     }
 
 }

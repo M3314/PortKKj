@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SwordEnemy : AIProperty
+public class SwordEnemy : MonoBehaviour
 {
     public enum State
     {
@@ -42,12 +42,41 @@ public class SwordEnemy : AIProperty
         }
 
     }
+
+    Animator _anim = null;
+    protected Animator myAnim
+    {
+        get
+        {
+            if (_anim == null)
+            {
+                _anim = this.GetComponentInChildren<Animator>();
+            }
+            return _anim;
+        }
+    }
     public Vector3 ClampPosition(Vector3 position)
     {
         return new Vector3
         (
             Mathf.Clamp(position.x, -20.0f, 18.5f), Mathf.Clamp(position.y, -8.8f, 2.6f), 0  //맵 거리 이동 제한 
         );
+    }
+    float? CurHP = null;
+
+    protected bool UpdateHP(float data)
+    {
+        if (CurHP == null)
+        {
+            CurHP = SwordEnemyData.GetMaxHP();
+        }
+        CurHP += data;
+        if (CurHP < 0.0f)
+        {
+            CurHP = 0.0f;
+            return false;
+        }
+        return true;
     }
 
     public bool IsLive()
@@ -94,7 +123,7 @@ public class SwordEnemy : AIProperty
                 break;
             case State.DEAD:
                 StopAllCoroutines();
-                dieAction?.Invoke(myData.GetScore());
+                dieAction?.Invoke(SwordEnemyData.GetScore());
                 myAnim.SetTrigger("Dead");
                 myAnim.SetBool("Run", false);
                 //myAnim.ResetTrigger("Attack");

@@ -41,13 +41,9 @@ public class ChaData : MonoBehaviour
     }
     public void FixedUpdate()
     {
+        DoubleInput();
         WeaponAttackKey();
-        Move(); 
-        if(myAnim.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack"))
-        {
-            myAnim.SetBool("Run", false);
-            moveSpeed = 0.0f;
-        }
+        Move();
     }
 
     public void WeaponAttackKey()
@@ -67,7 +63,8 @@ public class ChaData : MonoBehaviour
     }
     public void Move()
     {
-
+        if (Input.GetKey(KeyCode.J))
+            return;
         transform.localPosition = ClampPosition(transform.localPosition);
         myAnim.SetBool("RUN", false);
         if (Input.GetKey(KeyCode.W))
@@ -153,7 +150,19 @@ public class ChaData : MonoBehaviour
 
     public void DoubleInput()
     {
+        if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack1 (Sword)"))
+        {
+            myAnim.SetBool("Run", false);
+            moveSpeed = 0.0f;
+        }
+        else
+            moveSpeed = 5.0f;
 
+        if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack2(Sword)"))
+        {
+            myAnim.SetBool("Run", false);
+            moveSpeed = 0.0f;
+        }
     }
 
 }

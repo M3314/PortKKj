@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerWeaponData", menuName = "PlayerWeaponData", order = int.MaxValue)]
 public class PlayerWeaponData : ScriptableObject
 {
-    [SerializeField] int[] WeaponDamage;
+    [SerializeField]public  int[] WeaponDamage;
     [SerializeField] int[] WeaponUpgradePrices;
     [SerializeField] public int WeaponBuyPrices;
 

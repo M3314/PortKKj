@@ -66,10 +66,17 @@ public class Sei : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("EnemyWeapon"))
         {
-            Debug.Log("적한테 얻어 터지고 있습니다. ");
+   //         other.gameObject.GetComponent<EnemyData>().MaxEnemyAttack();
+            Debug.Log("칼 맞고 있음");
+            InDamage();
         }
+    }
+
+    public void InDamage()
+    {
+    //    _curHP = GetComponent<SwordEnemy>().UpdateHP();
     }
 
     void ChangeState(STATE s)

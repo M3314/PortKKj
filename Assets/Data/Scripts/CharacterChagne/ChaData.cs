@@ -46,6 +46,7 @@ public class ChaData : MonoBehaviour
         Move();
     }
 
+
     public void WeaponAttackKey()
     {
         if (playerWeaponChangeData.myWeaponType == WEAPONTYPE.SWORD)
@@ -69,21 +70,18 @@ public class ChaData : MonoBehaviour
         myAnim.SetBool("RUN", false);
         if (Input.GetKey(KeyCode.W))
         {
-            Debug.Log("W 키를 눌렀습니다. 위로 이동합니다.");
             transform.position += Vector3.up * moveSpeed * Time.deltaTime;
             myAnim.SetBool("RUN", true);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            Debug.Log("S 키를 눌렀습니다. 아래로 이동합니다.");
             transform.position += Vector3.down * moveSpeed * Time.deltaTime;
             myAnim.SetBool("RUN", true);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            Debug.Log("A키를 입력했습니다. 서쪽으로 이동합니다.");
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
             transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             myAnim.SetBool("RUN", true);
@@ -91,7 +89,6 @@ public class ChaData : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            Debug.Log("D키를 입력했습니다. 동쪽으로 이동합니다.");
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
             transform.localScale = new Vector3(-0.3f, 0.3f, 0.3f);
             myAnim.SetBool("RUN", true);
@@ -116,7 +113,7 @@ public class ChaData : MonoBehaviour
             myAnim.SetTrigger("SwordAttack");
             myAnim.SetBool("RUN", false);
             return;
-            //CancelInvoke("Move");
+            GetComponent<Sword>().OnAttack();
         }
 //        CancelInvoke("Move");
     }

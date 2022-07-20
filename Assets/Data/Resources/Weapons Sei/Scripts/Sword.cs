@@ -43,7 +43,6 @@ public class Sword : MonoBehaviour
     public void OnAttack()
     {
         Damage = myweapondatas.GetDamage(mylevel);
-        Debug.Log("적을 공격하고 있습니다.");
     }
 
 }

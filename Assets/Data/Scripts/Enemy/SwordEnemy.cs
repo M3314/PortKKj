@@ -10,11 +10,14 @@ public class SwordEnemy : MonoBehaviour
         CREATE, BATTLE, DEAD, GAMEOVER
     }
     UnityAction<int> dieAction = null;
+    public PlayerWeaponData myDamageData;
     [SerializeField] public ChaData EnemyTarget;
     public float moveSpeed = 2.0f;
     public EnemyData SwordEnemyData;
     public State myEnemyState = State.CREATE;
     public float attackDelay = 1.5f;
+    protected int mylevel;
+    public float Damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,23 +27,7 @@ public class SwordEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 dir = EnemyTarget.transform.position - transform.position;
-
-        dir.Normalize();
-
-        transform.position += dir * moveSpeed * Time.deltaTime;
-
-
-        if (dir == Vector3.left)
-        {
-            transform.localScale = new Vector3(-0.3f, 0.3f, 0.3f);
-        }
-
-        if (dir == Vector3.right)
-        {
-            transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-        }
-
+        DoubleInput();
     }
 
     Animator _anim = null;
@@ -64,7 +51,7 @@ public class SwordEnemy : MonoBehaviour
     }
     float? CurHP = null;
 
-    protected bool UpdateHP(float data)
+    public bool UpdateHP(float data)
     {
         if (CurHP == null)
         {
@@ -90,15 +77,27 @@ public class SwordEnemy : MonoBehaviour
         ChangeState(State.BATTLE);
     }
 
-    public void OnDamage(float damage)
+    public void OnDamage()
     {
-        if (!IsLive()) return;
-        if (!UpdateHP(-damage))
+        if (myEnemyState == State.DEAD) return;
+        Damage = SwordEnemyData.MaxHP - myDamageData.GetDamage(mylevel);
+        if (SwordEnemyData.MaxHP <= 0.0f)
         {
             ChangeState(State.DEAD);
         }
+        else
+        {
+            //   StartCoroutine(ColorChange(Color.red, 0.5f));
+        }
     }
 
+    IEnumerator ColorChange(Color col, float t)
+    {
+        Color old = this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].GetColor("_Color");
+        this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_Color", col);
+        yield return new WaitForSeconds(t);
+        this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_Color", old);
+    }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -106,7 +105,26 @@ public class SwordEnemy : MonoBehaviour
         {
     //        Debug.Log("Player에게 공격 받고있습니다.");
             other.gameObject.GetComponent<Sword>()?.OnAttack();
+            Damage = SwordEnemyData.MaxHP - myDamageData.GetDamage(mylevel);
         }
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            myAnim.SetBool("Run", true); //플레이어가 감지 범위를 벗어 났을때 뛰도록 한다. (플레이어 맹추격)
+        }
+    }
+
+    public void DoubleInput()
+    {
+        if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+        {
+            myAnim.SetBool("Run", false);
+            moveSpeed = 0.0f;
+        }
+        else moveSpeed = 2.0f;
     }
 
     void ChangeState(State s)
@@ -118,6 +136,11 @@ public class SwordEnemy : MonoBehaviour
             case State.CREATE:
                 break;
             case State.BATTLE:
+                Vector3 dir = EnemyTarget.transform.position - transform.position;
+
+                dir.Normalize();
+
+                transform.position += dir * moveSpeed * Time.deltaTime;
                 myAnim.SetBool("Run", true);
                 //myAnim.SetTrigger("Attack");
                 break;
@@ -130,6 +153,7 @@ public class SwordEnemy : MonoBehaviour
                 // StartCorutine(Disappearing());
                 break;
             case State.GAMEOVER:
+         //       myAnim.SetTrigger("");
                 break;
         }
     }

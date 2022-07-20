@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class SwordEnemy : MonoBehaviour
 {
@@ -9,18 +10,20 @@ public class SwordEnemy : MonoBehaviour
     {
         CREATE, BATTLE, DEAD, GAMEOVER
     }
-    UnityAction<int> dieAction = null;
-    public PlayerWeaponData myDamageData;
+    [SerializeField] public WEAPONTYPE PlayerWeaponType;
+    public PlayerWeaponData[] myDamageData;
     [SerializeField] public ChaData EnemyTarget;
     public float moveSpeed = 2.0f;
     public EnemyData SwordEnemyData;
     public State myEnemyState = State.CREATE;
     public float attackDelay = 1.5f;
-    protected int mylevel;
-    public float Damage;
+    public TMP_Text GoldInfo;
+    public PlayerData[] playerdatas;
+    [SerializeField] public WeaponData playerWeaponChange;
     // Start is called before the first frame update
     void Start()
     {
+     //   myDamageData[(int)PlayerWeaponType] = ;
         ChangeState(State.BATTLE);
     }
 
@@ -80,17 +83,17 @@ public class SwordEnemy : MonoBehaviour
     public void OnDamage()
     {
         if (myEnemyState == State.DEAD) return;
-        Damage = SwordEnemyData.MaxHP - myDamageData.GetDamage(mylevel);
+    SwordEnemyData.MaxHP = SwordEnemyData.MaxHP - myDamageData[(int)PlayerWeaponType].GetDamage(DontDestroyobject.instance.weaponlevelinfo);
         if (SwordEnemyData.MaxHP <= 0.0f)
         {
             ChangeState(State.DEAD);
         }
         else
         {
-            //   StartCoroutine(ColorChange(Color.red, 0.5f));
+            //  StartCoroutine(ColorChange(Color.red, 0.5f));
         }
     }
-
+    /*
     IEnumerator ColorChange(Color col, float t)
     {
         Color old = this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].GetColor("_Color");
@@ -98,14 +101,15 @@ public class SwordEnemy : MonoBehaviour
         yield return new WaitForSeconds(t);
         this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_Color", old);
     }
+    */
 
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerWeapon"))
         {
-    //        Debug.Log("Player에게 공격 받고있습니다.");
+            //        Debug.Log("Player에게 공격 받고있습니다.");
             other.gameObject.GetComponent<Sword>()?.OnAttack();
-            Damage = SwordEnemyData.MaxHP - myDamageData.GetDamage(mylevel);
+            OnDamage();
         }
     }
 
@@ -134,26 +138,35 @@ public class SwordEnemy : MonoBehaviour
         switch (myEnemyState)
         {
             case State.CREATE:
+                //      SwordEnemyData.MaxHP = 300;
                 break;
             case State.BATTLE:
+                SwordEnemyData.MaxHP = 10;
+                SwordEnemyData.ScoreGold = 10;
+                myAnim.SetTrigger("GameOver");
+                /*
                 Vector3 dir = EnemyTarget.transform.position - transform.position;
 
                 dir.Normalize();
 
                 transform.position += dir * moveSpeed * Time.deltaTime;
-                myAnim.SetBool("Run", true);
+                */
+                //     myAnim.SetBool("Run", true);
                 //myAnim.SetTrigger("Attack");
                 break;
             case State.DEAD:
                 StopAllCoroutines();
-                dieAction?.Invoke(SwordEnemyData.GetScore());
                 myAnim.SetTrigger("Dead");
                 myAnim.SetBool("Run", false);
+                myAnim.ResetTrigger("GameOver");
+                GoldInfo.text = SwordEnemyData.ScoreGold.ToString(); //죽으면 플레이어한테 골드를 주는 방식이다.
+                DontDestroyobject.instance.GoldInfo = SwordEnemyData.ScoreGold;
+                GetComponent<Sei>().APChange = +SwordEnemyData.MaxAP;
                 //myAnim.ResetTrigger("Attack");
                 // StartCorutine(Disappearing());
                 break;
             case State.GAMEOVER:
-         //       myAnim.SetTrigger("");
+                //       myAnim.SetTrigger("");
                 break;
         }
     }

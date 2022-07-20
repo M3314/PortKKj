@@ -98,7 +98,8 @@ public class Sei : MonoBehaviour
                 break;
             case STATE.PLAY:
                 HPChange = -50.0f;
-                APChange = 3.0f;
+                APChange = 5.0f;
+          //      APChange = +GetComponent<EnemyData>().MaxAP;
                 break;
             case STATE.DEAD:
                 base.StopAllCoroutines();

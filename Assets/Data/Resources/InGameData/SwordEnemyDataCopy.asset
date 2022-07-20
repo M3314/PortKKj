@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1c6474dab12004f92cb0edceb40beb, type: 3}
-  m_Name: SeiPlayerData
+  m_Script: {fileID: 11500000, guid: ef5c2ac13fa91554b95e08ecc5878b33, type: 3}
+  m_Name: SwordEnemyDataCopy
   m_EditorClassIdentifier: 
-  PlayerHP: 78000000b4000000e60000002c01000090010000
-  PlayerEX: 0000000000000000000000000000000000000000
-  PlayerAP: 0f000000140000001e0000002800000032000000
+  MaxHP: 10
+  MaxEX: 10
+  MaxAP: 5
+  MaxAttack: 10
+  ScoreGold: 10

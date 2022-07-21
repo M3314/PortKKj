@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5c2ac13fa91554b95e08ecc5878b33, type: 3}
   m_Name: SwordEnemyData
   m_EditorClassIdentifier: 
-  MaxHP: -34
-  MaxEX: 10
+  MaxHP: -12
+  MaxEX: 250
   MaxAP: 5
   MaxAttack: 10
   ScoreGold: 10

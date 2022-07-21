@@ -11359,7 +11359,8 @@ MonoBehaviour:
   Chaselected: 0
   WeaponSelected: 0
   GoldInfo: 350
-  LevelInfo: 5
+  LevelInfo: 1
+  weaponlevelinfo: 1
 --- !u!4 &2000149585
 Transform:
   m_ObjectHideFlags: 0

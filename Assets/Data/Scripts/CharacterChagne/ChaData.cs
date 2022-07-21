@@ -41,7 +41,7 @@ public class ChaData : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        DoubleInput();
+       // DoubleInput();
         WeaponAttackKey();
         Move();
     }

@@ -12,6 +12,7 @@ public class Sei : MonoBehaviour
     public PlayerCharacterStat SeiData;
     [SerializeField] public myStatBar myStarBar;
     [SerializeField] public myApStatBar myApBar;
+    [SerializeField] public myExStarBar myExBar;
     public int myLevel;
     public PlayerData myseiData;
 
@@ -44,6 +45,22 @@ public class Sei : MonoBehaviour
             if (_curAP < 0.0f) _curAP = 0.0f;
             myApBar = GameObject.Find("AP Bar").GetComponent<myApStatBar>();
             myApBar.myAP.value = _curAP / myseiData.PlayerAPSet(myLevel);
+        }
+    }
+
+    public float _curEX;
+    public float EXChange
+    {
+        get
+        {
+            return _curEX;
+        }
+        set
+        {
+            _curEX += value;
+            if (_curEX < 0.0f) _curEX = 0.0f;
+            myExBar = GameObject.Find("Ex Bar").GetComponent<myExStarBar>();
+            myExBar.myEX.value = _curEX / myseiData.PlayerEXSet(myLevel);
         }
     }
     public enum STATE
@@ -90,7 +107,7 @@ public class Sei : MonoBehaviour
                 SeiData.HP = myseiData.PlayerHPSet(myLevel);
                 SeiData.AttackDelay = 3.0f;
                 _curAP = 0.0f;
-                myLevel = 0;
+                myLevel = 1;
                 if (SceneManager.GetActiveScene().name == "In Game 1-1")
                 {
                     ChangeState(STATE.PLAY);
@@ -98,8 +115,12 @@ public class Sei : MonoBehaviour
                 break;
             case STATE.PLAY:
                 HPChange = -50.0f;
-                APChange = 5.0f;
-          //      APChange = +GetComponent<EnemyData>().MaxAP;
+                APChange = 0.0f;
+                EXChange = 00.00f;
+               if(myseiData.PlayerEXSet(myLevel) <= EXChange)
+                {
+                    myLevel += 1;
+                }
                 break;
             case STATE.DEAD:
                 base.StopAllCoroutines();

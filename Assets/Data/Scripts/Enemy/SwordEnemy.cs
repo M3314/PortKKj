@@ -18,15 +18,25 @@ public class SwordEnemy : MonoBehaviour
     public State myEnemyState = State.CREATE;
     public float attackDelay = 1.5f;
     public TMP_Text GoldInfo;
-    public PlayerData[] playerdatas;
+    public PlayerData playerdatas;
     [SerializeField] public WeaponData playerWeaponChange;
+    public Sei seiCharacterData = null;
+    public Runa RunaCharacterData = null;
     // Start is called before the first frame update
     void Start()
     {
-     //   myDamageData[(int)PlayerWeaponType] = ;
         ChangeState(State.BATTLE);
-    }
+        if(DontDestroyobject.instance.Chaselected == 1)
+        {
+            seiCharacterData = GameObject.Find("SeiKo_32(Clone)").GetComponent<Sei>();
+        }
 
+        if (DontDestroyobject.instance.Chaselected == 2)
+        {
+            RunaCharacterData = GameObject.Find("RUNA_2(Clone)").GetComponent<Runa>();
+        }
+        GoldInfo.text = (DontDestroyobject.instance.GoldInfo).ToString();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -90,10 +100,10 @@ public class SwordEnemy : MonoBehaviour
         }
         else
         {
-            //  StartCoroutine(ColorChange(Color.red, 0.5f));
+             StartCoroutine(ColorChange(Color.red, 0.5f));
         }
     }
-    /*
+    
     IEnumerator ColorChange(Color col, float t)
     {
         Color old = this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].GetColor("_Color");
@@ -101,7 +111,7 @@ public class SwordEnemy : MonoBehaviour
         yield return new WaitForSeconds(t);
         this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_Color", old);
     }
-    */
+    
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -143,6 +153,7 @@ public class SwordEnemy : MonoBehaviour
             case State.BATTLE:
                 SwordEnemyData.MaxHP = 10;
                 SwordEnemyData.ScoreGold = 10;
+                SwordEnemyData.MaxAP = 5;
                 myAnim.SetTrigger("GameOver");
                 /*
                 Vector3 dir = EnemyTarget.transform.position - transform.position;
@@ -159,10 +170,11 @@ public class SwordEnemy : MonoBehaviour
                 myAnim.SetTrigger("Dead");
                 myAnim.SetBool("Run", false);
                 myAnim.ResetTrigger("GameOver");
-                GoldInfo.text = SwordEnemyData.ScoreGold.ToString(); //죽으면 플레이어한테 골드를 주는 방식이다.
-                DontDestroyobject.instance.GoldInfo = SwordEnemyData.ScoreGold;
-                GetComponent<Sei>().APChange = +SwordEnemyData.MaxAP;
-                //myAnim.ResetTrigger("Attack");
+                GoldInfo.text = (DontDestroyobject.instance.GoldInfo + SwordEnemyData.ScoreGold).ToString();
+                DontDestroyobject.instance.GoldInfo = (DontDestroyobject.instance.GoldInfo + SwordEnemyData.ScoreGold);
+                seiCharacterData.APChange += SwordEnemyData.MaxAP;
+                seiCharacterData.EXChange += SwordEnemyData.MaxEX;
+                myAnim.ResetTrigger("Attack");
                 // StartCorutine(Disappearing());
                 break;
             case State.GAMEOVER:

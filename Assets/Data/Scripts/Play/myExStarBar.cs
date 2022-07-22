@@ -15,6 +15,7 @@ public class myExStarBar : MonoBehaviour
     {
         if (DontDestroyobject.instance.Chaselected == 1)
         {
+       //     seiCharacterData = GameObject.Find("SeiKo_32").GetComponent<Sei>(); // 스테이지 1에서 잠깐 테스트용으로 만들어놨음
             seiCharacterData = GameObject.Find("SeiKo_32(Clone)").GetComponent<Sei>();
             PlayerdatasSetting = Instantiate(Resources.Load("InGameData/SeiPlayerData")) as PlayerData;
         }

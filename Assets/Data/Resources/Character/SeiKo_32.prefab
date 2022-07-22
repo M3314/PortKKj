@@ -393,7 +393,6 @@ MonoBehaviour:
   ShotGunBulletFire: {fileID: 7010057156049455857, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
   moveSpeed: 5
   playerWeaponChangeData: {fileID: 1403232518827242188, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
-  ShotGunBullet: {fileID: 3114829034053701629, guid: b072f6182dfd0ed4e927e5da1187233c, type: 3}
   characterscurrentss: 1
 --- !u!95 &-5688735097140357160
 Animator:
@@ -1532,13 +1531,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8858722467310392177, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8867719592140490014, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8867719592140490014, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8000001
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8867719592140490014, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
       propertyPath: m_LocalScale.y

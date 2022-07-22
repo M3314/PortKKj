@@ -6,9 +6,22 @@ public class ShotGun : MonoBehaviour
 {
     public WEAPONTYPE myWeaponType = WEAPONTYPE.SHOTGUN;
     public PlayerWeaponData myweapondatas;
-    public GameObject[] emptyShell;
-    public GameObject Bullet;
-    public Transform ShotGunMuzzle;
+    public GameObject[] emptyShell; //총알이 나가면 탄피가 나오도록함 (랜덤으로 나오게 설정함) 
+    public GameObject Bullet; //샷건 총알
+    public Transform ShotGunMuzzle; //총알이 나가는 위치 
+    SpriteRenderer _renderer = null;
+
+   public SpriteRenderer myRenderer
+    {
+        get
+        {
+            if (_renderer == null)
+            {
+                _renderer = this.GetComponent<SpriteRenderer>();
+            }
+            return _renderer;
+        }
+    }
 
     public int Shotgunlevel;
     private static ShotGun shotgun_instance = null;
@@ -37,13 +50,11 @@ public class ShotGun : MonoBehaviour
 
     public void FireBullet()
     {
-        Bullet = Instantiate(Bullet, ShotGunMuzzle.position, ShotGunMuzzle.rotation);
-        Bullet = Instantiate(Resources.Load("Weapons Sei/New Folder/ShotgunBullet")) as GameObject;
-
+        Instantiate(Bullet, ShotGunMuzzle.transform.position, Quaternion.AngleAxis(0, Vector3.forward));
     }
 
-    // Update is called once per frame
-    void Update()
+        // Update is called once per frame
+        void Update()
     {
         
     }

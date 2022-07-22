@@ -793,6 +793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88507d32d5ae8dc48bb10e89879f2404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myLevel: 0
 --- !u!95 &5255368446874350929
 Animator:
   serializedVersion: 3
@@ -824,6 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df9cdea9f04b8942b7e727bf924375c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShotGunBulletFire: {fileID: 7010057156049455857, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
   moveSpeed: 5
   playerWeaponChangeData: {fileID: 1403232518827242188, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
   characterscurrentss: 0

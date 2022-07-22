@@ -58,7 +58,7 @@ public class WeaponSpawn : MonoBehaviour
             WeaponShotguns.transform.parent = GameObject.Find("WeaponSocketShotGuns").transform;
             WeaponShotguns.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             WeaponShotguns.transform.localPosition = Vector3.zero;
-            WeaponShotguns.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            WeaponShotguns.transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
             if (SceneManager.GetActiveScene().name == "Cha Info, Inven(Back Menu)")
             {
                 Destroy(gameObject);

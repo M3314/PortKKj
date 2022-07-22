@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 
@@ -15,6 +16,7 @@ public class Sei : MonoBehaviour
     [SerializeField] public myExStarBar myExBar;
     public int myLevel;
     public PlayerData myseiData;
+    public TMP_Text LevelInfomation;
 
     public float _curHP;
     public float HPChange
@@ -71,6 +73,7 @@ public class Sei : MonoBehaviour
     {
         CharacterSelect();
         ChangeState(STATE.CREATE);
+  //      LevelInfomation = GameObject.Find("LevelText").GetComponent<GameInfoUi>();
     }
     void Update()
     {
@@ -96,6 +99,11 @@ public class Sei : MonoBehaviour
     //    _curHP = GetComponent<SwordEnemy>().UpdateHP();
     }
 
+    public void Exchangevalue()
+    {
+        myLevel += 1;
+    }
+
     void ChangeState(STATE s)
     {
         if (mystate == s) return;
@@ -107,7 +115,8 @@ public class Sei : MonoBehaviour
                 SeiData.HP = myseiData.PlayerHPSet(myLevel);
                 SeiData.AttackDelay = 3.0f;
                 _curAP = 0.0f;
-                myLevel = 1;
+                myLevel = DontDestroyobject.instance.LevelInfo;
+                //      LevelInfomation =GameObject.Find("LevelText").GetComponent<TMP_Text>();
                 if (SceneManager.GetActiveScene().name == "In Game 1-1")
                 {
                     ChangeState(STATE.PLAY);
@@ -117,10 +126,12 @@ public class Sei : MonoBehaviour
                 HPChange = -50.0f;
                 APChange = 0.0f;
                 EXChange = 00.00f;
-               if(myseiData.PlayerEXSet(myLevel) <= EXChange)
-                {
+                LevelInfomation = GameObject.Find("LevelText").GetComponent<TMP_Text>();
+                if (EXChange >= myseiData.PlayerHPSet(myLevel))
+                { Exchangevalue();
                     myLevel += 1;
                 }
+                
                 break;
             case STATE.DEAD:
                 base.StopAllCoroutines();

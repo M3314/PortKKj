@@ -17,6 +17,8 @@ public class InvenMain : MonoBehaviour
     public WeaponData myWeaponData = null;
     public Sword myswordlevels = null;
     public Synthe mysynthelevels = null;
+    public ShotGunBullet myShotgunbulletlevels = null;
+    public ShotGun myShotGunlevels = null;
     public Transform WeaponInventory = null;
     public TMPro.TMP_Text UpgradeText;
     public WeaponChange weaponchange = null;
@@ -70,6 +72,8 @@ public class InvenMain : MonoBehaviour
                     weaponchange.myWeaponData.OnUpgrade(); 
                     weaponchange.myswordlevels.Getlevel();
                     weaponchange.mysynthelevels.Getlevel();
+                    weaponchange.myShotGunBulletLevels.Getlevel();
+                    weaponchange.myShotGunLevels.GetLevel();
                     WeaponUpgradeMenu();
                     Debug.Log("업그레이드 완료");
                 });

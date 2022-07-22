@@ -15,6 +15,7 @@ public class Sword : MonoBehaviour
     
     void Start()
     {
+        mylevel = 1;
         WeaponSelect();
         Damage = myweapondatas.GetDamage(mylevel);
         //     mylevel = GetComponent<WeaponData>().Getmylevel();

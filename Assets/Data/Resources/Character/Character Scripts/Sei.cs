@@ -104,6 +104,7 @@ public class Sei : MonoBehaviour
         myLevel += 1;
     }
 
+
     void ChangeState(STATE s)
     {
         if (mystate == s) return;
@@ -131,7 +132,6 @@ public class Sei : MonoBehaviour
                 { Exchangevalue();
                     myLevel += 1;
                 }
-                
                 break;
             case STATE.DEAD:
                 base.StopAllCoroutines();

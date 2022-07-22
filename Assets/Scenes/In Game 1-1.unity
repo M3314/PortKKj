@@ -1177,6 +1177,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1707393554377665665, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
+      propertyPath: ShotGunBulletData
+      value: 
+      objectReference: {fileID: 11400000, guid: d0aa6b423ec5e3d47b3b1fe1d9fbf44f, type: 2}
+    - target: {fileID: 1707393554377665665, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
+      propertyPath: shotgundamagelevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2028690199234073178, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -1221,13 +1229,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3821323589173532102, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
+      propertyPath: Bullet
+      value: 
+      objectReference: {fileID: 3114829034053701629, guid: b072f6182dfd0ed4e927e5da1187233c, type: 3}
+    - target: {fileID: 3821323589173532102, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
+      propertyPath: emptyShell.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3854412905835684478, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
       propertyPath: m_Name
       value: RUNA_2
       objectReference: {fileID: 0}
+    - target: {fileID: 3854412905835684478, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5199631523318034625, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071795993317075818, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
+      propertyPath: m_Name
+      value: ShotGunBullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
@@ -1424,11 +1448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37160f7c59cfac94b99927310050a3c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &463387247 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 649450897385061328, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
-  m_PrefabInstance: {fileID: 539014574}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &515788398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2051,7 +2070,7 @@ PrefabInstance:
     - target: {fileID: 5119579086997145065, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: WeaponShotguns
       value: 
-      objectReference: {fileID: 463387247}
+      objectReference: {fileID: 0}
     - target: {fileID: 5220905648800526328, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -3922,6 +3941,8 @@ MonoBehaviour:
   myWeaponData: {fileID: 0}
   myswordlevels: {fileID: 0}
   mysynthelevels: {fileID: 0}
+  myShotgunbulletlevels: {fileID: 0}
+  myShotGunlevels: {fileID: 0}
   WeaponInventory: {fileID: 0}
   UpgradeText: {fileID: 0}
   weaponchange: {fileID: 0}

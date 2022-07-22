@@ -1044,6 +1044,8 @@ MonoBehaviour:
   myWeaponData: {fileID: 0}
   myswordlevels: {fileID: 0}
   mysynthelevels: {fileID: 0}
+  myShotgunbulletlevels: {fileID: 0}
+  myShotGunlevels: {fileID: 0}
   WeaponInventory: {fileID: 0}
   UpgradeText: {fileID: 0}
   weaponchange: {fileID: 0}
@@ -2240,6 +2242,8 @@ MonoBehaviour:
   myWeaponData: {fileID: 1403232518827242188, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
   myswordlevels: {fileID: -109825317965936220, guid: 487077be5f8f9a1429c1baaf7d6df776, type: 3}
   mysynthelevels: {fileID: 2765751628560032932, guid: d9a221cb536b7e645aa16c76ae096876, type: 3}
+  myShotGunLevels: {fileID: 7010057156049455857, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
+  myShotGunBulletLevels: {fileID: 7550464741411194902, guid: b072f6182dfd0ed4e927e5da1187233c, type: 3}
   Weaponlists: {fileID: 0}
   WeaponImage: {fileID: 850403574}
 --- !u!1 &395059940
@@ -7519,6 +7523,8 @@ MonoBehaviour:
   myWeaponData: {fileID: 1403232518827242188, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
   myswordlevels: {fileID: -109825317965936220, guid: 487077be5f8f9a1429c1baaf7d6df776, type: 3}
   mysynthelevels: {fileID: 2765751628560032932, guid: d9a221cb536b7e645aa16c76ae096876, type: 3}
+  myShotgunbulletlevels: {fileID: 7550464741411194902, guid: b072f6182dfd0ed4e927e5da1187233c, type: 3}
+  myShotGunlevels: {fileID: 7010057156049455857, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
   WeaponInventory: {fileID: 5776167330055071523}
   UpgradeText: {fileID: 1699803383}
   weaponchange: {fileID: 379650284}
@@ -7619,6 +7625,8 @@ MonoBehaviour:
   myWeaponData: {fileID: 0}
   myswordlevels: {fileID: 0}
   mysynthelevels: {fileID: 0}
+  myShotgunbulletlevels: {fileID: 0}
+  myShotGunlevels: {fileID: 0}
   WeaponInventory: {fileID: 0}
   UpgradeText: {fileID: 0}
   weaponchange: {fileID: 0}
@@ -9672,6 +9680,8 @@ MonoBehaviour:
   myWeaponData: {fileID: 0}
   myswordlevels: {fileID: 0}
   mysynthelevels: {fileID: 0}
+  myShotgunbulletlevels: {fileID: 0}
+  myShotGunlevels: {fileID: 0}
   WeaponInventory: {fileID: 0}
   UpgradeText: {fileID: 0}
   weaponchange: {fileID: 0}

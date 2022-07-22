@@ -6,8 +6,10 @@ public class ShotGun : MonoBehaviour
 {
     public WEAPONTYPE myWeaponType = WEAPONTYPE.SHOTGUN;
     public PlayerWeaponData myweapondatas;
-    public GameObject Bullet;
     public GameObject[] emptyShell;
+    public GameObject Bullet;
+    public Transform ShotGunMuzzle;
+
     public int Shotgunlevel;
     private static ShotGun shotgun_instance = null;
 
@@ -15,7 +17,6 @@ public class ShotGun : MonoBehaviour
     void Start()
     {
         WeaponSelect();
-        Bullet = Instantiate(Resources.Load("Weapons Sei/New Folder/ShotgunBullet")) as GameObject;
     }
 
     private void Awake()
@@ -34,6 +35,12 @@ public class ShotGun : MonoBehaviour
         return Shotgunlevel += 1;
     }
 
+    public void FireBullet()
+    {
+        Bullet = Instantiate(Bullet, ShotGunMuzzle.position, ShotGunMuzzle.rotation);
+        Bullet = Instantiate(Resources.Load("Weapons Sei/New Folder/ShotgunBullet")) as GameObject;
+
+    }
 
     // Update is called once per frame
     void Update()

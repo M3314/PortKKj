@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Runa : MonoBehaviour
 {
+    public int myLevel;
 
     // Start is called before the first frame update
     void Start()

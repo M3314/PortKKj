@@ -371,10 +371,13 @@ MonoBehaviour:
     EX: 0
   myStarBar: {fileID: 0}
   myApBar: {fileID: 0}
+  myExBar: {fileID: 0}
   myLevel: 0
   myseiData: {fileID: 11400000, guid: f3f167e532ef79a44b018a63f2780362, type: 2}
+  LevelInfomation: {fileID: 0}
   _curHP: 0
   _curAP: 0
+  _curEX: 0
 --- !u!114 &-5088844789015362402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,8 +390,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df9cdea9f04b8942b7e727bf924375c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShotGunBulletFire: {fileID: 7010057156049455857, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
   moveSpeed: 5
   playerWeaponChangeData: {fileID: 1403232518827242188, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
+  ShotGunBullet: {fileID: 3114829034053701629, guid: b072f6182dfd0ed4e927e5da1187233c, type: 3}
   characterscurrentss: 1
 --- !u!95 &-5688735097140357160
 Animator:

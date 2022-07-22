@@ -7,11 +7,13 @@ public class ShotGunBullet : MonoBehaviour
     public PlayerWeaponData ShotGunBulletData;
     public float Damage;
     public int ShotGunlevelSetting;
+    public float Speed = 10.0f;
     private ShotGunBullet shotgunbullet_instance = null;
     // Start is called before the first frame update
     void Start()
     {
-        Damage = ShotGunBulletData.GetDamage(ShotGunlevelSetting);
+       Damage = ShotGunBulletData.GetDamage(ShotGunlevelSetting);
+
     }
 
     public int Getlevel()
@@ -19,6 +21,9 @@ public class ShotGunBullet : MonoBehaviour
         return ShotGunlevelSetting += 1;
     }
 
+  
+
+    /*
     private void Awake()
     {
         if (shotgunbullet_instance != this)
@@ -30,10 +35,12 @@ public class ShotGunBullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    */
     // Update is called once per frame
     void Update()
     {
-        
+        float moveX = Speed * Time.deltaTime;
+        transform.Translate(moveX, 0, 0);
     }
 
     public void OnAttack()

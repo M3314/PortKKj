@@ -17,8 +17,10 @@ public class ChaData : MonoBehaviour
     Animator myAnim;
     int AttackType = 0;
     public static ChaData instance;
+    public ShotGun ShotGunBulletFire;
     public float moveSpeed = 5.0f;
     public WeaponData playerWeaponChangeData = null;
+    public GameObject ShotGunBullet;
 
     private void Awake()
     {
@@ -33,6 +35,7 @@ public class ChaData : MonoBehaviour
     public void Start()
     {
         myAnim = GetComponent<Animator>();
+        ShotGunFind();
     }
 
     public void Update()
@@ -46,6 +49,10 @@ public class ChaData : MonoBehaviour
         Move();
     }
 
+    public void ShotGunFind()
+    {
+      
+    }
 
     public void WeaponAttackKey()
     {
@@ -136,6 +143,7 @@ public class ChaData : MonoBehaviour
         if (!myAnim.GetBool("ShotGunAttacking") && Input.GetKey(KeyCode.J))
         {
             Debug.Log("J키를 입력했습니다. 샷건으로 공격합니다");
+            ShotGunBulletFire.FireBullet();
             myAnim.SetTrigger("ShotGunAttack");
             CancelInvoke("Move");
         }

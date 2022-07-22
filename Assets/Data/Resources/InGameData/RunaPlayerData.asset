@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5c2ac13fa91554b95e08ecc5878b33, type: 3}
-  m_Name: SwordEnemyData
+  m_Script: {fileID: 11500000, guid: 1c1c6474dab12004f92cb0edceb40beb, type: 3}
+  m_Name: RunaPlayerData
   m_EditorClassIdentifier: 
-  MaxHP: -12
-  MaxEX: 220
-  MaxAP: 5
-  MaxAttack: 10
-  ScoreGold: 10
+  PlayerHP: 00000000
+  PlayerEX: 00000000
+  PlayerAP: 00000000

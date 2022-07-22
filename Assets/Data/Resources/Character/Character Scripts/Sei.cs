@@ -62,7 +62,7 @@ public class Sei : MonoBehaviour
             _curEX += value;
             if (_curEX < 0.0f) _curEX = 0.0f;
             myExBar = GameObject.Find("Ex Bar").GetComponent<myExStarBar>();
-            myExBar.myEX.value = _curEX / myseiData.PlayerEXSet(myLevel);
+            myExBar.myEX.value =  (EXChange);
         }
     }
     public enum STATE
@@ -116,6 +116,7 @@ public class Sei : MonoBehaviour
                 SeiData.HP = myseiData.PlayerHPSet(myLevel);
                 SeiData.AttackDelay = 3.0f;
                 _curAP = 0.0f;
+                _curEX = 0.0f;
                 myLevel = DontDestroyobject.instance.LevelInfo;
                 //      LevelInfomation =GameObject.Find("LevelText").GetComponent<TMP_Text>();
                 if (SceneManager.GetActiveScene().name == "In Game 1-1")
@@ -126,12 +127,8 @@ public class Sei : MonoBehaviour
             case STATE.PLAY:
                 HPChange = -50.0f;
                 APChange = 0.0f;
-                EXChange = 00.00f;
+                EXChange = 0.0f;
                 LevelInfomation = GameObject.Find("LevelText").GetComponent<TMP_Text>();
-                if (EXChange >= myseiData.PlayerHPSet(myLevel))
-                { Exchangevalue();
-                    myLevel += 1;
-                }
                 break;
             case STATE.DEAD:
                 base.StopAllCoroutines();

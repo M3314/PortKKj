@@ -18,29 +18,36 @@ public class SwordEnemy : MonoBehaviour
     public State myEnemyState = State.CREATE;
     public float attackDelay = 1.5f;
     public TMP_Text GoldInfo;
+    public TMP_Text LevelInfomation;
     public PlayerData playerdatas;
     [SerializeField] public WeaponData playerWeaponChange;
     public Sei seiCharacterData = null;
     public Runa RunaCharacterData = null;
+    [SerializeField] public myExStarBar myExBar;
     // Start is called before the first frame update
     void Start()
     {
         ChangeState(State.BATTLE);
+        myExBar = GameObject.Find("Ex Bar").GetComponent<myExStarBar>();
         if(DontDestroyobject.instance.Chaselected == 1)
         {
             seiCharacterData = GameObject.Find("SeiKo_32(Clone)").GetComponent<Sei>();
+            playerdatas = Instantiate(Resources.Load("InGameData/SeiPlayerData")) as PlayerData;
         }
 
         if (DontDestroyobject.instance.Chaselected == 2)
         {
             RunaCharacterData = GameObject.Find("RUNA_2(Clone)").GetComponent<Runa>();
+           playerdatas = Instantiate(Resources.Load("InGameData/RunaPlayerData")) as PlayerData;
         }
-        GoldInfo.text = (DontDestroyobject.instance.GoldInfo).ToString();
+        GoldInfo.text = DontDestroyobject.instance.GoldInfo.ToString();
+        LevelInfomation.text = DontDestroyobject.instance.LevelInfo.ToString();
     }
     // Update is called once per frame
     void Update()
     {
         DoubleInput();
+
     }
 
     Animator _anim = null;
@@ -111,7 +118,24 @@ public class SwordEnemy : MonoBehaviour
         yield return new WaitForSeconds(t);
         this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_Color", old);
     }
-    
+    public float _curEX;
+    public float EXChange
+    {
+        get
+        {
+            return _curEX;
+        }
+        set
+        {
+            _curEX += value;
+            if (_curEX < 0.0f) _curEX = 0.0f;
+            myExBar = GameObject.Find("Ex Bar").GetComponent<myExStarBar>();
+            myExBar.myEX.value = _curEX + playerdatas.PlayerEXSet(seiCharacterData.myLevel) + 
+                (playerdatas.PlayerEXSet(seiCharacterData.myLevel) - seiCharacterData.EXChange);
+            myExBar.myEX.value = _curEX / playerdatas.PlayerEXSet(RunaCharacterData.myLevel);
+        }
+
+    }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -174,7 +198,14 @@ public class SwordEnemy : MonoBehaviour
                 DontDestroyobject.instance.GoldInfo = (DontDestroyobject.instance.GoldInfo + SwordEnemyData.ScoreGold);
                 seiCharacterData.APChange += SwordEnemyData.MaxAP;
                 seiCharacterData.EXChange += SwordEnemyData.MaxEX;
-                myAnim.ResetTrigger("Attack");
+                if (seiCharacterData.EXChange >= playerdatas.PlayerEXSet(seiCharacterData.myLevel))
+                {
+                    seiCharacterData.myLevel += 1;
+                    LevelInfomation.text = (DontDestroyobject.instance.LevelInfo + 1).ToString();
+                    DontDestroyobject.instance.LevelInfo = (DontDestroyobject.instance.LevelInfo + 1);
+                }
+
+                myAnim.ResetTrigger("Attack"); //공격을 못하도록 설정한다.
                 // StartCorutine(Disappearing());
                 break;
             case State.GAMEOVER:

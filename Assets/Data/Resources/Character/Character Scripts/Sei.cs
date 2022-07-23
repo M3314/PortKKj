@@ -11,13 +11,14 @@ public class Sei : MonoBehaviour
 {
     public STATE mystate = STATE.NONE;
     public PlayerCharacterStat SeiData;
+    [SerializeField] protected EnemyData EnemysData;
     [SerializeField] public myStatBar myStarBar;
     [SerializeField] public myApStatBar myApBar;
     [SerializeField] public myExStarBar myExBar;
     public int myLevel;
     public PlayerData myseiData;
     public TMP_Text LevelInfomation;
-
+    public Animator myAnim;
     public float _curHP;
     public float HPChange
     {
@@ -89,14 +90,18 @@ public class Sei : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("EnemyWeapon"))
         {
    //         other.gameObject.GetComponent<EnemyData>().MaxEnemyAttack();
-            Debug.Log("칼 맞고 있음");
-            InDamage();
+            Debug.Log("공격받고 있음.");
+            OnDamage();
         }
     }
 
-    public void InDamage()
+    public void OnDamage()
     {
-    //    _curHP = GetComponent<SwordEnemy>().UpdateHP();
+        //     _curHP = GetComponent<SwordEnemy>().UpdateHP();
+        if (mystate == STATE.DEAD) return;
+        HPChange = -EnemysData.MaxEnemyAttack();
+        if (HPChange <= 0.0f)
+            ChangeState(STATE.DEAD);
     }
 
     public void Exchangevalue()
@@ -133,6 +138,7 @@ public class Sei : MonoBehaviour
             case STATE.DEAD:
                 base.StopAllCoroutines();
                 SeiData.HP = 0.0f;
+                myAnim.SetTrigger("Dead");
                 break;
         }
     }

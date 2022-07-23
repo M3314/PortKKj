@@ -17,7 +17,7 @@ public class ChaData : MonoBehaviour
     Animator myAnim;
     int AttackType = 0;
     public static ChaData instance;
-    public ShotGun ShotGunBulletFire;
+    public ShotGun ShotGunBulletFire; //샷건 애니메이션 때문에 추가함.
     public float moveSpeed = 5.0f;
     public WeaponData playerWeaponChangeData = null;
 

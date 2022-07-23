@@ -766,6 +766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RUNA_2
       objectReference: {fileID: 0}
+    - target: {fileID: 3854412905835684478, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4618194538285818526, guid: ffe5de47013b4114e873e42d5f365bb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.27
@@ -1519,6 +1523,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345721609}
   m_CullTransparentMesh: 1
+--- !u!1 &391158238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 391158240}
+  - component: {fileID: 391158239}
+  m_Layer: 0
+  m_Name: PlayMain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &391158239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391158238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60ba6020a951c84a84a70c3435defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mystate: 0
+  Player: {fileID: 0}
+--- !u!4 &391158240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391158238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.131096, y: 0.93410337, z: -4.229112}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &394783781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,6 +2561,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6236153319808238121, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
+      propertyPath: myAnim
+      value: 
+      objectReference: {fileID: 539014576}
+    - target: {fileID: 6236153319808238121, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: HPValue
       value: 
       objectReference: {fileID: 0}
@@ -2536,9 +2589,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 962099511}
     - target: {fileID: 6236153319808238121, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
+      propertyPath: EnemysData
+      value: 
+      objectReference: {fileID: 11400000, guid: bafe94cb8837bfe47b2857fd6cf37241, type: 2}
+    - target: {fileID: 6236153319808238121, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: SeiData.AP
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6236153319808238121, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
+      propertyPath: LevelInfomation
+      value: 
+      objectReference: {fileID: 982567957}
     - target: {fileID: 6236153319808238121, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: playerWeaponChangeData
       value: 
@@ -4224,7 +4285,7 @@ GameObject:
   - component: {fileID: 1127061299}
   - component: {fileID: 1127061298}
   m_Layer: 0
-  m_Name: PlayMain
+  m_Name: InvenMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6503,6 +6564,14 @@ PrefabInstance:
     - target: {fileID: 4065284415294889523, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065284416761848481, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944434975974051375, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}

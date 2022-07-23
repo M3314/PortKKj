@@ -107,10 +107,10 @@ public class SwordEnemy : MonoBehaviour
         }
         else
         {
-             StartCoroutine(ColorChange(Color.red, 0.5f));
+           //  StartCoroutine(ColorChange(Color.red, 0.5f));
         }
     }
-    
+    /*
     IEnumerator ColorChange(Color col, float t)
     {
         Color old = this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].GetColor("_Color");
@@ -118,6 +118,7 @@ public class SwordEnemy : MonoBehaviour
         yield return new WaitForSeconds(t);
         this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_Color", old);
     }
+    */
     public float _curEX;
     public float EXChange
     {
@@ -155,6 +156,11 @@ public class SwordEnemy : MonoBehaviour
         }
     }
 
+    public void TargetAttack()
+    {
+
+    }
+
     public void DoubleInput()
     {
         if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
@@ -175,7 +181,7 @@ public class SwordEnemy : MonoBehaviour
                 //      SwordEnemyData.MaxHP = 300;
                 break;
             case State.BATTLE:
-                SwordEnemyData.MaxHP = 10;
+                SwordEnemyData.MaxHP = 9999;
                 SwordEnemyData.ScoreGold = 10;
                 SwordEnemyData.MaxAP = 5;
                 myAnim.SetTrigger("GameOver");

@@ -1979,6 +1979,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5088844789015362402, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
+      propertyPath: ShotGunBullet
+      value: 
+      objectReference: {fileID: 4966213359952223763, guid: 654d7f4d602eb884dbd527206aa71374, type: 3}
+    - target: {fileID: -5088844789015362402, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
+      propertyPath: ShotGunFirePosition
+      value: 
+      objectReference: {fileID: 2019310678}
     - target: {fileID: 200484407789605686, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -2009,7 +2017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 649450897385061328, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 908662040335474418, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: m_Layer
@@ -2270,7 +2278,7 @@ PrefabInstance:
     - target: {fileID: 3751124365690050844, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: Bullet
       value: 
-      objectReference: {fileID: 3114829034053701629, guid: b072f6182dfd0ed4e927e5da1187233c, type: 3}
+      objectReference: {fileID: 4966213359952223763, guid: 654d7f4d602eb884dbd527206aa71374, type: 3}
     - target: {fileID: 3757397559064674167, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -6290,6 +6298,11 @@ RectTransform:
   m_AnchoredPosition: {x: -2.5, y: 0}
   m_SizeDelta: {x: 125, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &2019310678 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6093289772821789178, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
+  m_PrefabInstance: {fileID: 539014574}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2052244451
 GameObject:
   m_ObjectHideFlags: 0

@@ -827,6 +827,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShotGunBulletFire: {fileID: 7010057156049455857, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
   moveSpeed: 5
+  ShotGunBullet: {fileID: 4966213359952223763, guid: 654d7f4d602eb884dbd527206aa71374, type: 3}
+  ShotGunFirePosition: {fileID: 6163471795792311584}
   playerWeaponChangeData: {fileID: 1403232518827242188, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
   characterscurrentss: 0
 --- !u!1 &4118339260362390098
@@ -1396,6 +1398,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
+--- !u!4 &6163471795792311584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 128815105991764503, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
+  m_PrefabInstance: {fileID: 6071037399260012343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3409470818492570153 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8867719592140490014, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}

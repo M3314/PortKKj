@@ -19,6 +19,8 @@ public class ChaData : MonoBehaviour
     public static ChaData instance;
     public ShotGun ShotGunBulletFire; //샷건 애니메이션 때문에 추가함.
     public float moveSpeed = 5.0f;
+    public GameObject ShotGunBullet = null;
+    public Transform ShotGunFirePosition;
     public WeaponData playerWeaponChangeData = null;
 
     private void Awake()
@@ -34,7 +36,7 @@ public class ChaData : MonoBehaviour
     public void Start()
     {
         myAnim = GetComponent<Animator>();
-        ShotGunFind();
+        ShotGunBulletFire.myRenderer.sortingOrder = 4;
     }
 
     public void Update()
@@ -48,10 +50,7 @@ public class ChaData : MonoBehaviour
         Move();
     }
 
-    public void ShotGunFind()
-    {
-      
-    }
+
 
     public void WeaponAttackKey()
     {
@@ -66,6 +65,7 @@ public class ChaData : MonoBehaviour
         if (playerWeaponChangeData.myWeaponType == WEAPONTYPE.SHOTGUN)
         {
             ShotGunAttack();
+            myAnim.SetTrigger("IdleChange2");
         }
     }
     public void Move()
@@ -124,7 +124,10 @@ public class ChaData : MonoBehaviour
 //        CancelInvoke("Move");
     }
 
-
+    void ShotGunBulletTimer()
+    {
+        Instantiate(ShotGunBullet, ShotGunFirePosition.transform.position, Quaternion.AngleAxis(0, Vector3.forward));
+    }
 
     public void AttackSynthe()
     {
@@ -142,12 +145,14 @@ public class ChaData : MonoBehaviour
         if (!myAnim.GetBool("ShotGunAttacking") && Input.GetKey(KeyCode.J))
         {
             Debug.Log("J키를 입력했습니다. 샷건으로 공격합니다");
-            ShotGunBulletFire.myRenderer.sortingOrder = 4;
+            ShotGunBulletFire = GameObject.Find("Shot Gun(Clone)").GetComponent<ShotGun>();
             myAnim.SetTrigger("ShotGunAttack");
-            CancelInvoke("Move");
+     
+            ShotGunBulletFire.myRenderer.sortingOrder = 4;
+            Invoke("ShotGunBulletTimer", 0.35f);
+            myAnim.SetTrigger("IdleChange");
         }
-        else
-            ShotGunBulletFire.myRenderer.sortingOrder = 1;
+        return;
     }
     public void PistolAttack()
     {
@@ -169,6 +174,14 @@ public class ChaData : MonoBehaviour
             myAnim.SetBool("Run", false);
             moveSpeed = 0.0f;
         }
+
+        if (myAnim.GetCurrentAnimatorStateInfo(1).IsName("ShotGun Attack"))
+        {
+            myAnim.SetBool("Run", false);
+            moveSpeed = 0.0f;
+        }
+        else
+            moveSpeed = 5.0f;
     }
 
 }

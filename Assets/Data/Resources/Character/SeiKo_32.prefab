@@ -401,6 +401,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShotGunBulletFire: {fileID: 7010057156049455857, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
   moveSpeed: 5
+  ShotGunBullet: {fileID: 4966213359952223763, guid: 654d7f4d602eb884dbd527206aa71374, type: 3}
+  ShotGunFirePosition: {fileID: 6093289772821789178}
   playerWeaponChangeData: {fileID: 1403232518827242188, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
   characterscurrentss: 1
 --- !u!95 &-5688735097140357160
@@ -1575,7 +1577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6648793326473848893, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8858722467310392177, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
       propertyPath: m_SortingOrder
@@ -1638,5 +1640,10 @@ PrefabInstance:
 --- !u!4 &3338967875867743987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8867719592140490014, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
+  m_PrefabInstance: {fileID: 6144618995800069101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6093289772821789178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 128815105991764503, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
   m_PrefabInstance: {fileID: 6144618995800069101}
   m_PrefabAsset: {fileID: 0}

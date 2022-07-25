@@ -19,7 +19,7 @@ public class ShotGunBullet : MonoBehaviour
     {
         return ShotGunlevelSetting += 1;
     }
-    /*
+    
     private void Awake()
     {
         if (shotgunbullet_instance != this)
@@ -31,12 +31,13 @@ public class ShotGunBullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    */
+    
     // Update is called once per frame
     void Update()
     {
         float moveX = Speed * Time.deltaTime;
         transform.Translate(moveX, 0, 0);
+        Destroy(this.gameObject, 5.0f);
     }
 
     public void OnAttack()

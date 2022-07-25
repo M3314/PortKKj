@@ -323,6 +323,8 @@ GameObject:
   - component: {fileID: 6236153319808238121}
   - component: {fileID: -5088844789015362402}
   - component: {fileID: -5688735097140357160}
+  - component: {fileID: 7700741221576958251}
+  - component: {fileID: 2593435682621469423}
   m_Layer: 6
   m_Name: SeiKo_32
   m_TagString: Untagged
@@ -364,17 +366,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mystate: 0
+  mainplayinfo: {fileID: 0}
   SeiData:
     HP: 0
     AttackDelay: 0
     AP: 0
     EX: 0
+  EnemysData:
+  - {fileID: 11400000, guid: bafe94cb8837bfe47b2857fd6cf37241, type: 2}
+  - {fileID: 11400000, guid: bafe94cb8837bfe47b2857fd6cf37241, type: 2}
+  - {fileID: 0}
   myStarBar: {fileID: 0}
   myApBar: {fileID: 0}
   myExBar: {fileID: 0}
   myLevel: 0
+  SwordenemyInfo: {fileID: 0}
   myseiData: {fileID: 11400000, guid: f3f167e532ef79a44b018a63f2780362, type: 2}
   LevelInfomation: {fileID: 0}
+  myAnim: {fileID: -5688735097140357160}
   _curHP: 0
   _curAP: 0
   _curEX: 0
@@ -413,6 +422,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &7700741221576958251
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3051106583613391605}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 10.5}
+  m_Size: {x: 3.5, y: 9.5}
+  m_Direction: 0
+--- !u!50 &2593435682621469423
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3051106583613391605}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &3162927341914397274
 GameObject:
   m_ObjectHideFlags: 0

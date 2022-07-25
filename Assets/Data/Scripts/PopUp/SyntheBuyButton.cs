@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class SyntheBuyButton : InvenMain
@@ -22,7 +23,7 @@ public class SyntheBuyButton : InvenMain
     // Update is called once per frame
     void Update()
     {
-
+  
     }
 
     public void SyntheButtonSetActiveTrue() //Buy버튼을 누르면 생기는일 
@@ -35,8 +36,6 @@ public class SyntheBuyButton : InvenMain
         //     WeaponData.GetComponent<WeaponData>().ChangeStateWeaponState(WEAPONTYPE.SYNTHE);
         Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
         GoldText.text = Gold.ToString();
-
-
     }
 
 }

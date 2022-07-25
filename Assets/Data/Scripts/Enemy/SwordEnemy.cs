@@ -10,6 +10,12 @@ public class SwordEnemy : MonoBehaviour
     {
         CREATE, BATTLE, DEAD, GAMEOVER
     }
+
+    public enum ENEMYSTATE
+    {
+         SWORD, SPEAR, RIFLE
+    }
+    public ENEMYSTATE myEnemyInfoState = ENEMYSTATE.SWORD;
     [SerializeField] public WEAPONTYPE PlayerWeaponType;
     public PlayerWeaponData[] myDamageData;
     [SerializeField] public ChaData EnemyTarget;

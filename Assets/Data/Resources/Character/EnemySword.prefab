@@ -652,6 +652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc209ece9ec3ee4eac5fdcc0ba0fe27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myEnemyInfoState: 1
   PlayerWeaponType: 0
   myDamageData:
   - {fileID: 11400000, guid: 27f3532a38f507846a57a05a4aa5bfab, type: 2}
@@ -664,10 +665,13 @@ MonoBehaviour:
   myEnemyState: 0
   attackDelay: 1.5
   GoldInfo: {fileID: 0}
+  LevelInfomation: {fileID: 0}
   playerdatas: {fileID: 0}
   playerWeaponChange: {fileID: 0}
   seiCharacterData: {fileID: 0}
   RunaCharacterData: {fileID: 0}
+  myExBar: {fileID: 0}
+  _curEX: 0
 --- !u!1 &4065284416144690200
 GameObject:
   m_ObjectHideFlags: 0

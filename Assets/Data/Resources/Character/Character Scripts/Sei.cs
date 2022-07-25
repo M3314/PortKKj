@@ -10,12 +10,14 @@ using UnityEngine.SceneManagement;
 public class Sei : MonoBehaviour
 {
     public STATE mystate = STATE.NONE;
+    public MainPlay mainplayinfo;
     public PlayerCharacterStat SeiData;
-    [SerializeField] protected EnemyData EnemysData;
+    [SerializeField] public EnemyData[] EnemysData;
     [SerializeField] public myStatBar myStarBar;
     [SerializeField] public myApStatBar myApBar;
     [SerializeField] public myExStarBar myExBar;
     public int myLevel;
+    public SwordEnemy SwordenemyInfo;
     public PlayerData myseiData;
     public TMP_Text LevelInfomation;
     public Animator myAnim;
@@ -74,7 +76,12 @@ public class Sei : MonoBehaviour
     {
         CharacterSelect();
         ChangeState(STATE.CREATE);
-  //      LevelInfomation = GameObject.Find("LevelText").GetComponent<GameInfoUi>();
+       // myAnim = GameObject.Find("SeiKo_32(Clone)");
+        if (SceneManager.GetActiveScene().name == "In Game 1-1")
+        {
+            mainplayinfo = GameObject.Find("PlayMain").GetComponent<MainPlay>();
+            SwordenemyInfo = GameObject.Find("EnemySword").GetComponent<SwordEnemy>();
+        };
     }
     void Update()
     {
@@ -99,9 +106,13 @@ public class Sei : MonoBehaviour
     {
         //     _curHP = GetComponent<SwordEnemy>().UpdateHP();
         if (mystate == STATE.DEAD) return;
-        HPChange = -EnemysData.MaxEnemyAttack();
+        HPChange = -EnemysData[(int)SwordenemyInfo.myEnemyInfoState].MaxEnemyAttack();
         if (HPChange <= 0.0f)
+        {
             ChangeState(STATE.DEAD);
+            mainplayinfo.mystate = MainPlay.STATE.GAMEOVER;
+        }
+            
     }
 
     public void Exchangevalue()
@@ -130,15 +141,15 @@ public class Sei : MonoBehaviour
                 };
                 break;
             case STATE.PLAY:
-                HPChange = -50.0f;
+           //     HPChange = -50.0f;
                 APChange = 0.0f;
                 EXChange = 0.0f;
                 LevelInfomation = GameObject.Find("LevelText").GetComponent<TMP_Text>();
                 break;
             case STATE.DEAD:
                 base.StopAllCoroutines();
-                SeiData.HP = 0.0f;
                 myAnim.SetTrigger("Dead");
+                mainplayinfo.mystate = MainPlay.STATE.GAMEOVER;
                 break;
         }
     }

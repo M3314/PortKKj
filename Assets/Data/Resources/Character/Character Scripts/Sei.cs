@@ -10,13 +10,14 @@ using UnityEngine.SceneManagement;
 public class Sei : MonoBehaviour
 {
     public STATE mystate = STATE.NONE;
+    public ChaData moveSpeedSetting;
     public MainPlay mainplayinfo;
     public PlayerCharacterStat SeiData;
     [SerializeField] public EnemyData[] EnemysData;
     [SerializeField] public myStatBar myStarBar;
     [SerializeField] public myApStatBar myApBar;
     [SerializeField] public myExStarBar myExBar;
-    public int myLevel;
+    public int myLevel = 1;
     public SwordEnemy SwordenemyInfo;
     public PlayerData myseiData;
     public TMP_Text LevelInfomation;
@@ -74,6 +75,7 @@ public class Sei : MonoBehaviour
     }
     private void Start()
     {
+        myLevel = DontDestroyobject.instance.LevelInfo;
         CharacterSelect();
         ChangeState(STATE.CREATE);
        // myAnim = GameObject.Find("SeiKo_32(Clone)");
@@ -86,6 +88,22 @@ public class Sei : MonoBehaviour
     void Update()
     {
         StateProcess();
+        ApChanges();
+    }
+
+    public void ApChanges()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            APChange = -2;
+            HPChange = +4;
+
+             if(APChange <=2)
+            {
+                HPChange = +0;
+                APChange = -0;
+            }
+        }
     }
 
     void CharacterSelect()
@@ -112,6 +130,10 @@ public class Sei : MonoBehaviour
             ChangeState(STATE.DEAD);
             mainplayinfo.mystate = MainPlay.STATE.GAMEOVER;
             mainplayinfo.GameOverPopup.SetActive(true);
+            myAnim.SetTrigger("Dead");
+            myAnim.ResetTrigger("Start");
+            myAnim.ResetTrigger("IdleChange2");
+            myAnim.ResetTrigger("ShotGunAttack");
         }
             
     }
@@ -120,15 +142,6 @@ public class Sei : MonoBehaviour
     {
         myLevel += 1;
     }
-
-   public void HPPlus()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-
-        }
-    }
-
 
     void ChangeState(STATE s)
     {
@@ -150,16 +163,26 @@ public class Sei : MonoBehaviour
                 };
                 break;
             case STATE.PLAY:
-           //     HPChange = -50.0f;
-                APChange = 0.0f;
-                EXChange = 0.0f;
+                mainplayinfo = GameObject.Find("PlayMain").GetComponent<MainPlay>();
+                mainplayinfo.GameOverPopup.SetActive(false);
+                myAnim.ResetTrigger("Dead");
+                myAnim.SetTrigger("Start");
+                mainplayinfo.mystate = MainPlay.STATE.PLAY;
+          //     HPChange = -20f;
+                APChange = 9f;
+                EXChange = 0f;
                 LevelInfomation = GameObject.Find("LevelText").GetComponent<TMP_Text>();
+       //         ApChanges();
                 break;
             case STATE.DEAD:
                 base.StopAllCoroutines();
-                myAnim.SetTrigger("Dead");
                 mainplayinfo.mystate = MainPlay.STATE.GAMEOVER;
-
+                myAnim.SetTrigger("Dead");
+                myAnim.ResetTrigger("Start");
+                myAnim.ResetTrigger("IdleChange2");
+             myAnim.ResetTrigger("ShotGunAttack");
+                myAnim.SetBool("RUN", false);
+                moveSpeedSetting.moveSpeed = 0.0f;
                 break;
         }
     }

@@ -14,7 +14,7 @@ public enum Characters
 
 public class ChaData : MonoBehaviour
 {
-    Animator myAnim;
+    public Animator myAnim;
     int AttackType;
     public static ChaData instance;
     public ShotGun ShotGunBulletFire; //샷건 애니메이션 때문에 추가함.
@@ -100,7 +100,6 @@ public class ChaData : MonoBehaviour
             transform.localScale = new Vector3(-0.3f, 0.3f, 0.3f);
             myAnim.SetBool("RUN", true);
         }
-
     }
 
     public Vector3 ClampPosition(Vector3 position)
@@ -110,7 +109,6 @@ public class ChaData : MonoBehaviour
             Mathf.Clamp(position.x, -20.0f, 18.5f), Mathf.Clamp(position.y, -8.8f, 2.6f), 0  //맵 거리 이동 제한 
         );
     }
-
 
     public void AttackSword()
     {
@@ -130,7 +128,7 @@ public class ChaData : MonoBehaviour
     {
         if (gameObject.transform.localScale == new Vector3(-0.3f, 0.3f, 0.3f))
             Instantiate(ShotGunBullet, ShotGunFirePosition.transform.position, Quaternion.AngleAxis(0, Vector3.forward)); //총알이 오른쪽으로 발사하게
-       else if (gameObject.transform.localScale == new Vector3(0.3f, 0.3f, 0.3f))
+        else if (gameObject.transform.localScale == new Vector3(0.3f, 0.3f, 0.3f))
             Instantiate(ShotGunBullet, ShotGunFirePosition.transform.position, Quaternion.AngleAxis(180, Vector3.forward)); //총알이 왼쪽으로 발사하게
     }
 
@@ -150,16 +148,15 @@ public class ChaData : MonoBehaviour
         if (!myAnim.GetBool("ShotGunAttacking") && Input.GetKeyDown(KeyCode.J))
         {
             Debug.Log("J키를 입력했습니다. 샷건으로 공격합니다");
-                   ShotGunBulletFire = GameObject.Find("Shot Gun(Clone)").GetComponent<ShotGun>();
-          //  ShotGunBulletFire = GameObject.Find("Shot Gun").GetComponent<ShotGun>(); //잠깐 테스트용으로 만든거임. 
+            ShotGunBulletFire = GameObject.Find("Shot Gun(Clone)").GetComponent<ShotGun>();
+            //  ShotGunBulletFire = GameObject.Find("Shot Gun").GetComponent<ShotGun>(); //잠깐 테스트용으로 만든거임. 
             myAnim.SetTrigger("ShotGunAttack");
             myAnim.SetBool("RUN", false);
             moveSpeed = 0.0f;
             ShotGunBulletFire.myRenderer.sortingOrder = 4;
             myAnim.SetTrigger("IdleChange");
-          
-                Invoke("ShotGunBulletTimer", 0.35f);
-            
+
+            Invoke("ShotGunBulletTimer", 0.35f);
 
         }
         myAnim.GetBool("ShotGunAttacking");
@@ -184,6 +181,15 @@ public class ChaData : MonoBehaviour
             myAnim.SetBool("RUN", false);
             moveSpeed = 0.0f;
             myAnim.ResetTrigger("ShotGunAttacking");
+        }
+
+        if (myAnim.GetCurrentAnimatorStateInfo(1).IsName("Dead"))
+        {
+            myAnim.SetBool("RUN", false);
+            moveSpeed = 0.0f;
+            myAnim.ResetTrigger("ShotGunAttack");
+            myAnim.ResetTrigger("SwordAttack");
+            myAnim.ResetTrigger("SyntheAttack");
         }
 
     }

@@ -150,6 +150,7 @@ public class SwordEnemy : MonoBehaviour
         {
             //        Debug.Log("Player에게 공격 받고있습니다.");
             other.gameObject.GetComponent<Sword>()?.OnAttack();
+            other.gameObject.GetComponent<ShotGunBullet>()?.OnAttack();
             OnDamage();
         }
     }

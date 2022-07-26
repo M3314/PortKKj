@@ -36,7 +36,7 @@ public class ShotGunBullet : MonoBehaviour
     void Update()
     {
         float moveX = Speed * Time.deltaTime;
-        transform.Translate(moveX, 0, 0);
+        transform.Translate(Vector3.right*moveX);
         Destroy(this.gameObject, 5.0f);
     }
 

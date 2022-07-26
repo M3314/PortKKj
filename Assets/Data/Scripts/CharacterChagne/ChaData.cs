@@ -15,7 +15,7 @@ public enum Characters
 public class ChaData : MonoBehaviour
 {
     Animator myAnim;
-    int AttackType = 0;
+    int AttackType;
     public static ChaData instance;
     public ShotGun ShotGunBulletFire; //샷건 애니메이션 때문에 추가함.
     public float moveSpeed = 5.0f;
@@ -45,7 +45,7 @@ public class ChaData : MonoBehaviour
     }
     public void FixedUpdate()
     {
-       // DoubleInput();
+        DoubleInput(); AttackDouble();
         WeaponAttackKey();
         Move();
     }
@@ -57,6 +57,7 @@ public class ChaData : MonoBehaviour
         if (playerWeaponChangeData.myWeaponType == WEAPONTYPE.SWORD)
         {
             AttackSword();
+            //    moveSpeed = 0.0f;
         }
         if (playerWeaponChangeData.myWeaponType == WEAPONTYPE.SYNTHE)
         {
@@ -99,6 +100,7 @@ public class ChaData : MonoBehaviour
             transform.localScale = new Vector3(-0.3f, 0.3f, 0.3f);
             myAnim.SetBool("RUN", true);
         }
+
     }
 
     public Vector3 ClampPosition(Vector3 position)
@@ -117,21 +119,19 @@ public class ChaData : MonoBehaviour
             Debug.Log("J키를 입력했습니다. 칼로 근접공격합니다");
             myAnim.SetInteger("AttackType", AttackType++ % 2);
             myAnim.SetTrigger("SwordAttack");
+            moveSpeed = 0.0f;
             myAnim.SetBool("RUN", false);
-            return;
-            GetComponent<Sword>().OnAttack();
+            myAnim.SetBool("SwordAttacking", true);
         }
-//        CancelInvoke("Move");
+
     }
 
     void ShotGunBulletTimer()
     {
-        Instantiate(ShotGunBullet, ShotGunFirePosition.transform.position, Quaternion.AngleAxis(0, Vector3.forward));
-    }
-
-    void ShotGunBulletBackTimer()
-    {
-        Instantiate(ShotGunBullet, ShotGunFirePosition.transform.position, Quaternion.AngleAxis(0, Vector3.back));
+        if (gameObject.transform.localScale == new Vector3(-0.3f, 0.3f, 0.3f))
+            Instantiate(ShotGunBullet, ShotGunFirePosition.transform.position, Quaternion.AngleAxis(0, Vector3.forward)); //총알이 오른쪽으로 발사하게
+       else if (gameObject.transform.localScale == new Vector3(0.3f, 0.3f, 0.3f))
+            Instantiate(ShotGunBullet, ShotGunFirePosition.transform.position, Quaternion.AngleAxis(180, Vector3.forward)); //총알이 왼쪽으로 발사하게
     }
 
     public void AttackSynthe()
@@ -147,23 +147,22 @@ public class ChaData : MonoBehaviour
 
     public void ShotGunAttack()
     {
-        if (!myAnim.GetBool("ShotGunAttacking") && Input.GetKey(KeyCode.J))
+        if (!myAnim.GetBool("ShotGunAttacking") && Input.GetKeyDown(KeyCode.J))
         {
             Debug.Log("J키를 입력했습니다. 샷건으로 공격합니다");
-    //        ShotGunBulletFire = GameObject.Find("Shot Gun(Clone)").GetComponent<ShotGun>();
-            ShotGunBulletFire = GameObject.Find("Shot Gun").GetComponent<ShotGun>(); //잠깐 테스트용으로 만든거임. 
+                   ShotGunBulletFire = GameObject.Find("Shot Gun(Clone)").GetComponent<ShotGun>();
+          //  ShotGunBulletFire = GameObject.Find("Shot Gun").GetComponent<ShotGun>(); //잠깐 테스트용으로 만든거임. 
             myAnim.SetTrigger("ShotGunAttack");
-     
+            myAnim.SetBool("RUN", false);
+            moveSpeed = 0.0f;
             ShotGunBulletFire.myRenderer.sortingOrder = 4;
-            Invoke("ShotGunBulletTimer", 0.35f);
             myAnim.SetTrigger("IdleChange");
+          
+                Invoke("ShotGunBulletTimer", 0.35f);
+            
 
-            if (gameObject.transform.localScale == new Vector3(0.3f, 0.3f, 0.3f))
-            {
-                Invoke("ShotGunBulletBackTimer", 0.35f);
-            }
         }
-        return;
+        myAnim.GetBool("ShotGunAttacking");
     }
     public void PistolAttack()
     {
@@ -172,27 +171,30 @@ public class ChaData : MonoBehaviour
 
     public void DoubleInput()
     {
-        if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack1 (Sword)"))
-        {
-            myAnim.SetBool("Run", false);
-            moveSpeed = 0.0f;
-        }
-        else
-            moveSpeed = 5.0f;
-
         if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack2(Sword)"))
         {
-            myAnim.SetBool("Run", false);
-            moveSpeed = 0.0f;
-        }
-
-        if (myAnim.GetCurrentAnimatorStateInfo(1).IsName("ShotGun Attack"))
-        {
-            myAnim.SetBool("Run", false);
+            myAnim.SetBool("RUN", false);
             moveSpeed = 0.0f;
         }
         else
             moveSpeed = 5.0f;
+
+        if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("ShotGun Attack"))
+        {
+            myAnim.SetBool("RUN", false);
+            moveSpeed = 0.0f;
+            myAnim.ResetTrigger("ShotGunAttacking");
+        }
+
+    }
+
+    public void AttackDouble()
+    {
+        if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack"))
+        {
+            moveSpeed = 0.0f;
+            myAnim.SetBool("RUN", false);
+        }
     }
 
 }

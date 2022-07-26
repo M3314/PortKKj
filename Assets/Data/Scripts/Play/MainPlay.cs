@@ -13,6 +13,13 @@ public class MainPlay : MonoBehaviour
     public Transform Enemy = null;
     public Sei Seidata;
     public Runa Runadata;
+    public GameObject GameOverPopup;
+    public GameObject ClearPopup;
+    public StageData[] StageList;
+    [SerializeField] float timeGap = 0.0f;
+    [SerializeField] int CurStage = 0;
+    int CurIndex = 0;
+    public float playTime = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +36,9 @@ public class MainPlay : MonoBehaviour
             Runadata = GameObject.Find("RUNA_2(Clone)").GetComponent<Runa>();
             //     myplayerdata = Instantiate(Resources.Load("InGameData/RunaPlayerData")) as PlayerData;
         }
-
         ChangeState(STATE.PLAY);
+        CurIndex = 0;
+        timeGap = StageList[CurStage].GetTimeGap();
     }
 
 
@@ -42,30 +50,60 @@ public class MainPlay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        StateProcess();
     }
 
-    void ChangeState (STATE s)
+    void CreateEnemy(EnemyType enemys)
     {
-        if (mystate == s) return;
-        mystate = s;
-        switch(mystate)
+        switch (enemys)
         {
-            case STATE.PLAY:
+            case EnemyType.NONE:
+                if (++CurStage == StageList.Length)
+                {
+                    ChangeState(STATE.GAMEOVER);
+                }
+                else
+                {
+                    CurIndex = 0;
+                    playTime = timeGap = StageList[CurStage].GetTimeGap();
+                }
                 break;
-            case STATE.GAMEOVER:
+
+            case EnemyType.SWORD:
+                break;
+            case EnemyType.SPEAR:
+                break;
+            case EnemyType.RIFLE:
                 break;
         }
     }
 
-    void StateProcess()
-    {
-        switch(mystate)
+        void ChangeState(STATE s)
         {
-            case STATE.PLAY:
-                break;
-            case STATE.GAMEOVER:
-                break;
+            if (mystate == s) return;
+            mystate = s;
+            switch (mystate)
+            {
+                case STATE.PLAY:
+                    break;
+                case STATE.GAMEOVER:
+                    break;
+            }
+        }
+
+        void StateProcess()
+        {
+            switch (mystate)
+            {
+                case STATE.PLAY:
+                    playTime += Time.deltaTime;
+                    if (playTime >= timeGap)
+                    {
+                        playTime = 0.0f;
+                    }
+                    break;
+                case STATE.GAMEOVER:
+                    break;
+            }
         }
     }
-}

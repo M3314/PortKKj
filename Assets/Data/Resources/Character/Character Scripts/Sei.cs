@@ -111,6 +111,7 @@ public class Sei : MonoBehaviour
         {
             ChangeState(STATE.DEAD);
             mainplayinfo.mystate = MainPlay.STATE.GAMEOVER;
+            mainplayinfo.GameOverPopup.SetActive(true);
         }
             
     }
@@ -118,6 +119,14 @@ public class Sei : MonoBehaviour
     public void Exchangevalue()
     {
         myLevel += 1;
+    }
+
+   public void HPPlus()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+
+        }
     }
 
 
@@ -150,6 +159,7 @@ public class Sei : MonoBehaviour
                 base.StopAllCoroutines();
                 myAnim.SetTrigger("Dead");
                 mainplayinfo.mystate = MainPlay.STATE.GAMEOVER;
+
                 break;
         }
     }

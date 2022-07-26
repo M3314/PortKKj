@@ -129,6 +129,11 @@ public class ChaData : MonoBehaviour
         Instantiate(ShotGunBullet, ShotGunFirePosition.transform.position, Quaternion.AngleAxis(0, Vector3.forward));
     }
 
+    void ShotGunBulletBackTimer()
+    {
+        Instantiate(ShotGunBullet, ShotGunFirePosition.transform.position, Quaternion.AngleAxis(0, Vector3.back));
+    }
+
     public void AttackSynthe()
     {
         if (!myAnim.GetBool("SyntheAttacking") && Input.GetKey(KeyCode.J))
@@ -145,12 +150,18 @@ public class ChaData : MonoBehaviour
         if (!myAnim.GetBool("ShotGunAttacking") && Input.GetKey(KeyCode.J))
         {
             Debug.Log("J키를 입력했습니다. 샷건으로 공격합니다");
-            ShotGunBulletFire = GameObject.Find("Shot Gun(Clone)").GetComponent<ShotGun>();
+    //        ShotGunBulletFire = GameObject.Find("Shot Gun(Clone)").GetComponent<ShotGun>();
+            ShotGunBulletFire = GameObject.Find("Shot Gun").GetComponent<ShotGun>(); //잠깐 테스트용으로 만든거임. 
             myAnim.SetTrigger("ShotGunAttack");
      
             ShotGunBulletFire.myRenderer.sortingOrder = 4;
             Invoke("ShotGunBulletTimer", 0.35f);
             myAnim.SetTrigger("IdleChange");
+
+            if (gameObject.transform.localScale == new Vector3(0.3f, 0.3f, 0.3f))
+            {
+                Invoke("ShotGunBulletBackTimer", 0.35f);
+            }
         }
         return;
     }

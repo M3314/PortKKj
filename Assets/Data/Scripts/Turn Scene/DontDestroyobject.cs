@@ -8,6 +8,17 @@ public class DontDestroyobject : MonoBehaviour
 {
     public  static DontDestroyobject instance = null;
 
+    public void Start()
+    {
+
+    }
+
+    public void Update()
+    {
+
+    }
+
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -27,8 +38,7 @@ public class DontDestroyobject : MonoBehaviour
     public int Chaselected = 0;
     public int WeaponSelected = 0;
     public int GoldInfo = 0;
-    public int LevelInfo = 2;
+    public int LevelInfo = 1;
     public int weaponlevelinfo = 1;
-   
-//    myWeaponType = GameObject.Find("WeaponData").GetComponent<WeaponData>();
+
 }

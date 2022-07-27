@@ -511,6 +511,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109152457}
   m_CullTransparentMesh: 1
+--- !u!1 &203603909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4065284416144690200, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+  m_PrefabInstance: {fileID: 4065284416310894482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &203603912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203603909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f04f55115466864d8af30c1c8592fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 593156126}
+  Seidatas: {fileID: 0}
+  RunaDatas: {fileID: 0}
 --- !u!1 &207763032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,6 +1575,7 @@ MonoBehaviour:
   mystate: 0
   Player: {fileID: 539014579}
   Enemy: {fileID: 818067809}
+  CharacterMoveAttackData: {fileID: 0}
   Seidata: {fileID: 539014578}
   Runadata: {fileID: 1455479355}
   GameOverPopup: {fileID: 1810770608}
@@ -3016,6 +3037,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584683057}
   m_CullTransparentMesh: 1
+--- !u!1 &593156126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4065284415294889481, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+  m_PrefabInstance: {fileID: 4065284416310894482}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &599391706
 GameObject:
   m_ObjectHideFlags: 0
@@ -5298,7 +5324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Chaselected: 0
-  WeaponSelected: 0
+  WeaponSelected: 4
   GoldInfo: 0
   LevelInfo: 0
   weaponlevelinfo: 1
@@ -7562,10 +7588,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySword
       objectReference: {fileID: 0}
+    - target: {fileID: 4065284415294889481, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4065284415294889487, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
       propertyPath: Gold
       value: 
       objectReference: {fileID: 1127061298}
+    - target: {fileID: 4065284415294889487, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+      propertyPath: HPBar
+      value: 
+      objectReference: {fileID: 4065284416310894483}
     - target: {fileID: 4065284415294889487, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
       propertyPath: myExBar
       value: 
@@ -7575,9 +7609,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1373821430}
     - target: {fileID: 4065284415294889487, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+      propertyPath: EnemyTarget
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065284415294889487, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
       propertyPath: LevelInfomation
       value: 
       objectReference: {fileID: 982567957}
+    - target: {fileID: 4065284415294889487, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+      propertyPath: SwordEnemyHPBar
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4065284415294889487, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
       propertyPath: seiCharacterData
       value: 
@@ -7634,6 +7676,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4065284416144690200, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4065284416761848481, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -7642,5 +7688,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8751981953825521402, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.74
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+--- !u!4 &4065284416310894483 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8751981953825521402, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
+  m_PrefabInstance: {fileID: 4065284416310894482}
+  m_PrefabAsset: {fileID: 0}

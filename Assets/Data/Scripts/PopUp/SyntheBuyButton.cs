@@ -15,19 +15,24 @@ public class SyntheBuyButton : InvenMain
     public PlayerWeaponData WeaponBuyPrices;
     public TMP_Text GoldText;
 
-
     void Start()
     {
+   //     PlayerPrefs.SetInt("BuySynthe", 0); //테스트용임 암튼 테스트용임 
         synthebuyButton.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
     {
-  
+        if (PlayerPrefs.GetInt("BuySynthe") == 1) //값을 저장해서 사용을 한다.
+        {
+            mySyntheButton.interactable = true;
+            synthebuyButton.gameObject.SetActive(false);
+        }
     }
 
     public void SyntheButtonSetActiveTrue() //Buy버튼을 누르면 생기는일 
     {
+        PlayerPrefs.SetInt("BuySynthe", 1);
         mySyntheButton.interactable = true;
         PistolBuyButton.gameObject.SetActive(false);
         synthebuyButton.gameObject.SetActive(false);

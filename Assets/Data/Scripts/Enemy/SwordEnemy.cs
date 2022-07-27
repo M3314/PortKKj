@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using TMPro;
 
 public class SwordEnemy : MonoBehaviour
@@ -13,13 +14,14 @@ public class SwordEnemy : MonoBehaviour
 
     public enum ENEMYSTATE
     {
-         SWORD, SPEAR, RIFLE
+        SWORD, SPEAR, RIFLE
     }
+    public Transform HPBar; //적 HPBAR 넣는곳 
     public ENEMYSTATE myEnemyInfoState = ENEMYSTATE.SWORD;
     [SerializeField] public WEAPONTYPE PlayerWeaponType;
     public PlayerWeaponData[] myDamageData;
-    [SerializeField] public ChaData EnemyTarget;
-    public float moveSpeed = 2.0f;
+    [SerializeField] public Transform EnemyTarget;
+    public float moveSpeed = 3.0f;
     public EnemyData SwordEnemyData;
     public State myEnemyState = State.CREATE;
     public float attackDelay = 1.5f;
@@ -30,21 +32,48 @@ public class SwordEnemy : MonoBehaviour
     public Sei seiCharacterData = null;
     public Runa RunaCharacterData = null;
     [SerializeField] public myExStarBar myExBar;
+    public SwordEnemyHPBAR SwordEnemyHPBar;
+    public float _curHP;
+    public float HPChange
+    {
+        get
+        {
+            return _curHP;
+        }
+        set
+        {
+            _curHP += value;
+            if (_curHP < 0.0f) _curHP = 0.0f;
+            SwordEnemyHPBar.EnemyHP.value = _curHP / SwordEnemyData.MaxHP - myDamageData[(int)PlayerWeaponType].GetDamage(DontDestroyobject.instance.weaponlevelinfo);
+        }
+    }
+
+    public void HpSet()
+    {
+        GameObject obj = Instantiate(Resources.Load("UI/EnemyHP"), GameObject.Find("Canvas").transform) as GameObject;
+        SwordEnemyHPBar = obj.GetComponent<SwordEnemyHPBAR>();
+        SwordEnemyHPBar.Initialize(HPBar, 0.0f);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        SwordEnemyData.MaxHP = 100;
+        HpSet();
         ChangeState(State.BATTLE);
         myExBar = GameObject.Find("Ex Bar").GetComponent<myExStarBar>();
-        if(DontDestroyobject.instance.Chaselected == 1)
+        if (DontDestroyobject.instance.Chaselected == 1)
         {
             seiCharacterData = GameObject.Find("SeiKo_32(Clone)").GetComponent<Sei>();
+            EnemyTarget = GameObject.Find("SeiKo_32(Clone)").transform;
             playerdatas = Instantiate(Resources.Load("InGameData/SeiPlayerData")) as PlayerData;
         }
 
         if (DontDestroyobject.instance.Chaselected == 2)
         {
             RunaCharacterData = GameObject.Find("RUNA_2(Clone)").GetComponent<Runa>();
-           playerdatas = Instantiate(Resources.Load("InGameData/RunaPlayerData")) as PlayerData;
+            EnemyTarget = GameObject.Find("RUNA_2(Clone)").transform;
+            playerdatas = Instantiate(Resources.Load("InGameData/RunaPlayerData")) as PlayerData;
         }
         GoldInfo.text = DontDestroyobject.instance.GoldInfo.ToString();
         LevelInfomation.text = DontDestroyobject.instance.LevelInfo.ToString();
@@ -52,12 +81,15 @@ public class SwordEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TargetPosition();
         DoubleInput();
-
+        Vector3 dir = EnemyTarget.transform.position - transform.position;
+        dir.Normalize();
+        transform.position += dir * moveSpeed * Time.deltaTime;
     }
 
     Animator _anim = null;
-    protected Animator myAnim
+    public Animator myAnim
     {
         get
         {
@@ -75,56 +107,37 @@ public class SwordEnemy : MonoBehaviour
             Mathf.Clamp(position.x, -20.0f, 18.5f), Mathf.Clamp(position.y, -8.8f, 2.6f), 0  //맵 거리 이동 제한 
         );
     }
-    float? CurHP = null;
-
-    public bool UpdateHP(float data)
-    {
-        if (CurHP == null)
-        {
-            CurHP = SwordEnemyData.GetMaxHP();
-        }
-        CurHP += data;
-        if (CurHP < 0.0f)
-        {
-            CurHP = 0.0f;
-            return false;
-        }
-        return true;
-    }
 
     public bool IsLive()
     {
         return myEnemyState == State.BATTLE;
     }
 
-    public void SetTarget(Transform target)
+    void TargetPosition()
     {
-        myAnim.SetBool("Run", true);
-        ChangeState(State.BATTLE);
+        if(EnemyTarget.position.x - transform.position.x < 0)
+        {
+            transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-0.3f, 0.3f, 0.3f);
+        }
     }
 
     public void OnDamage()
     {
         if (myEnemyState == State.DEAD) return;
     SwordEnemyData.MaxHP = SwordEnemyData.MaxHP - myDamageData[(int)PlayerWeaponType].GetDamage(DontDestroyobject.instance.weaponlevelinfo);
+        HPChange = SwordEnemyData.MaxHP - myDamageData[(int)PlayerWeaponType].GetDamage(DontDestroyobject.instance.weaponlevelinfo);
         if (SwordEnemyData.MaxHP <= 0.0f)
         {
             ChangeState(State.DEAD);
         }
-        else
-        {
-           //  StartCoroutine(ColorChange(Color.red, 0.5f));
-        }
     }
-    /*
-    IEnumerator ColorChange(Color col, float t)
-    {
-        Color old = this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].GetColor("_Color");
-        this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_Color", col);
-        yield return new WaitForSeconds(t);
-        this.GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_Color", old);
-    }
-    */
+    
+
+    
     public float _curEX;
     public float EXChange
     {
@@ -163,10 +176,6 @@ public class SwordEnemy : MonoBehaviour
         }
     }
 
-    public void TargetAttack()
-    {
-
-    }
 
     public void DoubleInput()
     {
@@ -175,7 +184,7 @@ public class SwordEnemy : MonoBehaviour
             myAnim.SetBool("Run", false);
             moveSpeed = 0.0f;
         }
-        else moveSpeed = 2.0f;
+        else moveSpeed =3.0f;
     }
 
     void ChangeState(State s)
@@ -185,22 +194,12 @@ public class SwordEnemy : MonoBehaviour
         switch (myEnemyState)
         {
             case State.CREATE:
-                //      SwordEnemyData.MaxHP = 300;
+                ChangeState(State.BATTLE);
                 break;
             case State.BATTLE:
-                SwordEnemyData.MaxHP = 9999;
+                _curHP = SwordEnemyData.MaxHP;
                 SwordEnemyData.ScoreGold = 10;
                 SwordEnemyData.MaxAP = 5;
-                myAnim.SetTrigger("GameOver");
-                /*
-                Vector3 dir = EnemyTarget.transform.position - transform.position;
-
-                dir.Normalize();
-
-                transform.position += dir * moveSpeed * Time.deltaTime;
-                */
-                //     myAnim.SetBool("Run", true);
-                //myAnim.SetTrigger("Attack");
                 break;
             case State.DEAD:
                 StopAllCoroutines();

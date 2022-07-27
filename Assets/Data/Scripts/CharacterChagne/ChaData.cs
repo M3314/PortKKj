@@ -41,16 +41,18 @@ public class ChaData : MonoBehaviour
 
     public void Update()
     {
-
+        
     }
     public void FixedUpdate()
     {
         DoubleInput(); AttackDouble();
         WeaponAttackKey();
         Move();
+        if (SceneManager.GetActiveScene().name == "Cha Info, Inven(Back Menu)")
+        {
+            moveSpeed = 0 * Time.deltaTime;
+        }
     }
-
-
 
     public void WeaponAttackKey()
     {
@@ -79,12 +81,24 @@ public class ChaData : MonoBehaviour
         {
             transform.position += Vector3.up * moveSpeed * Time.deltaTime;
             myAnim.SetBool("RUN", true);
+            if (SceneManager.GetActiveScene().name == "Cha Info, Inven(Back Menu)")
+            {
+                moveSpeed = 0;
+                myAnim.SetBool("RUN", false);
+                transform.position = new Vector3(0, -5f, 0);
+            }
         }
 
         if (Input.GetKey(KeyCode.S))
         {
             transform.position += Vector3.down * moveSpeed * Time.deltaTime;
             myAnim.SetBool("RUN", true);
+            if (SceneManager.GetActiveScene().name == "Cha Info, Inven(Back Menu)")
+            {
+                moveSpeed = 0;
+                myAnim.SetBool("RUN", false);
+                transform.position = new Vector3(0, -5f, 0);
+            }
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -92,6 +106,12 @@ public class ChaData : MonoBehaviour
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
             transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             myAnim.SetBool("RUN", true);
+            if (SceneManager.GetActiveScene().name == "Cha Info, Inven(Back Menu)")
+            {
+                moveSpeed = 0;
+                myAnim.SetBool("RUN", false);
+                transform.position = new Vector3(0, -5f, 0);
+            }
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -99,15 +119,21 @@ public class ChaData : MonoBehaviour
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
             transform.localScale = new Vector3(-0.3f, 0.3f, 0.3f);
             myAnim.SetBool("RUN", true);
+            if (SceneManager.GetActiveScene().name == "Cha Info, Inven(Back Menu)")
+            {
+                moveSpeed = 0;
+                myAnim.SetBool("RUN", false);
+                transform.position = new Vector3(0, -5f , 0);
+            }
         }
     }
-
     public Vector3 ClampPosition(Vector3 position)
     {
         return new Vector3
         (
             Mathf.Clamp(position.x, -20.0f, 18.5f), Mathf.Clamp(position.y, -8.8f, 2.6f), 0  //맵 거리 이동 제한 
         );
+
     }
 
     public void AttackSword()

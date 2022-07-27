@@ -168,12 +168,14 @@ public class Sei : MonoBehaviour
                 myAnim.ResetTrigger("Dead");
                 myAnim.SetTrigger("Start");
                 mainplayinfo.mystate = MainPlay.STATE.PLAY;
-          //     HPChange = -20f;
                 APChange = 9f;
                 EXChange = 0f;
                 LevelInfomation = GameObject.Find("LevelText").GetComponent<TMP_Text>();
-       //         ApChanges();
-                break;
+                if (SceneManager.GetActiveScene().name == "Cha Info, Inven(Back Menu)")
+                {
+                    moveSpeedSetting.moveSpeed = 0.0f;
+                }
+                    break;
             case STATE.DEAD:
                 base.StopAllCoroutines();
                 mainplayinfo.mystate = MainPlay.STATE.GAMEOVER;

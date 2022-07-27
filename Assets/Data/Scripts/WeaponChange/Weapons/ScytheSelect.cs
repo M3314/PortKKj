@@ -31,9 +31,12 @@ public class ScytheSelect : MonoBehaviour, IPointerClickHandler
 
     void Select()
     {
-        if (myButton == true)
+        if (SceneManager.GetActiveScene().name == "Cha Info, Inven(Back Menu)")
         {
-
+            if (myButton.interactable == true)
+            {
+                myButton.interactable = true;
+            }
         }
     }
 
@@ -49,8 +52,7 @@ public class ScytheSelect : MonoBehaviour, IPointerClickHandler
     // Update is called once per frame
     void Update()
     {
-        //       myButton.interactable = true;
-        Select();
+    //    Select();
     }
     public void textSetActive()
     {

@@ -15,16 +15,27 @@ public class BuyButton : InvenMain
     void Start()
     {
         weaponBuyButton.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt("PistolBuy") == 1)
+        {
+            Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
+            GoldText.text = Gold.ToString();
+            mypistolButton.interactable = true;
+            weaponBuyButton.gameObject.SetActive(false);
+        }
     }
     // Update is called once per frame
     void Update()
     {
-
+        if (PlayerPrefs.GetInt("PistolBuy") == 1)
+        {
+            mypistolButton.interactable = true;
+            weaponBuyButton.gameObject.SetActive(false);
+        }
     }
-
 
     public void PistolButtonSetActiveTrue()
     {
+        PlayerPrefs.SetInt("PistolBuy", 1);
         WeaponData.GetComponent<WeaponData>().ChangeStateWeaponState(WEAPONTYPE.PISTOL);
         mypistolButton.interactable = true;
         weaponBuyButton.gameObject.SetActive(false);

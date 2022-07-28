@@ -17,8 +17,15 @@ public class SyntheBuyButton : InvenMain
 
     void Start()
     {
-   //     PlayerPrefs.SetInt("BuySynthe", 0); //테스트용임 암튼 테스트용임 
+   //    PlayerPrefs.SetInt("BuySynthe", 0); //테스트용임 암튼 테스트용임 
         synthebuyButton.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt("BuySynthe") == 1) //값을 저장해서 사용을 한다.
+        {
+            mySyntheButton.interactable = true;
+            synthebuyButton.gameObject.SetActive(false);
+            Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
+            GoldText.text = Gold.ToString();
+        }
     }
     // Update is called once per frame
     void Update()

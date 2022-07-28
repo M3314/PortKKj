@@ -29,19 +29,6 @@ public class ScytheSelect : MonoBehaviour, IPointerClickHandler
         //   Select();
     }
 
-    /*
-    void Select()
-    {
-        if (SceneManager.GetActiveScene().name == "Cha Info, Inven(Back Menu)")
-        {
-            if (myButton.interactable == true)
-            {
-                myButton.interactable = true;
-            }
-        }
-    }
-    */
-
     void Texture()
     {
    //     myButton.interactable = false;

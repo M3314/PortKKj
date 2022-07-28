@@ -21,7 +21,7 @@ public class SwordEnemy : MonoBehaviour
     [SerializeField] public WEAPONTYPE PlayerWeaponType;
     public PlayerWeaponData[] myDamageData;
     [SerializeField] public Transform EnemyTarget;
-    public float moveSpeed = 3.0f;
+    public float moveSpeed;
     public EnemyData SwordEnemyData;
     public State myEnemyState = State.CREATE;
     public float attackDelay = 1.5f;
@@ -44,7 +44,7 @@ public class SwordEnemy : MonoBehaviour
         {
             _curHP += value;
             if (_curHP < 0.0f) _curHP = 0.0f;
-            SwordEnemyHPBar.EnemyHP.value = _curHP / SwordEnemyData.MaxHP - myDamageData[(int)PlayerWeaponType].GetDamage(DontDestroyobject.instance.weaponlevelinfo);
+            SwordEnemyHPBar.EnemyHP.value = _curHP / SwordEnemyData.MaxHP;
         }
     }
 
@@ -83,9 +83,19 @@ public class SwordEnemy : MonoBehaviour
     {
         TargetPosition();
         DoubleInput();
+        Moving();
+    }
+
+    public void Moving()
+    {
         Vector3 dir = EnemyTarget.transform.position - transform.position;
         dir.Normalize();
         transform.position += dir * moveSpeed * Time.deltaTime;
+        if(HPChange <= 0)
+        {
+            moveSpeed = 0;
+           EnemyTarget = this.gameObject.transform;
+        }
     }
 
     Animator _anim = null;
@@ -128,15 +138,15 @@ public class SwordEnemy : MonoBehaviour
     public void OnDamage()
     {
         if (myEnemyState == State.DEAD) return;
-    SwordEnemyData.MaxHP = SwordEnemyData.MaxHP - myDamageData[(int)PlayerWeaponType].GetDamage(DontDestroyobject.instance.weaponlevelinfo);
-        HPChange = SwordEnemyData.MaxHP - myDamageData[(int)PlayerWeaponType].GetDamage(DontDestroyobject.instance.weaponlevelinfo);
-        if (SwordEnemyData.MaxHP <= 0.0f)
+ //   SwordEnemyData.MaxHP = SwordEnemyData.MaxHP - myDamageData[(int)PlayerWeaponType].GetDamage(DontDestroyobject.instance.weaponlevelinfo);
+        HPChange = -myDamageData[(int)PlayerWeaponType].GetDamage(DontDestroyobject.instance.weaponlevelinfo);
+        if (HPChange <= 0.0f)
         {
+            moveSpeed = 0;
+            myAnim.SetTrigger("Dead");
             ChangeState(State.DEAD);
         }
     }
-    
-
     
     public float _curEX;
     public float EXChange
@@ -187,6 +197,13 @@ public class SwordEnemy : MonoBehaviour
         else moveSpeed =3.0f;
     }
 
+    IEnumerator Disappearing()
+    {
+        yield return new WaitForSeconds(2.0f);
+        Destroy(this.gameObject);
+        Destroy(SwordEnemyHPBar.gameObject);
+    }
+
     void ChangeState(State s)
     {
         if (myEnemyState == s) return;
@@ -197,7 +214,7 @@ public class SwordEnemy : MonoBehaviour
                 ChangeState(State.BATTLE);
                 break;
             case State.BATTLE:
-                _curHP = SwordEnemyData.MaxHP;
+                HPChange = SwordEnemyData.MaxHP;
                 SwordEnemyData.ScoreGold = 10;
                 SwordEnemyData.MaxAP = 5;
                 break;
@@ -216,9 +233,9 @@ public class SwordEnemy : MonoBehaviour
                     LevelInfomation.text = (DontDestroyobject.instance.LevelInfo + 1).ToString();
                     DontDestroyobject.instance.LevelInfo = (DontDestroyobject.instance.LevelInfo + 1);
                 }
-
+                moveSpeed = 0.0f;
                 myAnim.ResetTrigger("Attack"); //공격을 못하도록 설정한다.
-                // StartCorutine(Disappearing());
+                StartCoroutine(Disappearing());
                 break;
             case State.GAMEOVER:
                 //       myAnim.SetTrigger("");

@@ -16,15 +16,27 @@ public class ShotGunBuyButton : InvenMain
     void Start()
     {
         weaponBuyButton.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt("BuyShotGun") == 1) //값을 저장해서 사용을 한다.
+        {
+            myShotGunButton.interactable = true;
+            weaponBuyButton.gameObject.SetActive(false);
+            Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
+            GoldText.text = Gold.ToString();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (PlayerPrefs.GetInt("BuyShotGun") == 1)
+        {
+            myShotGunButton.interactable = true;
+            weaponBuyButton.gameObject.SetActive(false);
+        }
     }
     public void ShotGunButtonSetActiveTrue()
     {
+        PlayerPrefs.SetInt("BuyShotGun", 1);
         WeaponData.GetComponent<WeaponData>().ChangeStateWeaponState(WEAPONTYPE.SHOTGUN);
         myShotGunButton.interactable = true;
         weaponBuyButton.gameObject.SetActive(false);

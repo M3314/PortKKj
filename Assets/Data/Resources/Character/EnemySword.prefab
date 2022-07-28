@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc209ece9ec3ee4eac5fdcc0ba0fe27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPBar: {fileID: 0}
+  HPBar: {fileID: 8751981953825521402}
   myEnemyInfoState: 1
   PlayerWeaponType: 0
   myDamageData:
@@ -691,7 +691,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 69c7ebd8f64474741a6e333417fde146, type: 2}
   - {fileID: 11400000, guid: 6f57c0fa728efd34894d6bf700ebc8a6, type: 2}
   - {fileID: 11400000, guid: 27f3532a38f507846a57a05a4aa5bfab, type: 2}
-  EnemyTarget: {fileID: 8751981953825521402}
+  EnemyTarget: {fileID: 0}
   moveSpeed: 3
   SwordEnemyData: {fileID: 11400000, guid: bafe94cb8837bfe47b2857fd6cf37241, type: 2}
   myEnemyState: 0

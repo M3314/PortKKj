@@ -6,8 +6,11 @@ public class MainPlay : MonoBehaviour
 {
     public enum STATE
     {
-        PLAY, GAMEOVER
+        PLAY, GAMEOVER, CLEAR
     }
+    public int Enemynums;
+    public Transform StartPos;
+    public Transform EnemyGrid;
     public STATE mystate = STATE.PLAY;
     public Transform Player = null;
     public Transform Enemy = null;
@@ -23,6 +26,8 @@ public class MainPlay : MonoBehaviour
     public float playTime = 0.0f;
     public PlayerData myplayerdata;
     public int myLevel;
+    public GameObject EnemySource;
+    List<SwordEnemy> EnemySwordList = new List<SwordEnemy>();
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +49,10 @@ public class MainPlay : MonoBehaviour
         ChangeState(STATE.PLAY);
         CurIndex = 0;
         timeGap = StageList[CurStage].GetTimeGap();
+        StageList[CurStage].EnemyList[Enemynums].ToString();
+
     }
+
 
 
     public void OnRestart()
@@ -76,7 +84,16 @@ public class MainPlay : MonoBehaviour
                 break;
 
             case EnemyType.SWORD:
-                break;
+                {
+                    SwordEnemy swordene = Instantiate(EnemySource, StartPos.position, StartPos.rotation, EnemyGrid).GetComponent<SwordEnemy>();
+                    EnemySwordList.Add(swordene);
+                    Enemynums = EnemySwordList.Count;
+                    if(EnemySwordList.Count <=0)
+                    {
+
+                    }
+                    break;
+                }
             case EnemyType.SPEAR:
                 break;
             case EnemyType.RIFLE:
@@ -101,6 +118,8 @@ public class MainPlay : MonoBehaviour
                 CharacterMoveAttackData.moveSpeed = 0.0f;
                 CharacterMoveAttackData.myAnim.SetBool("RUN", false);
                 break;
+            case STATE.CLEAR:
+                break;
             }
         }
 
@@ -113,10 +132,13 @@ public class MainPlay : MonoBehaviour
                     if (playTime >= timeGap)
                     {
                         playTime = 0.0f;
+                    CreateEnemy(StageList[CurStage].GetEnemy(CurIndex++));
                     }
                     break;
                 case STATE.GAMEOVER:
                     break;
-            }
+            case STATE.CLEAR:
+                break;
+        }
         }
     }

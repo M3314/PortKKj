@@ -381,7 +381,7 @@ MonoBehaviour:
   myApBar: {fileID: 0}
   myExBar: {fileID: 0}
   myLevel: 0
-  SwordenemyInfo: {fileID: 0}
+  SwordenemyInfo: {fileID: 4065284415294889487, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
   myseiData: {fileID: 11400000, guid: f3f167e532ef79a44b018a63f2780362, type: 2}
   LevelInfomation: {fileID: 0}
   myAnim: {fileID: -5688735097140357160}
@@ -1483,7 +1483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095507574935834236, guid: e0a276f2106ff3e4c96d7ebeaefb8e2a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0a276f2106ff3e4c96d7ebeaefb8e2a, type: 3}

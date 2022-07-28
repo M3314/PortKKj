@@ -82,7 +82,8 @@ public class Sei : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "In Game 1-1")
         {
             mainplayinfo = GameObject.Find("PlayMain").GetComponent<MainPlay>();
-            SwordenemyInfo = GameObject.Find("EnemySword").GetComponent<SwordEnemy>();
+   //         SwordenemyInfo = GameObject.Find("EnemySword").GetComponent<SwordEnemy>(); //Test¿ë 
+       //     SwordenemyInfo = GameObject.Find("EnemySword(Clone)").GetComponent<SwordEnemy>();
         };
     }
     void Update()

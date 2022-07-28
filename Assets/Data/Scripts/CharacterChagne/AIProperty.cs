@@ -6,8 +6,8 @@ using UnityEngine.Events;
 public class AIProperty : MonoBehaviour
 {
     public SwordEnemy Enemy;
-    public Sei Seidatas;
-    public Runa RunaDatas;
+    public Sei Seidatas = null;
+    public Runa RunaDatas = null;
 
     public void Start()
     {
@@ -20,7 +20,9 @@ public class AIProperty : MonoBehaviour
         {
             RunaDatas = GameObject.Find("RUNA_2(Clone)").GetComponent<Runa>();
         }
-        Enemy = GameObject.Find("EnemySword").GetComponent<SwordEnemy>();
+      //  Enemy = GameObject.Find("EnemySword(Clone)").GetComponent<SwordEnemy>();
+    //    Enemy = Instantiate(Resources.Load("Character/EnemySword")) as SwordEnemy;
+      //  Enemy = GameObject.Find("EnemySword").GetComponent<SwordEnemy>(); //Test
     }
 
     public void OnTriggerEnter2D(Collider2D other)

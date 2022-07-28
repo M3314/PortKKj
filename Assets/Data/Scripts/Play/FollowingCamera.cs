@@ -33,12 +33,14 @@ public class FollowingCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Player != null)
+        if (Player != null)
         {
             float clampedX = Mathf.Clamp(Player.transform.position.x, minX, maxX);
             float clampedY = Mathf.Clamp(Player.transform.position.y, minY, maxY);
 
-            transform.position = Vector2.Lerp(transform.position, new Vector2(clampedX, clampedY), cameraSpeed);
+            Vector3 pos = Vector2.Lerp(transform.position, new Vector2(clampedX, clampedY), cameraSpeed);
+            pos.z = -10;
+            transform.position = pos;
         }
     }
 }

@@ -75,6 +75,8 @@ public class SwordEnemy : MonoBehaviour
             EnemyTarget = GameObject.Find("RUNA_2(Clone)").transform;
             playerdatas = Instantiate(Resources.Load("InGameData/RunaPlayerData")) as PlayerData;
         }
+        GoldInfo = GameObject.Find("GoldText").GetComponent<TMP_Text>();
+        LevelInfomation = GameObject.Find("LevelText").GetComponent<TMP_Text>();
         GoldInfo.text = DontDestroyobject.instance.GoldInfo.ToString();
         LevelInfomation.text = DontDestroyobject.instance.LevelInfo.ToString();
     }

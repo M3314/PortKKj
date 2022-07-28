@@ -10,7 +10,7 @@ public enum EnemyType
 
 public class StageData : ScriptableObject
 {
-    [SerializeField] EnemyType[] EnemyList;
+    [SerializeField] public EnemyType[] EnemyList;
     [SerializeField] float timeGap = 2.0f; //일정시간 마다 스폰 하게 함.
     public float GetTimeGap() => timeGap;
 

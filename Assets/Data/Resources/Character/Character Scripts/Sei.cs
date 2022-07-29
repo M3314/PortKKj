@@ -78,20 +78,18 @@ public class Sei : MonoBehaviour
         myLevel = DontDestroyobject.instance.LevelInfo;
         CharacterSelect();
         ChangeState(STATE.CREATE);
-       // myAnim = GameObject.Find("SeiKo_32(Clone)");
         if (SceneManager.GetActiveScene().name == "In Game 1-1")
         {
             mainplayinfo = GameObject.Find("PlayMain").GetComponent<MainPlay>();
-   //         SwordenemyInfo = GameObject.Find("EnemySword").GetComponent<SwordEnemy>(); //Test용 
-       //     SwordenemyInfo = GameObject.Find("EnemySword(Clone)").GetComponent<SwordEnemy>();
         };
     }
     void Update()
     {
         StateProcess();
-        ApChanges();
+   //     ApChanges();
     }
 
+    /*
     public void ApChanges()
     {
         if (Input.GetKeyDown(KeyCode.K))
@@ -106,7 +104,7 @@ public class Sei : MonoBehaviour
             }
         }
     }
-
+    */
     void CharacterSelect()
     {
         DontDestroyobject.instance.Chaselected = 1;
@@ -115,7 +113,6 @@ public class Sei : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("EnemyWeapon"))
         {
-   //         other.gameObject.GetComponent<EnemyData>().MaxEnemyAttack();
             Debug.Log("공격받고 있음.");
             OnDamage();
         }
@@ -123,7 +120,6 @@ public class Sei : MonoBehaviour
 
     public void OnDamage()
     {
-        //     _curHP = GetComponent<SwordEnemy>().UpdateHP();
         if (mystate == STATE.DEAD) return;
         HPChange = -EnemysData[(int)SwordenemyInfo.myEnemyInfoState].MaxEnemyAttack();
         if (HPChange <= 0.0f)
@@ -157,7 +153,6 @@ public class Sei : MonoBehaviour
                 _curAP = 0.0f;
                 _curEX = 0.0f;
                 myLevel = DontDestroyobject.instance.LevelInfo;
-                //      LevelInfomation =GameObject.Find("LevelText").GetComponent<TMP_Text>();
                 if (SceneManager.GetActiveScene().name == "In Game 1-1")
                 {
                     ChangeState(STATE.PLAY);

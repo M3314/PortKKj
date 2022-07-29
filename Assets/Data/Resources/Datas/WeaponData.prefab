@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18ed7bc86bde42408c2fb8882c59ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myWeaponType: 3
+  myWeaponType: 0
   myData:
   - {fileID: 11400000, guid: 27f3532a38f507846a57a05a4aa5bfab, type: 2}
   - {fileID: 11400000, guid: 69c7ebd8f64474741a6e333417fde146, type: 2}

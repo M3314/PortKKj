@@ -20,7 +20,8 @@ public class ShotGunBuyButton : InvenMain
         {
             myShotGunButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);
-  //          Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
+     Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
+            Gold = DontDestroyobject.instance.GoldInfo;
             GoldText.text = Gold.ToString();
         }
     }
@@ -44,5 +45,6 @@ public class ShotGunBuyButton : InvenMain
 
         Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
         GoldText.text = Gold.ToString();
+        Gold = DontDestroyobject.instance.GoldInfo;
     }
 }

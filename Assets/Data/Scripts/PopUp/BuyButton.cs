@@ -17,7 +17,8 @@ public class BuyButton : InvenMain
         weaponBuyButton.gameObject.SetActive(false);
         if (PlayerPrefs.GetInt("PistolBuy") == 1)
         {
-   //         Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
+            Gold = DontDestroyobject.instance.GoldInfo;
+            Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
             GoldText.text = Gold.ToString();
             mypistolButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);
@@ -41,6 +42,7 @@ public class BuyButton : InvenMain
         weaponBuyButton.gameObject.SetActive(false);
         Debug.Log("7원을 구매하고 사신 낫을 구매하였습니다. 한번 더 누르면 장착이 가능합니다.");
 
+        Gold = DontDestroyobject.instance.GoldInfo;
         Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
         GoldText.text = Gold.ToString();
     }

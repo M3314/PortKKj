@@ -38,7 +38,7 @@ public class InvenMain : MonoBehaviour
             {
                 WeaponUpgradeMenu();
             }
-            DontDestroyobject.instance.GoldInfo = Gold;
+                DontDestroyobject.instance.GoldInfo = Gold;
         }
     }
     int Level
@@ -60,7 +60,6 @@ public class InvenMain : MonoBehaviour
         //    WeaponInventory.gameObject.SetActive(true);
         WeaponInventory.position = weaponchange.transform.position;
         int price = weaponchange.myWeaponData.GetPrice();
-   
         if (price > 0 && Gold >= price)
         { 
             weaponpopups.upgradeBtn.gameObject.SetActive(true);
@@ -74,7 +73,7 @@ public class InvenMain : MonoBehaviour
                     weaponchange.mysynthelevels.Getlevel();
                     weaponchange.myShotGunBulletLevels.Getlevel();
                     weaponchange.myShotGunLevels.GetLevel();
-                    WeaponUpgradeMenu();
+                    WeaponUpgradeMenu(); 
                     Debug.Log("업그레이드 완료");
                 });
         }
@@ -95,7 +94,7 @@ public class InvenMain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ChangeState(STATE.START);
+        ChangeState(STATE.START); 
     }
 
     // Update is called once per frame

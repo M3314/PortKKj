@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1c6474dab12004f92cb0edceb40beb, type: 3}
   m_Name: RunaPlayerData
   m_EditorClassIdentifier: 
-  PlayerHP: 00000000
-  PlayerEX: 00000000
-  PlayerAP: 00000000
+  PlayerHP: 64000000a0000000c8000000180100007c010000
+  PlayerEX: 0000000005000000100000001e000000c2010000
+  PlayerAP: 0f000000140000001e0000002800000032000000

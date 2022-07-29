@@ -23,7 +23,8 @@ public class SyntheBuyButton : InvenMain
         {
             mySyntheButton.interactable = true;
             synthebuyButton.gameObject.SetActive(false);
-            Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
+       Gold = Gold-WeaponBuyPrices.WeaponBuyPrices;
+            Gold = DontDestroyobject.instance.GoldInfo;
             GoldText.text = Gold.ToString();
         }
     }
@@ -46,8 +47,9 @@ public class SyntheBuyButton : InvenMain
         Debug.Log("10원을 구매하고 사신 낫을 구매하였습니다. 한번 더 누르면 장착이 가능합니다.");
 
         //     WeaponData.GetComponent<WeaponData>().ChangeStateWeaponState(WEAPONTYPE.SYNTHE);
-        Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
+        Gold = DontDestroyobject.instance.GoldInfo - WeaponBuyPrices.WeaponBuyPrices;
         GoldText.text = Gold.ToString();
+        Gold = DontDestroyobject.instance.GoldInfo;
     }
 
 }

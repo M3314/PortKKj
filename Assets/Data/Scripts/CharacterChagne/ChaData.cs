@@ -22,6 +22,10 @@ public class ChaData : MonoBehaviour
     public GameObject ShotGunBullet = null;
     public Transform ShotGunFirePosition;
     public WeaponData playerWeaponChangeData = null;
+    public PlayerWeaponData syntheweaponDamage;
+    public PlayerWeaponData swordweaponDamage;
+    public Sei Seidata;
+    public Sword SwordInfo;
 
     private void Awake()
     {
@@ -146,6 +150,7 @@ public class ChaData : MonoBehaviour
             moveSpeed = 0.0f;
             myAnim.SetBool("RUN", false);
             myAnim.SetBool("SwordAttacking", true);
+            Debug.Log(swordweaponDamage.GetDamage(SwordInfo.Swordmylevel));
         }
 
     }
@@ -165,6 +170,7 @@ public class ChaData : MonoBehaviour
             Debug.Log("J키를 입력했습니다. 낫공격합니다");
             myAnim.SetInteger("AttackType", AttackType++ % 2);
             myAnim.SetTrigger("SyntheAttack");
+            Debug.Log(syntheweaponDamage.GetDamage(Seidata.myLevel));
         }
 
     }

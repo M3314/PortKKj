@@ -1052,10 +1052,13 @@ MonoBehaviour:
   UpgradePopup: {fileID: 0}
   Weaponlists: {fileID: 0}
   UpgradeLevelText: {fileID: 0}
+  SwordWeapons: {fileID: 0}
+  SyntheWeapons: {fileID: 0}
   weaponBuyButton: {fileID: 11118985}
   myShotGunButton: {fileID: 970967132}
   WeaponData: {fileID: 1403232518827242189, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
   GoldText: {fileID: 2130267381}
+  GoldInven: {fileID: 1307643614}
   WeaponBuyPrices: {fileID: 11400000, guid: d0aa6b423ec5e3d47b3b1fe1d9fbf44f, type: 2}
 --- !u!1 &255089370
 GameObject:
@@ -7531,6 +7534,8 @@ MonoBehaviour:
   UpgradePopup: {fileID: 1404693390}
   Weaponlists: {fileID: 0}
   UpgradeLevelText: {fileID: 1276787838}
+  SwordWeapons: {fileID: 11400000, guid: 27f3532a38f507846a57a05a4aa5bfab, type: 2}
+  SyntheWeapons: {fileID: 11400000, guid: 69c7ebd8f64474741a6e333417fde146, type: 2}
 --- !u!4 &1307643615
 Transform:
   m_ObjectHideFlags: 0
@@ -7633,6 +7638,9 @@ MonoBehaviour:
   UpgradePopup: {fileID: 0}
   Weaponlists: {fileID: 0}
   UpgradeLevelText: {fileID: 0}
+  SwordWeapons: {fileID: 0}
+  SyntheWeapons: {fileID: 0}
+  GoldInven: {fileID: 1307643614}
   synthebuyButton: {fileID: 594936959}
   mySyntheButton: {fileID: 1159128785}
   PistolBuyButton: {fileID: 1259180484}
@@ -9688,6 +9696,9 @@ MonoBehaviour:
   UpgradePopup: {fileID: 0}
   Weaponlists: {fileID: 0}
   UpgradeLevelText: {fileID: 0}
+  SwordWeapons: {fileID: 0}
+  SyntheWeapons: {fileID: 0}
+  GoldInven: {fileID: 1307643614}
   weaponBuyButton: {fileID: 1259180484}
   mypistolButton: {fileID: 661650972}
   WeaponData: {fileID: 1403232518827242189, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}

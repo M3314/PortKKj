@@ -6,8 +6,6 @@ public class ShotGun : MonoBehaviour
 {
     public WEAPONTYPE myWeaponType = WEAPONTYPE.SHOTGUN;
     public PlayerWeaponData myweapondatas;
-    public GameObject[] emptyShell; //총알이 나가면 탄피가 나오도록함 (랜덤으로 나오게 설정함) 
-//    public GameObject Bullet; //샷건 총알
     public Transform FirePosition; //총알이 나가는 위치 
     SpriteRenderer _renderer = null;
 

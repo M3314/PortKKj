@@ -9,15 +9,14 @@ public class Sword : MonoBehaviour
     public WEAPONTYPE myWeaponType = WEAPONTYPE.SWORD;
     public PlayerWeaponData myweapondatas;
     public float Damage;
-    public int mylevel;
+    [SerializeField] public int Swordmylevel;
     private static Sword sword_instance = null;
 
     
     void Start()
     {
-        mylevel = 1;
         WeaponSelect();
-        Damage = myweapondatas.GetDamage(mylevel);
+        Damage = myweapondatas.GetDamage(Swordmylevel);
         //     mylevel = GetComponent<WeaponData>().Getmylevel();
     }
 
@@ -38,12 +37,12 @@ public class Sword : MonoBehaviour
     }
     public int Getlevel()
     {
-        return mylevel += 1;
+        return Swordmylevel += 1;
     }
 
     public void OnAttack()
     {
-        Damage = myweapondatas.GetDamage(mylevel);
+        Damage = myweapondatas.GetDamage(Swordmylevel);
     }
 
 }

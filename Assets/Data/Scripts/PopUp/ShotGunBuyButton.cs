@@ -10,26 +10,29 @@ public class ShotGunBuyButton : InvenMain
     public Button myShotGunButton;
     public GameObject WeaponData;
     public TMP_Text GoldText;
+    public InvenMain GoldInven;
     public PlayerWeaponData WeaponBuyPrices;
 
     // Start is called before the first frame update
     void Start()
     {
         weaponBuyButton.gameObject.SetActive(false);
-        if (PlayerPrefs.GetInt("BuyShotGun") == 1) //값을 저장해서 사용을 한다.
+        
+        if (PlayerPrefs.GetInt("BuyWeaponshotgun") == 1) //값을 저장해서 사용을 한다.
         {
             myShotGunButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);
-     Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
-            Gold = DontDestroyobject.instance.GoldInfo;
+     Gold = GoldInven.Gold - WeaponBuyPrices.WeaponBuyPrices;
             GoldText.text = Gold.ToString();
+            GoldInven.Gold = PlayerPrefs.GetInt("Gold");
         }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetInt("BuyShotGun") == 1)
+        if (PlayerPrefs.GetInt("BuyWeaponshotgun") == 1)
         {
             myShotGunButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);
@@ -37,7 +40,7 @@ public class ShotGunBuyButton : InvenMain
     }
     public void ShotGunButtonSetActiveTrue()
     {
-        PlayerPrefs.SetInt("BuyShotGun", 1);
+        PlayerPrefs.SetInt("BuyWeaponshotgun", 1);
         WeaponData.GetComponent<WeaponData>().ChangeStateWeaponState(WEAPONTYPE.SHOTGUN);
         myShotGunButton.interactable = true;
         weaponBuyButton.gameObject.SetActive(false);
@@ -46,5 +49,6 @@ public class ShotGunBuyButton : InvenMain
         Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
         GoldText.text = Gold.ToString();
         Gold = DontDestroyobject.instance.GoldInfo;
+        PlayerPrefs.SetInt("Gold", Gold);
     }
 }

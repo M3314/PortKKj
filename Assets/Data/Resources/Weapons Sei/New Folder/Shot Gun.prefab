@@ -131,7 +131,6 @@ MonoBehaviour:
   emptyShell:
   - {fileID: 0}
   - {fileID: 0}
-  Bullet: {fileID: 4966213359952223763, guid: 654d7f4d602eb884dbd527206aa71374, type: 3}
   FirePosition: {fileID: 128815105991764503}
   Shotgunlevel: 1
 --- !u!1 &8057340648120139258

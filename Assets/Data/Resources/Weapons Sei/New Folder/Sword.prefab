@@ -99,7 +99,7 @@ MonoBehaviour:
   myWeaponType: 0
   myweapondatas: {fileID: 11400000, guid: 27f3532a38f507846a57a05a4aa5bfab, type: 2}
   Damage: 0
-  mylevel: 1
+  Swordmylevel: 1
 --- !u!60 &1947279004821388512
 PolygonCollider2D:
   m_ObjectHideFlags: 0

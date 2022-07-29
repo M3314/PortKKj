@@ -6,6 +6,7 @@ using TMPro;
 
 public class BuyButton : InvenMain
 {
+    public InvenMain GoldInven;
     public Button weaponBuyButton;
     public Button mypistolButton;
     public GameObject WeaponData;
@@ -15,19 +16,22 @@ public class BuyButton : InvenMain
     void Start()
     {
         weaponBuyButton.gameObject.SetActive(false);
-        if (PlayerPrefs.GetInt("PistolBuy") == 1)
+        
+        if (PlayerPrefs.GetInt("BuyWeaponpistol") == 1)
         {
-            Gold = DontDestroyobject.instance.GoldInfo;
-            Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
+            Gold = GoldInven.Gold - WeaponBuyPrices.WeaponBuyPrices;
             GoldText.text = Gold.ToString();
             mypistolButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);
+            GoldInven.Gold = PlayerPrefs.GetInt("Gold");
+            PlayerPrefs.SetInt("Gold", Gold);
         }
+        
     }
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetInt("PistolBuy") == 1)
+        if (PlayerPrefs.GetInt("BuyWeaponpistol") == 1)
         {
             mypistolButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);
@@ -36,7 +40,7 @@ public class BuyButton : InvenMain
 
     public void PistolButtonSetActiveTrue()
     {
-        PlayerPrefs.SetInt("PistolBuy", 1);
+        PlayerPrefs.SetInt("BuyWeaponpistol", 1);
         WeaponData.GetComponent<WeaponData>().ChangeStateWeaponState(WEAPONTYPE.PISTOL);
         mypistolButton.interactable = true;
         weaponBuyButton.gameObject.SetActive(false);

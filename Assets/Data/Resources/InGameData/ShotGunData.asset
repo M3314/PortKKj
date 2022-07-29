@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ShotGunData
   m_EditorClassIdentifier: 
   WeaponDamage: 0a000000140000001e0000002800000032000000
-  WeaponUpgradePrices: 0f0000000f0000000f0000000f0000000f000000
+  WeaponUpgradePrices: 0400000004000000040000000400000004000000
   WeaponBuyPrices: 20

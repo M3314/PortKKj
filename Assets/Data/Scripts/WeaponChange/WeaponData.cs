@@ -17,7 +17,7 @@ public class WeaponData : MonoBehaviour
 {
     [SerializeField] public WEAPONTYPE myWeaponType = WEAPONTYPE.SWORD;
     [SerializeField] public PlayerWeaponData[] myData;
-    public int[] myLevel;
+    public int[] weaponmyLevel;
     private static WeaponData weaponData_instance = null;
     public TMP_Text UpgradeLevels;
 
@@ -30,16 +30,16 @@ public class WeaponData : MonoBehaviour
 
     public int GetPrice()
     {
-        return myLevel[(int)myWeaponType] ==
-         myData[(int)myWeaponType].MaxLevel ? 0 : myData[(int)myWeaponType].GetPrice(myLevel[(int)myWeaponType]);
+        return weaponmyLevel[(int)myWeaponType] ==
+         myData[(int)myWeaponType].MaxLevel ? 0 : myData[(int)myWeaponType].GetPrice(weaponmyLevel[(int)myWeaponType]);
     }
 
     public void OnUpgrade()
     {
-        myLevel[(int)myWeaponType] += 1;
+        weaponmyLevel[(int)myWeaponType] += 1;
         UpgradeLevels = GameObject.Find("Upgrade Level").GetComponent<TMP_Text>();
-        UpgradeLevels.text = myLevel[(int)myWeaponType].ToString();
-        DontDestroyobject.instance.weaponlevelinfo = myLevel[(int)myWeaponType];
+        UpgradeLevels.text = weaponmyLevel[(int)myWeaponType].ToString();
+        DontDestroyobject.instance.weaponlevelinfo = weaponmyLevel[(int)myWeaponType];
     }
 
     public void Awake()
@@ -57,7 +57,7 @@ public class WeaponData : MonoBehaviour
 
     private void Start()
     {
-        myLevel[(int)myWeaponType] = 1;
+        weaponmyLevel[(int)myWeaponType] = 1;
     }
     public void ChangeStateWeaponState(WEAPONTYPE w)
     {
@@ -69,7 +69,7 @@ public class WeaponData : MonoBehaviour
             case WEAPONTYPE.SWORD:
                 Debug.Log("칼을 선택했습니다.");
             //    DontDestroyobject.instance.WeaponDatas = (int)WEAPONTYPE.SWORD;
-                if (myLevel[(int)myWeaponType] > 0)
+                if (weaponmyLevel[(int)myWeaponType] > 0)
                 {
                     weaponpopups.upgradeBtn.gameObject.SetActive(true);
                 }
@@ -77,14 +77,14 @@ public class WeaponData : MonoBehaviour
                 {
                     weaponpopups.upgradeBtn.gameObject.SetActive(false);
                 }
-                if (myLevel[(int)myWeaponType] >= 5)
+                if (weaponmyLevel[(int)myWeaponType] >= 5)
                 {
                     weaponpopups.upgradeBtn.gameObject.SetActive(false);
                 }
                 break;
             case WEAPONTYPE.SYNTHE:
                 Debug.Log("낫을 선택했습니다.");
-                if (myLevel[(int)myWeaponType] > 0)
+                if (weaponmyLevel[(int)myWeaponType] > 0)
                 {
                     weaponpopups.upgradeBtn.gameObject.SetActive(true);
                 }
@@ -92,14 +92,14 @@ public class WeaponData : MonoBehaviour
                 {
                     weaponpopups.upgradeBtn.gameObject.SetActive(false);
                 }
-                if (myLevel[(int)myWeaponType] >= 5)
+                if (weaponmyLevel[(int)myWeaponType] >= 5)
                 {
                     weaponpopups.upgradeBtn.gameObject.SetActive(false);
                 }
                 break;
             case WEAPONTYPE.PISTOL:      
                 Debug.Log("권총을 선택했습니다.");
-                if (myLevel[(int)myWeaponType] > 0)
+                if (weaponmyLevel[(int)myWeaponType] > 0)
                 {
                     weaponpopups.upgradeBtn.gameObject.SetActive(true);
                 }
@@ -107,7 +107,7 @@ public class WeaponData : MonoBehaviour
                 {
                     weaponpopups.upgradeBtn.gameObject.SetActive(false);
                 }
-                if (myLevel[(int)myWeaponType] >= 5)
+                if (weaponmyLevel[(int)myWeaponType] >= 5)
                 {
                     weaponpopups.upgradeBtn.gameObject.SetActive(false);
                 }
@@ -115,7 +115,7 @@ public class WeaponData : MonoBehaviour
             case WEAPONTYPE.SHOTGUN:
       
                 Debug.Log("샷건을 선택했습니다.");
-                if (myLevel[(int)myWeaponType] > 0)
+                if (weaponmyLevel[(int)myWeaponType] > 0)
                 {
                     weaponpopups.upgradeBtn.gameObject.SetActive(true);
                 }
@@ -124,7 +124,7 @@ public class WeaponData : MonoBehaviour
                     weaponpopups.upgradeBtn.gameObject.SetActive(false);
                 }
 
-                if (myLevel[(int)myWeaponType] >= 5)
+                if (weaponmyLevel[(int)myWeaponType] >= 5)
                 {
                     weaponpopups.upgradeBtn.gameObject.SetActive(false);
                 }

@@ -406,6 +406,10 @@ MonoBehaviour:
   ShotGunBullet: {fileID: 4966213359952223763, guid: 654d7f4d602eb884dbd527206aa71374, type: 3}
   ShotGunFirePosition: {fileID: 6093289772821789178}
   playerWeaponChangeData: {fileID: 1403232518827242188, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
+  syntheweaponDamage: {fileID: 11400000, guid: 69c7ebd8f64474741a6e333417fde146, type: 2}
+  swordweaponDamage: {fileID: 11400000, guid: 27f3532a38f507846a57a05a4aa5bfab, type: 2}
+  Seidata: {fileID: 6236153319808238121}
+  SwordInfo: {fileID: -109825317965936220, guid: 487077be5f8f9a1429c1baaf7d6df776, type: 3}
   characterscurrentss: 1
 --- !u!95 &-5688735097140357160
 Animator:

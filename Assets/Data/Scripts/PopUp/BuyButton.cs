@@ -17,7 +17,7 @@ public class BuyButton : InvenMain
         weaponBuyButton.gameObject.SetActive(false);
         if (PlayerPrefs.GetInt("PistolBuy") == 1)
         {
-            Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
+   //         Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
             GoldText.text = Gold.ToString();
             mypistolButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);

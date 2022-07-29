@@ -15,7 +15,8 @@ public class SwordEnemy : MonoBehaviour
     public enum ENEMYSTATE
     {
         SWORD, SPEAR, RIFLE
-    }
+    };
+    public MainPlay MainPlayer;
     public Transform HPBar; //적 HPBAR 넣는곳 
     public ENEMYSTATE myEnemyInfoState = ENEMYSTATE.SWORD;
     [SerializeField] public WEAPONTYPE PlayerWeaponType;
@@ -61,6 +62,7 @@ public class SwordEnemy : MonoBehaviour
         SwordEnemyData.MaxHP = 100;
         HpSet();
         ChangeState(State.BATTLE);
+             MainPlayer = GameObject.Find("PlayMain").GetComponent<MainPlay>();
         myExBar = GameObject.Find("Ex Bar").GetComponent<myExStarBar>();
         if (DontDestroyobject.instance.Chaselected == 1)
         {
@@ -201,9 +203,14 @@ public class SwordEnemy : MonoBehaviour
 
     IEnumerator Disappearing()
     {
+        MainPlayer.Enemynums -= 1;
         yield return new WaitForSeconds(2.0f);
         Destroy(this.gameObject);
         Destroy(SwordEnemyHPBar.gameObject);
+        if(MainPlayer.Enemynums == 0)
+        {
+            MainPlayer.mystate = MainPlay.STATE.GAMEOVER;
+        }
     }
 
     void ChangeState(State s)
@@ -227,8 +234,8 @@ public class SwordEnemy : MonoBehaviour
                 myAnim.ResetTrigger("GameOver");
                 GoldInfo.text = (DontDestroyobject.instance.GoldInfo + SwordEnemyData.ScoreGold).ToString();
                 DontDestroyobject.instance.GoldInfo = (DontDestroyobject.instance.GoldInfo + SwordEnemyData.ScoreGold);
-                seiCharacterData.APChange += SwordEnemyData.MaxAP;
-                seiCharacterData.EXChange += SwordEnemyData.MaxEX;
+                seiCharacterData.APChange = +SwordEnemyData.MaxAP;
+                seiCharacterData.EXChange = +SwordEnemyData.MaxEX;
                 if (seiCharacterData.EXChange >= playerdatas.PlayerEXSet(seiCharacterData.myLevel))
                 {
                     seiCharacterData.myLevel += 1;

@@ -6,8 +6,9 @@ public class MainPlay : MonoBehaviour
 {
     public enum STATE
     {
-        PLAY, GAMEOVER, CLEAR
+        PLAY, GAMEOVER, PLAYGAMES
     }
+    public SwordEnemy swordenemyinfo;
     public int Enemynums;
     public Transform StartPos;
     public Transform EnemyGrid;
@@ -43,17 +44,14 @@ public class MainPlay : MonoBehaviour
         {
             Player = GameObject.Find("RUNA_2(Clone)").transform;
             Runadata = GameObject.Find("RUNA_2(Clone)").GetComponent<Runa>();
-      //     myplayerdata = Instantiate(Resources.Load("InGameData/RunaPlayerData")) as PlayerData; //¾ÆÁ÷ ¾È¸¸µë
+            //     myplayerdata = Instantiate(Resources.Load("InGameData/RunaPlayerData")) as PlayerData; //¾ÆÁ÷ ¾È¸¸µë
             CharacterMoveAttackData = GameObject.Find("RUNA_2(Clone)").GetComponent<ChaData>();
         }
         ChangeState(STATE.PLAY);
         CurIndex = 0;
         timeGap = StageList[CurStage].GetTimeGap();
-        StageList[CurStage].EnemyList[Enemynums].ToString();
-
+        //     StageList[CurStage].EnemyList[Enemynums].ToString();
     }
-
-
 
     public void OnRestart()
     {
@@ -74,24 +72,26 @@ public class MainPlay : MonoBehaviour
             case EnemyType.NONE:
                 if (++CurStage == StageList.Length)
                 {
-                    ChangeState(STATE.GAMEOVER);
+                   ChangeState(STATE.PLAYGAMES);
                 }
                 else
                 {
                     CurIndex = 0;
                     playTime = timeGap = StageList[CurStage].GetTimeGap();
                 }
+
                 break;
 
             case EnemyType.SWORD:
                 {
                     SwordEnemy swordene = Instantiate(EnemySource, StartPos.position, StartPos.rotation, EnemyGrid).GetComponent<SwordEnemy>();
                     EnemySwordList.Add(swordene);
-                    Enemynums = EnemySwordList.Count;
-                    if(EnemySwordList.Count <=0)
+                    Enemynums += 1;
+                    if(Enemynums == 0)
                     {
-
+                        ClearPopup.gameObject.SetActive(true);
                     }
+
                     break;
                 }
             case EnemyType.SPEAR:
@@ -101,44 +101,44 @@ public class MainPlay : MonoBehaviour
         }
     }
 
-        void ChangeState(STATE s)
+    void ChangeState(STATE s)
+    {
+        if (mystate == s) return;
+        mystate = s;
+        switch (mystate)
         {
-            if (mystate == s) return;
-            mystate = s;
-            switch (mystate)
-            {
-                case STATE.PLAY:
+            case STATE.PLAY:
                 myLevel = DontDestroyobject.instance.LevelInfo;
-                //   Seidata._curHP = myseiData.PlayerHPSet(myLevel);
                 GameOverPopup.SetActive(false);
                 Seidata.HPChange = myplayerdata.PlayerHPSet(myLevel);
                 Seidata.myAnim.SetTrigger("Start");
                 break;
-                case STATE.GAMEOVER:
-                CharacterMoveAttackData.moveSpeed = 0.0f;
-                CharacterMoveAttackData.myAnim.SetBool("RUN", false);
+            case STATE.GAMEOVER:
+                    CharacterMoveAttackData.moveSpeed = 0.0f;
+                    CharacterMoveAttackData.myAnim.SetBool("RUN", false);
+                ClearPopup.gameObject.SetActive(true);
                 break;
-            case STATE.CLEAR:
+            case STATE.PLAYGAMES:
                 break;
-            }
-        }
-
-        void StateProcess()
-        {
-            switch (mystate)
-            {
-                case STATE.PLAY:
-                    playTime += Time.deltaTime;
-                    if (playTime >= timeGap)
-                    {
-                        playTime = 0.0f;
-                    CreateEnemy(StageList[CurStage].GetEnemy(CurIndex++));
-                    }
-                    break;
-                case STATE.GAMEOVER:
-                    break;
-            case STATE.CLEAR:
-                break;
-        }
         }
     }
+
+    void StateProcess()
+    {
+        switch (mystate)
+        {
+            case STATE.PLAY:
+                playTime += Time.deltaTime;
+                if (playTime >= timeGap)
+                {
+                    playTime = 0.0f;
+                    CreateEnemy(StageList[CurStage].GetEnemy(CurIndex++));
+                }
+                break;
+            case STATE.GAMEOVER:
+                break;
+            case STATE.PLAYGAMES:
+                break;
+        }
+    }
+}

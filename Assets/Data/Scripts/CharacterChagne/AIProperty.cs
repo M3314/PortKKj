@@ -32,6 +32,13 @@ public class AIProperty : MonoBehaviour
             Debug.Log("Player감지가 되었습니다.");
             //     Enemy.myAnim.SetTrigger("Attack");
             Enemy.myAnim.SetTrigger("Attack");
+
+            if(Enemy.HPChange == 0)
+            {
+                Enemy.myAnim.ResetTrigger("Attack");
+                Enemy.myAnim.SetBool("Run", false);
+                Enemy.moveSpeed = 0.0f;
+            }
         }
     }
 

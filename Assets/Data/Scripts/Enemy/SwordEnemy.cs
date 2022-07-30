@@ -238,13 +238,28 @@ public class SwordEnemy : MonoBehaviour
                 myAnim.ResetTrigger("GameOver");
                 GoldInfo.text = (DontDestroyobject.instance.GoldInfo + SwordEnemyData.ScoreGold).ToString();
                 DontDestroyobject.instance.GoldInfo = (DontDestroyobject.instance.GoldInfo + SwordEnemyData.ScoreGold);
-                seiCharacterData.APChange = +SwordEnemyData.MaxAP;
-                seiCharacterData.EXChange = +SwordEnemyData.MaxEX;
-                if (seiCharacterData.EXChange >= playerdatas.PlayerEXSet(seiCharacterData.myLevel))
+                if (DontDestroyobject.instance.Chaselected == 1)
                 {
-                    seiCharacterData.myLevel += 1;
-                    LevelInfomation.text = (DontDestroyobject.instance.LevelInfo + 1).ToString();
-                    DontDestroyobject.instance.LevelInfo = (DontDestroyobject.instance.LevelInfo + 1);
+                    seiCharacterData.APChange = +SwordEnemyData.MaxAP;
+                    seiCharacterData.EXChange = +SwordEnemyData.MaxEX;
+                    if (seiCharacterData.EXChange >= playerdatas.PlayerEXSet(seiCharacterData.myLevel))
+                    {
+                        seiCharacterData.myLevel += 1;
+                        LevelInfomation.text = (DontDestroyobject.instance.LevelInfo + 1).ToString();
+                        DontDestroyobject.instance.LevelInfo = (DontDestroyobject.instance.LevelInfo + 1);
+                    }
+                }
+
+                if (DontDestroyobject.instance.Chaselected == 2)
+                {
+                    RunaCharacterData.APChange = +SwordEnemyData.MaxAP;
+                    RunaCharacterData.EXChange = +SwordEnemyData.MaxEX;
+                    if (RunaCharacterData.EXChange >= playerdatas.PlayerEXSet(RunaCharacterData.myLevel))
+                    {
+                        RunaCharacterData.myLevel += 1;
+                        LevelInfomation.text = (DontDestroyobject.instance.LevelInfo + 1).ToString();
+                        DontDestroyobject.instance.LevelInfo = (DontDestroyobject.instance.LevelInfo + 1);
+                    }
                 }
                 moveSpeed = 0.0f;
                 myAnim.ResetTrigger("Attack"); //공격을 못하도록 설정한다.

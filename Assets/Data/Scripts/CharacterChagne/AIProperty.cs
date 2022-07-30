@@ -20,9 +20,6 @@ public class AIProperty : MonoBehaviour
         {
             RunaDatas = GameObject.Find("RUNA_2(Clone)").GetComponent<Runa>();
         }
-      //  Enemy = GameObject.Find("EnemySword(Clone)").GetComponent<SwordEnemy>();
-    //    Enemy = Instantiate(Resources.Load("Character/EnemySword")) as SwordEnemy;
-      //  Enemy = GameObject.Find("EnemySword").GetComponent<SwordEnemy>(); //Test
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -30,7 +27,6 @@ public class AIProperty : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             Debug.Log("Player감지가 되었습니다.");
-            //     Enemy.myAnim.SetTrigger("Attack");
             Enemy.myAnim.SetTrigger("Attack");
 
             if(Enemy.HPChange == 0)

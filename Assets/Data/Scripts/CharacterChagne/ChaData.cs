@@ -67,11 +67,12 @@ public class ChaData : MonoBehaviour
         if (playerWeaponChangeData.myWeaponType == WEAPONTYPE.SWORD)
         {
             AttackSword();
-            //    moveSpeed = 0.0f;
+            myAnim.SetTrigger("initialization");
         }
         if (playerWeaponChangeData.myWeaponType == WEAPONTYPE.SYNTHE)
         {
             AttackSynthe();
+            myAnim.SetTrigger("initialization");
         }
         if (playerWeaponChangeData.myWeaponType == WEAPONTYPE.SHOTGUN)
         {
@@ -158,7 +159,7 @@ public class ChaData : MonoBehaviour
             myAnim.SetTrigger("SwordAttack");
             moveSpeed = 0.0f;
             myAnim.SetBool("RUN", false);
-            myAnim.SetBool("SwordAttacking", true);
+            myAnim.SetBool("SwordAttacking", false);
             Debug.Log(swordweaponDamage.GetDamage(SwordInfo.Swordmylevel));
         }
 
@@ -186,8 +187,8 @@ public class ChaData : MonoBehaviour
         {
             Debug.Log("J키를 입력했습니다. 낫공격합니다");
             myAnim.SetInteger("AttackType", AttackType++ % 2);
-            myAnim.SetTrigger("SyntheAttack");
-            Debug.Log(syntheweaponDamage.GetDamage(Seidata.myLevel));
+            myAnim.SetTrigger("SyntheAttack"); moveSpeed = 0.0f;
+            //      Debug.Log(syntheweaponDamage.GetDamage(Seidata.myLevel));
         }
 
     }
@@ -207,7 +208,6 @@ public class ChaData : MonoBehaviour
             Invoke("ShotGunBulletTimer", 0.35f);
 
         }
-        myAnim.GetBool("ShotGunAttacking");
     }
     public void PistolAttack()
     {
@@ -238,19 +238,20 @@ public class ChaData : MonoBehaviour
         {
             myAnim.SetBool("RUN", false);
             moveSpeed = 0.0f;
-            myAnim.ResetTrigger("ShotGunAttacking");
+      //      myAnim.ResetTrigger("ShotGunAttacking");
         }
+
         if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Synthe Attack 1"))
         {
             myAnim.SetBool("RUN", false);
             moveSpeed = 0.0f;
-            myAnim.ResetTrigger("SyntheAttacking");
+   //         myAnim.ResetTrigger("SyntheAttacking");
         }
         if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Synthe Attack 2"))
         {
             myAnim.SetBool("RUN", false);
             moveSpeed = 0.0f;
-            myAnim.ResetTrigger("SyntheAttacking");
+  //          myAnim.ResetTrigger("SyntheAttacking");
         }
         if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("PistolAttack"))
         {

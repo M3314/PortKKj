@@ -23,14 +23,22 @@ public class myExStarBar : MonoBehaviour
         if (DontDestroyobject.instance.Chaselected == 2)
         {
             RunaCharacterData = GameObject.Find("RUNA_2(Clone)").GetComponent<Runa>();
-
+            PlayerdatasSetting = Instantiate(Resources.Load("InGameData/RunaPlayerData")) as PlayerData;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        myEX.maxValue = PlayerdatasSetting.PlayerEXSet(seiCharacterData.myLevel);
-        myEX.value = (seiCharacterData.EXChange);
+        if (DontDestroyobject.instance.Chaselected == 1)
+        {
+            myEX.maxValue = PlayerdatasSetting.PlayerEXSet(seiCharacterData.myLevel);
+            myEX.value = (seiCharacterData.EXChange);
+        }
+        if (DontDestroyobject.instance.Chaselected == 2)
+        {
+            myEX.maxValue = PlayerdatasSetting.PlayerEXSet(RunaCharacterData.myLevel);
+            myEX.value = (RunaCharacterData.EXChange);
+        }
     }
 }

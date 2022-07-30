@@ -2129,7 +2129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 649450897385061328, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 908662040335474418, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: m_Layer
@@ -2234,6 +2234,10 @@ PrefabInstance:
     - target: {fileID: 2707363633822235519, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707363633822235519, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2796226336612498579, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
       propertyPath: m_RootOrder
@@ -3269,7 +3273,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  myLevel: 
+  weaponmyLevel: 
   UpgradeLevels: {fileID: 0}
   weaponpopups: {fileID: 0}
 --- !u!4 &688609000
@@ -5137,6 +5141,8 @@ MonoBehaviour:
   UpgradePopup: {fileID: 0}
   Weaponlists: {fileID: 0}
   UpgradeLevelText: {fileID: 0}
+  SwordWeapons: {fileID: 0}
+  SyntheWeapons: {fileID: 0}
 --- !u!4 &1127061299
 Transform:
   m_ObjectHideFlags: 0

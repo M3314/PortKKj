@@ -49,9 +49,7 @@ public class ShotGun : MonoBehaviour
 
     public void FireBullet()
     {
-      //  Instantiate(Bullet, FirePosition.transform.position, Quaternion.AngleAxis(0, Vector3.forward));
         FirePosition = Instantiate(Resources.Load("Weapons Sei/New Folder/ShotGunBullet")) as Transform;
-  //      Bullet = Instantiate(Resources.Load("Weapons Sei/New Folder/ShotGunBullet")) as GameObject;
     }
 
         // Update is called once per frame

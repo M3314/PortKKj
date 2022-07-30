@@ -6,7 +6,7 @@ public class MainPlay : MonoBehaviour
 {
     public enum STATE
     {
-        PLAY, GAMEOVER, PLAYGAMES
+        PLAY, PLAYGAMES, GAMEOVER
     }
     public SwordEnemy swordenemyinfo;
     public int Enemynums;
@@ -113,12 +113,12 @@ public class MainPlay : MonoBehaviour
                 Seidata.HPChange = myplayerdata.PlayerHPSet(myLevel);
                 Seidata.myAnim.SetTrigger("Start");
                 break;
-            case STATE.GAMEOVER:
-                    CharacterMoveAttackData.moveSpeed = 0.0f;
-                    CharacterMoveAttackData.myAnim.SetBool("RUN", false);
-                ClearPopup.gameObject.SetActive(true);
-                break;
             case STATE.PLAYGAMES:
+                break;
+            case STATE.GAMEOVER:
+                CharacterMoveAttackData.moveSpeed = 0.0f;
+                CharacterMoveAttackData.myAnim.SetBool("RUN", false);
+                ClearPopup.gameObject.SetActive(true);
                 break;
         }
     }
@@ -135,9 +135,9 @@ public class MainPlay : MonoBehaviour
                     CreateEnemy(StageList[CurStage].GetEnemy(CurIndex++));
                 }
                 break;
-            case STATE.GAMEOVER:
-                break;
             case STATE.PLAYGAMES:
+                break;
+            case STATE.GAMEOVER:
                 break;
         }
     }

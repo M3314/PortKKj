@@ -14,13 +14,17 @@ public enum Characters
 
 public class ChaData : MonoBehaviour
 {
+    public float AttackDelay;
     public Animator myAnim;
     int AttackType;
     public static ChaData instance;
     public ShotGun ShotGunBulletFire; //샷건 애니메이션 때문에 추가함.
+    public Pistol PistolBulletFire;
     public float moveSpeed = 5.0f;
     public GameObject ShotGunBullet = null;
+    public GameObject PistolBullet = null;
     public Transform ShotGunFirePosition;
+    public Transform PistolFirePosition;
     public WeaponData playerWeaponChangeData = null;
     public PlayerWeaponData syntheweaponDamage;
     public PlayerWeaponData swordweaponDamage;
@@ -73,6 +77,11 @@ public class ChaData : MonoBehaviour
         {
             ShotGunAttack();
             myAnim.SetTrigger("IdleChange2");
+        }
+        if(playerWeaponChangeData.myWeaponType == WEAPONTYPE.PISTOL)
+        {
+            PistolAttack();
+            myAnim.SetTrigger("PistolIdleChange2");
         }
     }
     public void Move()
@@ -163,6 +172,14 @@ public class ChaData : MonoBehaviour
             Instantiate(ShotGunBullet, ShotGunFirePosition.transform.position, Quaternion.AngleAxis(180, Vector3.forward)); //총알이 왼쪽으로 발사하게
     }
 
+    void PistolBulletTimer()
+    {
+        if (gameObject.transform.localScale == new Vector3(-0.3f, 0.3f, 0.3f))
+            Instantiate(PistolBullet, PistolFirePosition.transform.position, Quaternion.AngleAxis(0, Vector3.forward)); //총알이 오른쪽으로 발사하게
+        else if (gameObject.transform.localScale == new Vector3(0.3f, 0.3f, 0.3f))
+            Instantiate(PistolBullet, PistolFirePosition.transform.position, Quaternion.AngleAxis(180, Vector3.forward)); //총알이 왼쪽으로 발사하게
+    }
+
     public void AttackSynthe()
     {
         if (!myAnim.GetBool("SyntheAttacking") && Input.GetKey(KeyCode.J))
@@ -181,7 +198,6 @@ public class ChaData : MonoBehaviour
         {
             Debug.Log("J키를 입력했습니다. 샷건으로 공격합니다");
             ShotGunBulletFire = GameObject.Find("Shot Gun(Clone)").GetComponent<ShotGun>();
-            //  ShotGunBulletFire = GameObject.Find("Shot Gun").GetComponent<ShotGun>(); //잠깐 테스트용으로 만든거임. 
             myAnim.SetTrigger("ShotGunAttack");
             myAnim.SetBool("RUN", false);
             moveSpeed = 0.0f;
@@ -195,7 +211,17 @@ public class ChaData : MonoBehaviour
     }
     public void PistolAttack()
     {
-
+        if (!myAnim.GetBool("PistolAttacking") && Input.GetKeyDown(KeyCode.J))
+        {
+            PistolBulletFire = GameObject.Find("Pistol(Clone)").GetComponent<Pistol>();
+            Debug.Log("J키를 입력했습니다. 권총공격합니다");
+            myAnim.SetTrigger("PistolAttack");
+            myAnim.SetBool("RUN", false);
+            moveSpeed = 0.0f;
+            PistolBulletFire.myRenderer.sortingOrder = 4;
+            myAnim.SetTrigger("PistolIdleChange");
+            Invoke("PistolBulletTimer", 0.2f);
+        }
     }
 
     public void DoubleInput()
@@ -214,6 +240,24 @@ public class ChaData : MonoBehaviour
             moveSpeed = 0.0f;
             myAnim.ResetTrigger("ShotGunAttacking");
         }
+        if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Synthe Attack 1"))
+        {
+            myAnim.SetBool("RUN", false);
+            moveSpeed = 0.0f;
+            myAnim.ResetTrigger("SyntheAttacking");
+        }
+        if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Synthe Attack 2"))
+        {
+            myAnim.SetBool("RUN", false);
+            moveSpeed = 0.0f;
+            myAnim.ResetTrigger("SyntheAttacking");
+        }
+        if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("PistolAttack"))
+        {
+            myAnim.SetBool("RUN", false);
+            moveSpeed = 0.0f;
+            myAnim.ResetTrigger("PistolAttacking");
+        }
 
         if (myAnim.GetCurrentAnimatorStateInfo(1).IsName("Dead"))
         {
@@ -222,6 +266,7 @@ public class ChaData : MonoBehaviour
             myAnim.ResetTrigger("ShotGunAttack");
             myAnim.ResetTrigger("SwordAttack");
             myAnim.ResetTrigger("SyntheAttack");
+            myAnim.ResetTrigger("PistolAttack");
         }
 
     }

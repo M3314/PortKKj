@@ -17,6 +17,7 @@ public class SwordEnemy : MonoBehaviour
         SWORD, SPEAR, RIFLE
     };
     public MainPlay MainPlayer;
+    public GameObject Clearpopup;
     public Transform HPBar; //적 HPBAR 넣는곳 
     public ENEMYSTATE myEnemyInfoState = ENEMYSTATE.SWORD;
     [SerializeField] public WEAPONTYPE PlayerWeaponType;
@@ -59,6 +60,7 @@ public class SwordEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Clearpopup = GameObject.Find("Canvas").transform.FindChild("ClearPopup").gameObject;
         SwordEnemyData.MaxHP = 100;
         HpSet();
         ChangeState(State.BATTLE);
@@ -178,6 +180,7 @@ public class SwordEnemy : MonoBehaviour
             //        Debug.Log("Player에게 공격 받고있습니다.");
             other.gameObject.GetComponent<Sword>()?.OnAttack();
             other.gameObject.GetComponent<ShotGunBullet>()?.OnAttack();
+            other.gameObject.GetComponent<PistolBullet>()?.OnAttack();
             OnDamage();
         }
     }
@@ -210,6 +213,7 @@ public class SwordEnemy : MonoBehaviour
         if(MainPlayer.Enemynums == 0)
         {
             MainPlayer.mystate = MainPlay.STATE.GAMEOVER;
+            Clearpopup.gameObject.SetActive(true);
         }
     }
 

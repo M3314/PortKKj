@@ -6,6 +6,7 @@ public class ShotGunBullet : MonoBehaviour
 {
     public PlayerWeaponData ShotGunBulletData;
     public float Damage;
+    public float AttackDelay;
     public int ShotGunlevelSetting;
     public float Speed = 10.0f;
     private ShotGunBullet shotgunbullet_instance = null;
@@ -35,7 +36,7 @@ public class ShotGunBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveX = Speed * Time.deltaTime;
+        float moveX = Speed * Time.deltaTime * AttackDelay;
         transform.Translate(Vector3.right*moveX);
         Destroy(this.gameObject, 5.0f);
     }

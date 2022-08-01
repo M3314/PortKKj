@@ -226,13 +226,12 @@ public class ChaData : MonoBehaviour
 
     public void DoubleInput()
     {
+        moveSpeed = 5.0f;
         if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack2(Sword)"))
         {
             myAnim.SetBool("RUN", false);
             moveSpeed = 0.0f;
         }
-        else
-            moveSpeed = 5.0f;
 
         if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("ShotGun Attack"))
         {

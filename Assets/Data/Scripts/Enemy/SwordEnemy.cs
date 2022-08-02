@@ -17,6 +17,7 @@ public class SwordEnemy : MonoBehaviour
         SWORD, SPEAR, RIFLE
     };
     public MainPlay MainPlayer;
+    public ChaData chadatas;
     public GameObject Clearpopup;
     public Transform HPBar; //적 HPBAR 넣는곳 
     public ENEMYSTATE myEnemyInfoState = ENEMYSTATE.SWORD;
@@ -35,6 +36,17 @@ public class SwordEnemy : MonoBehaviour
     public Runa RunaCharacterData = null;
     [SerializeField] public myExStarBar myExBar;
     public SwordEnemyHPBAR SwordEnemyHPBar;
+
+    public bool enemyattacked = false;
+
+    void AttackTrue()
+    {
+        enemyattacked = true;
+    }
+    void AttackFalse()
+    {
+        enemyattacked = false;
+    }
     public float _curHP;
     public float HPChange
     {
@@ -68,6 +80,7 @@ public class SwordEnemy : MonoBehaviour
         myExBar = GameObject.Find("Ex Bar").GetComponent<myExStarBar>();
         if (DontDestroyobject.instance.Chaselected == 1)
         {
+           chadatas = GameObject.Find("SeiKo_32(Clone)").GetComponent<ChaData>();
             seiCharacterData = GameObject.Find("SeiKo_32(Clone)").GetComponent<Sei>();
             EnemyTarget = GameObject.Find("SeiKo_32(Clone)").transform;
             playerdatas = Instantiate(Resources.Load("InGameData/SeiPlayerData")) as PlayerData;
@@ -75,6 +88,7 @@ public class SwordEnemy : MonoBehaviour
 
         if (DontDestroyobject.instance.Chaselected == 2)
         {
+            chadatas = GameObject.Find("RUNA_2(Clone)").GetComponent<ChaData>();
             RunaCharacterData = GameObject.Find("RUNA_2(Clone)").GetComponent<Runa>();
             EnemyTarget = GameObject.Find("RUNA_2(Clone)").transform;
             playerdatas = Instantiate(Resources.Load("InGameData/RunaPlayerData")) as PlayerData;
@@ -177,13 +191,31 @@ public class SwordEnemy : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerWeapon"))
         {
-            //        Debug.Log("Player에게 공격 받고있습니다.");
-            other.gameObject.GetComponent<Sword>()?.OnAttack();
-            other.gameObject.GetComponent<ShotGunBullet>()?.OnAttack();
-            other.gameObject.GetComponent<PistolBullet>()?.OnAttack();
-            OnDamage();
+            //   other.gameObject.GetComponent<Sword>()?.OnAttack();
+            if (playerWeaponChange.myWeaponType == WEAPONTYPE.SHOTGUN)
+            {
+                other.gameObject.GetComponent<ShotGunBullet>()?.OnAttack();
+                OnDamage();
+            }
+            if (playerWeaponChange.myWeaponType == WEAPONTYPE.PISTOL)
+            {
+                other.gameObject.GetComponent<PistolBullet>()?.OnAttack();
+                OnDamage();
+            }
+            if (chadatas.attacked == true && playerWeaponChange.myWeaponType == WEAPONTYPE.SWORD)
+            {
+                other.gameObject.GetComponent<Sword>()?.OnAttack();
+                OnDamage();
+            }
+            if (chadatas.attacked == true && playerWeaponChange.myWeaponType == WEAPONTYPE.SYNTHE)
+            {
+                other.gameObject.GetComponent<Synthe>()?.OnAttack();
+                OnDamage();
+            }
+            }
+
         }
-    }
+    
 
     public void OnTriggerExit2D(Collider2D other)
     {
@@ -217,7 +249,7 @@ public class SwordEnemy : MonoBehaviour
         }
     }
 
-    void ChangeState(State s)
+   public void ChangeState(State s)
     {
         if (myEnemyState == s) return;
         myEnemyState = s;

@@ -5,19 +5,18 @@ using UnityEngine.UI;
 using TMPro;
 
 public class Sword : MonoBehaviour
-{ 
-    public WEAPONTYPE myWeaponType = WEAPONTYPE.SWORD;
+{
+
+    public PlayerWeaponData[] myDamageData;
     public PlayerWeaponData myweapondatas;
     public float Damage;
     [SerializeField] public int Swordmylevel;
     private static Sword sword_instance = null;
 
-    
     void Start()
     {
         WeaponSelect();
         Damage = myweapondatas.GetDamage(Swordmylevel);
-        //     mylevel = GetComponent<WeaponData>().Getmylevel();
     }
 
     private void Awake()

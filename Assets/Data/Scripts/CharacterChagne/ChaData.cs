@@ -30,6 +30,16 @@ public class ChaData : MonoBehaviour
     public PlayerWeaponData swordweaponDamage;
     public Sei Seidata;
     public Sword SwordInfo;
+    public bool attacked = false;
+
+    void AttackTrue()
+    {
+        attacked = true;
+    }
+    void AttackFalse()
+    {
+        attacked = false;
+    }
 
     private void Awake()
     {

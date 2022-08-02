@@ -827,6 +827,7 @@ MonoBehaviour:
   swordweaponDamage: {fileID: 11400000, guid: 27f3532a38f507846a57a05a4aa5bfab, type: 2}
   Seidata: {fileID: 0}
   SwordInfo: {fileID: 831549936925532417}
+  attacked: 0
   characterscurrentss: 0
 --- !u!114 &-6918357694664616187
 MonoBehaviour:

@@ -1021,7 +1021,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Hip/waist/neck/Right Shoulder
+    path: Hip/waist/neck/Left Arm/Left Hand
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1031,7 +1031,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Hip/waist/neck/Right Shoulder
+    path: Hip/waist/neck/Left Arm/Left Hand
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1041,27 +1041,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Hip/waist/neck/Right Shoulder
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Hip/waist/neck/Right Shoulder/RightArm
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Hip/waist/neck/Right Shoulder/RightArm
+    path: Hip/waist/neck/Left Arm/Left Hand
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1071,7 +1051,27 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Hip/waist/neck/Right Shoulder/RightArm
+    path: Hip/waist/neck/Right Shoulder
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Hip/waist/neck/Right Shoulder
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Hip/waist/neck/Right Shoulder
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1111,7 +1111,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Hip/waist/neck/Left Arm/Left Hand
+    path: Hip/waist/neck/Right Shoulder/RightArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1121,7 +1121,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Hip/waist/neck/Left Arm/Left Hand
+    path: Hip/waist/neck/Right Shoulder/RightArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1131,7 +1131,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Hip/waist/neck/Left Arm/Left Hand
+    path: Hip/waist/neck/Right Shoulder/RightArm
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

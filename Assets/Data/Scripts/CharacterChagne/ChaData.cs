@@ -14,23 +14,20 @@ public enum Characters
 
 public class ChaData : MonoBehaviour
 {
-    public float AttackDelay;
-    public Animator myAnim;
-    int AttackType;
-    public static ChaData instance;
+    public Animator myAnim; //캐릭터 애니메이터 설정 
+    int AttackType; //공격 타입 설정 
+    public static ChaData instance; //DontDestroyOnLoad (씬을 넘어갈때 삭제가 되지 않도록 설정함)
     public ShotGun ShotGunBulletFire; //샷건 애니메이션 때문에 추가함.
-    public Pistol PistolBulletFire;
-    public float moveSpeed = 5.0f;
-    public GameObject ShotGunBullet = null;
-    public GameObject PistolBullet = null;
-    public Transform ShotGunFirePosition;
-    public Transform PistolFirePosition;
-    public WeaponData playerWeaponChangeData = null;
-    public PlayerWeaponData syntheweaponDamage;
-    public PlayerWeaponData swordweaponDamage;
-    public Sei Seidata;
-    public Sword SwordInfo;
-    public bool attacked = false;
+    public Pistol PistolBulletFire; //권총 관련
+    public float moveSpeed = 5.0f; // 이동 설정
+    public GameObject ShotGunBullet = null; //샷건 총알 전용
+    public GameObject PistolBullet = null; //권총 총알 전용
+    public Transform ShotGunFirePosition; //샷건 총알이 나가는 위치
+    public Transform PistolFirePosition; //권총 총랑이 나가는 위치
+    public WeaponData playerWeaponChangeData = null; //무기 데이터 
+    public PlayerWeaponData syntheweaponDamage; //낫 데이터 (데미지 전용)
+    public PlayerWeaponData swordweaponDamage; //칼 데이터 (데미지 전용)
+    public bool attacked = false; //근접형 무기를 사용할때 사용한다.
 
     void AttackTrue()
     {
@@ -105,6 +102,7 @@ public class ChaData : MonoBehaviour
         {
             transform.position += Vector3.up * moveSpeed * Time.deltaTime;
             myAnim.SetBool("RUN", true);
+            Debug.Log("W키를 눌렀습니다. 위로 이동");
             if (SceneManager.GetActiveScene().name == "Cha Info, Inven(Back Menu)")
             {
                 moveSpeed = 0;
@@ -115,6 +113,7 @@ public class ChaData : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
+            Debug.Log("S키를 눌렀습니다. 아래로 이동");
             transform.position += Vector3.down * moveSpeed * Time.deltaTime;
             myAnim.SetBool("RUN", true);
             if (SceneManager.GetActiveScene().name == "Cha Info, Inven(Back Menu)")
@@ -127,6 +126,7 @@ public class ChaData : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
+            Debug.Log("A키를 눌렀습니다. 좌로 이동");
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
             transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             myAnim.SetBool("RUN", true);
@@ -140,6 +140,7 @@ public class ChaData : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
+            Debug.Log("D키를 눌렀습니다. 우로 이동");
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
             transform.localScale = new Vector3(-0.3f, 0.3f, 0.3f);
             myAnim.SetBool("RUN", true);
@@ -170,7 +171,7 @@ public class ChaData : MonoBehaviour
             moveSpeed = 0.0f;
             myAnim.SetBool("RUN", false);
             myAnim.SetBool("SwordAttacking", false);
-            Debug.Log(swordweaponDamage.GetDamage(SwordInfo.Swordmylevel));
+     //       Debug.Log(swordweaponDamage.GetDamage(SwordInfo.Swordmylevel));
         }
 
     }

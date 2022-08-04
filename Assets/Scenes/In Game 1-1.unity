@@ -1182,7 +1182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &391158239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1939,6 +1939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SeiKo_32
       objectReference: {fileID: 0}
+    - target: {fileID: 3051106583613391605, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dcccaacbf7bae64984b5bd6517886c4, type: 3}
 --- !u!1 &599391706
@@ -2086,7 +2090,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  weaponmyLevel: 
+  weaponmyLevel: 00000000000000000000000000000000
   UpgradeLevels: {fileID: 0}
   weaponpopups: {fileID: 0}
 --- !u!4 &688609000
@@ -4263,7 +4267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1221224265
 Transform:
   m_ObjectHideFlags: 0
@@ -5894,7 +5898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1670837022
 Transform:
   m_ObjectHideFlags: 0

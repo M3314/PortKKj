@@ -813,7 +813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df9cdea9f04b8942b7e727bf924375c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDelay: 0
   myAnim: {fileID: 5255368446874350929}
   ShotGunBulletFire: {fileID: 7010057156049455857, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
   PistolBulletFire: {fileID: 4916415942883562553}
@@ -825,8 +824,6 @@ MonoBehaviour:
   playerWeaponChangeData: {fileID: 1403232518827242188, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
   syntheweaponDamage: {fileID: 11400000, guid: 69c7ebd8f64474741a6e333417fde146, type: 2}
   swordweaponDamage: {fileID: 11400000, guid: 27f3532a38f507846a57a05a4aa5bfab, type: 2}
-  Seidata: {fileID: 0}
-  SwordInfo: {fileID: 831549936925532417}
   attacked: 0
   characterscurrentss: 0
 --- !u!114 &-6918357694664616187
@@ -877,7 +874,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 10}
+  m_Offset: {x: 0, y: 10.3}
   m_Size: {x: 3, y: 9.5}
   m_Direction: 0
 --- !u!1 &4118339260362390098
@@ -1624,17 +1621,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 487077be5f8f9a1429c1baaf7d6df776, type: 3}
---- !u!114 &831549936925532417 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -109825317965936220, guid: 487077be5f8f9a1429c1baaf7d6df776, type: 3}
-  m_PrefabInstance: {fileID: 8499295490028480677}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abdb9ddcff743554a853c52613d1ad85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &4689113158196140060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3810190030620471481, guid: 487077be5f8f9a1429c1baaf7d6df776, type: 3}

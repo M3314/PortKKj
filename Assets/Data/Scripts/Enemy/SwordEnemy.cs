@@ -16,26 +16,26 @@ public class SwordEnemy : MonoBehaviour
     {
         SWORD, SPEAR, RIFLE
     };
-    public MainPlay MainPlayer;
-    public ChaData chadatas;
-    public GameObject Clearpopup;
+    public MainPlay MainPlayer; //메인 플레이 연동
+    public ChaData chadatas; //
+    public GameObject Clearpopup; //클리어 팝업 
     public Transform HPBar; //적 HPBAR 넣는곳 
-    public ENEMYSTATE myEnemyInfoState = ENEMYSTATE.SWORD;
-    [SerializeField] public WEAPONTYPE PlayerWeaponType;
-    public PlayerWeaponData[] myDamageData;
-    [SerializeField] public Transform EnemyTarget;
-    public float moveSpeed;
-    public EnemyData SwordEnemyData;
-    public State myEnemyState = State.CREATE;
-    public float attackDelay = 1.5f;
-    public TMP_Text GoldInfo;
-    public TMP_Text LevelInfomation;
-    public PlayerData playerdatas;
-    [SerializeField] public WeaponData playerWeaponChange;
-    public Sei seiCharacterData = null;
-    public Runa RunaCharacterData = null;
-    [SerializeField] public myExStarBar myExBar;
-    public SwordEnemyHPBAR SwordEnemyHPBar;
+    public ENEMYSTATE myEnemyInfoState = ENEMYSTATE.SWORD; //적군은 칼로 설정함 
+    [SerializeField] public WEAPONTYPE PlayerWeaponType; //플레이어가 들고 있는 무기 설정 
+    public PlayerWeaponData[] myDamageData; //플레이어의 무기 데미지 정보 설정 
+    [SerializeField] public Transform EnemyTarget; //플레이어를 타겟으로 설정
+    public float moveSpeed; //이동속도
+    public EnemyData SwordEnemyData; //적 캐릭터 데이터 
+    public State myEnemyState = State.CREATE; //게임이 시작하면 Create 모드로
+    public float attackDelay = 1.5f; //공격 딜레이 시간 
+    public TMP_Text GoldInfo; //골드 정보 (Text)
+    public TMP_Text LevelInfomation; //레벨 정보 (플레이어, Text)
+    public PlayerData playerdatas; //플레이어 데이터 
+    [SerializeField] public WeaponData playerWeaponChange; //플레이어가 어떤 무기를 장착 하고 있을때 설정 
+    public Sei seiCharacterData = null; //플레이어중 Sei라는 플레이어 정보 
+    public Runa RunaCharacterData = null; //플레이어중 Runa라는 플레이어 정보
+    [SerializeField] public myExStarBar myExBar; //EX Bar 연동
+    public SwordEnemyHPBAR SwordEnemyHPBar; //적 캐릭터 체력 연동 
 
     public bool enemyattacked = false;
 
@@ -158,7 +158,6 @@ public class SwordEnemy : MonoBehaviour
     public void OnDamage()
     {
         if (myEnemyState == State.DEAD) return;
- //   SwordEnemyData.MaxHP = SwordEnemyData.MaxHP - myDamageData[(int)PlayerWeaponType].GetDamage(DontDestroyobject.instance.weaponlevelinfo);
         HPChange = -myDamageData[(int)PlayerWeaponType].GetDamage(DontDestroyobject.instance.weaponlevelinfo);
         if (HPChange <= 0.0f)
         {

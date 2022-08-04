@@ -9,21 +9,21 @@ using UnityEngine.SceneManagement;
 
 public class Sei : MonoBehaviour
 {
-    public STATE mystate = STATE.NONE;
-    public ChaData moveSpeedSetting;
-    public MainPlay mainplayinfo;
-    public PlayerCharacterStat SeiData;
-    [SerializeField] public EnemyData[] EnemysData;
-    [SerializeField] public myStatBar myStarBar;
-    [SerializeField] public myApStatBar myApBar;
-    [SerializeField] public myExStarBar myExBar;
-    public int myLevel = 1;
-    public SwordEnemy SwordenemyInfo;
-    public PlayerData myseiData;
-    public TMP_Text LevelInfomation;
-    public Animator myAnim;
-    public float _curHP;
-    public float HPChange
+    public STATE mystate = STATE.NONE; //게임 플레이,게임 오버 상태 
+    public ChaData moveSpeedSetting; //이동 속도 설정
+    public MainPlay mainplayinfo; //InGame으로 가는 메인 플레이 설정 
+    public PlayerCharacterStat SeiData; //캐릭터 설정 (HP, AP 등)
+    [SerializeField] public EnemyData[] EnemysData; //적 설정 
+    [SerializeField] public myStatBar myStarBar; //HP BAR 설정 
+    [SerializeField] public myApStatBar myApBar; //AP Bar 설정 
+    [SerializeField] public myExStarBar myExBar; //EX Bar 설정 
+    public int myLevel = 1; //플레이어의 레벨 설정 
+    public SwordEnemy SwordenemyInfo; //칼을든 적 정보 설정 
+    public PlayerData myseiData; //플레이어의 설정 
+    public TMP_Text LevelInfomation; //레벨 정보 설정 
+    public Animator myAnim; //애니메이션 설정 
+    public float _curHP; //HP Setting
+    public float HPChange //HP 설정 
     {
         get
         {
@@ -33,7 +33,7 @@ public class Sei : MonoBehaviour
         {
             _curHP += value;
             if (_curHP < 0.0f) _curHP = 0.0f;
-            myStarBar = GameObject.Find("Hp Bar").GetComponent<myStatBar>();
+            myStarBar = GameObject.Find("Hp Bar").GetComponent<myStatBar>(); 
             myStarBar.myHP.value = _curHP / myseiData.PlayerHPSet(myLevel);
         }
     }
@@ -75,7 +75,7 @@ public class Sei : MonoBehaviour
     }
     private void Start()
     {
-        myLevel = DontDestroyobject.instance.LevelInfo;
+        myLevel = DontDestroyobject.instance.LevelInfo; //플레이어의 레벨의 경우 인벤토리로 넘어갈때 고정이 되도록 
         CharacterSelect();
         ChangeState(STATE.CREATE);
         if (SceneManager.GetActiveScene().name == "In Game 1-1")
@@ -86,25 +86,8 @@ public class Sei : MonoBehaviour
     void Update()
     {
         StateProcess();
-   //     ApChanges();
     }
 
-    /*
-    public void ApChanges()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            APChange = -2;
-            HPChange = +4;
-
-             if(APChange <=2)
-            {
-                HPChange = +0;
-                APChange = -0;
-            }
-        }
-    }
-    */
     void CharacterSelect()
     {
         DontDestroyobject.instance.Chaselected = 1;
@@ -118,7 +101,7 @@ public class Sei : MonoBehaviour
         }
     }
 
-    public void OnDamage()
+    public void OnDamage() //데미지 설정 
     {
         if (mystate == STATE.DEAD) return;
         HPChange = -EnemysData[(int)SwordenemyInfo.myEnemyInfoState].MaxEnemyAttack();
@@ -159,6 +142,7 @@ public class Sei : MonoBehaviour
                 };
                 break;
             case STATE.PLAY:
+            //    HPChange = -50.0f;
                 mainplayinfo = GameObject.Find("PlayMain").GetComponent<MainPlay>();
                 mainplayinfo.GameOverPopup.SetActive(false);
                 myAnim.ResetTrigger("Dead");

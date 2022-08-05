@@ -7,7 +7,7 @@ public class PistolBullet : MonoBehaviour
     public PlayerWeaponData PistolBulletData;
     public float Damage;
     public float AttackDelay;
-    public int PistolLevelSetting;
+    public int PistolLevelSetting = 1;
     public float Speed = 10.0f;
     private PistolBullet pistolbullet_instance = null;
     // Start is called before the first frame update

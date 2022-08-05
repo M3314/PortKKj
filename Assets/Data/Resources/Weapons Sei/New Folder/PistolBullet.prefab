@@ -99,7 +99,7 @@ MonoBehaviour:
   PistolBulletData: {fileID: 11400000, guid: 6f57c0fa728efd34894d6bf700ebc8a6, type: 2}
   Damage: 0
   AttackDelay: 2
-  PistolLevelSetting: 0
+  PistolLevelSetting: 1
   Speed: 10
 --- !u!58 &4818020607318585484
 CircleCollider2D:

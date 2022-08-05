@@ -1046,6 +1046,8 @@ MonoBehaviour:
   mysynthelevels: {fileID: 0}
   myShotgunbulletlevels: {fileID: 0}
   myShotGunlevels: {fileID: 0}
+  myPistolLevels: {fileID: 0}
+  myPistolBulletLevels: {fileID: 0}
   WeaponInventory: {fileID: 0}
   UpgradeText: {fileID: 0}
   weaponchange: {fileID: 0}
@@ -1054,6 +1056,8 @@ MonoBehaviour:
   UpgradeLevelText: {fileID: 0}
   SwordWeapons: {fileID: 0}
   SyntheWeapons: {fileID: 0}
+  PistolWeapons: {fileID: 0}
+  ShotGunWeapons: {fileID: 0}
   weaponBuyButton: {fileID: 11118985}
   myShotGunButton: {fileID: 970967132}
   WeaponData: {fileID: 1403232518827242189, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
@@ -2246,7 +2250,9 @@ MonoBehaviour:
   myswordlevels: {fileID: -109825317965936220, guid: 487077be5f8f9a1429c1baaf7d6df776, type: 3}
   mysynthelevels: {fileID: 2765751628560032932, guid: d9a221cb536b7e645aa16c76ae096876, type: 3}
   myShotGunLevels: {fileID: 7010057156049455857, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
-  myShotGunBulletLevels: {fileID: 7550464741411194902, guid: b072f6182dfd0ed4e927e5da1187233c, type: 3}
+  myShotGunBulletLevels: {fileID: 7168558980500085455, guid: 654d7f4d602eb884dbd527206aa71374, type: 3}
+  myPistolLevels: {fileID: 834378525344429387, guid: e0a276f2106ff3e4c96d7ebeaefb8e2a, type: 3}
+  myPistilBulletLevels: {fileID: 5693509895605133222, guid: 059eec0a05d6f9d4494957af0a75d89c, type: 3}
   Weaponlists: {fileID: 0}
   WeaponImage: {fileID: 850403574}
 --- !u!1 &395059940
@@ -7526,8 +7532,10 @@ MonoBehaviour:
   myWeaponData: {fileID: 1403232518827242188, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
   myswordlevels: {fileID: -109825317965936220, guid: 487077be5f8f9a1429c1baaf7d6df776, type: 3}
   mysynthelevels: {fileID: 2765751628560032932, guid: d9a221cb536b7e645aa16c76ae096876, type: 3}
-  myShotgunbulletlevels: {fileID: 7550464741411194902, guid: b072f6182dfd0ed4e927e5da1187233c, type: 3}
+  myShotgunbulletlevels: {fileID: 7168558980500085455, guid: 654d7f4d602eb884dbd527206aa71374, type: 3}
   myShotGunlevels: {fileID: 7010057156049455857, guid: e00c2dc1bfae3c147bdeeaf70b9c2e25, type: 3}
+  myPistolLevels: {fileID: 834378525344429387, guid: e0a276f2106ff3e4c96d7ebeaefb8e2a, type: 3}
+  myPistolBulletLevels: {fileID: 5693509895605133222, guid: 059eec0a05d6f9d4494957af0a75d89c, type: 3}
   WeaponInventory: {fileID: 5776167330055071523}
   UpgradeText: {fileID: 1699803383}
   weaponchange: {fileID: 379650284}
@@ -7536,6 +7544,8 @@ MonoBehaviour:
   UpgradeLevelText: {fileID: 1276787838}
   SwordWeapons: {fileID: 11400000, guid: 27f3532a38f507846a57a05a4aa5bfab, type: 2}
   SyntheWeapons: {fileID: 11400000, guid: 69c7ebd8f64474741a6e333417fde146, type: 2}
+  PistolWeapons: {fileID: 11400000, guid: 6f57c0fa728efd34894d6bf700ebc8a6, type: 2}
+  ShotGunWeapons: {fileID: 11400000, guid: d0aa6b423ec5e3d47b3b1fe1d9fbf44f, type: 2}
 --- !u!4 &1307643615
 Transform:
   m_ObjectHideFlags: 0
@@ -7632,6 +7642,8 @@ MonoBehaviour:
   mysynthelevels: {fileID: 0}
   myShotgunbulletlevels: {fileID: 0}
   myShotGunlevels: {fileID: 0}
+  myPistolLevels: {fileID: 0}
+  myPistolBulletLevels: {fileID: 0}
   WeaponInventory: {fileID: 0}
   UpgradeText: {fileID: 0}
   weaponchange: {fileID: 0}
@@ -7640,6 +7652,8 @@ MonoBehaviour:
   UpgradeLevelText: {fileID: 0}
   SwordWeapons: {fileID: 0}
   SyntheWeapons: {fileID: 0}
+  PistolWeapons: {fileID: 0}
+  ShotGunWeapons: {fileID: 0}
   GoldInven: {fileID: 1307643614}
   synthebuyButton: {fileID: 594936959}
   mySyntheButton: {fileID: 1159128785}
@@ -9690,6 +9704,8 @@ MonoBehaviour:
   mysynthelevels: {fileID: 0}
   myShotgunbulletlevels: {fileID: 0}
   myShotGunlevels: {fileID: 0}
+  myPistolLevels: {fileID: 0}
+  myPistolBulletLevels: {fileID: 0}
   WeaponInventory: {fileID: 0}
   UpgradeText: {fileID: 0}
   weaponchange: {fileID: 0}
@@ -9698,6 +9714,8 @@ MonoBehaviour:
   UpgradeLevelText: {fileID: 0}
   SwordWeapons: {fileID: 0}
   SyntheWeapons: {fileID: 0}
+  PistolWeapons: {fileID: 0}
+  ShotGunWeapons: {fileID: 0}
   GoldInven: {fileID: 1307643614}
   weaponBuyButton: {fileID: 1259180484}
   mypistolButton: {fileID: 661650972}

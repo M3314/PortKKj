@@ -13,6 +13,8 @@ public class WeaponChange : MonoBehaviour
     public Synthe mysynthelevels = null;
     public ShotGun myShotGunLevels = null;
     public ShotGunBullet myShotGunBulletLevels = null;
+    public Pistol myPistolLevels = null;
+    public PistolBullet myPistilBulletLevels = null;
     public ChaData Weaponlists = null;
     private ManagerWeapon m_weapons;
     private WeaponChange weaponchangee;

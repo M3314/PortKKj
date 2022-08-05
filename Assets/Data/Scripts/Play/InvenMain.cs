@@ -19,6 +19,8 @@ public class InvenMain : MonoBehaviour
     public Synthe mysynthelevels = null;
     public ShotGunBullet myShotgunbulletlevels = null;
     public ShotGun myShotGunlevels = null;
+    public Pistol myPistolLevels = null;
+    public PistolBullet myPistolBulletLevels = null;
     public Transform WeaponInventory = null;
     public TMPro.TMP_Text UpgradeText;
     public WeaponChange weaponchange = null;
@@ -27,6 +29,8 @@ public class InvenMain : MonoBehaviour
     public TMPro.TMP_Text UpgradeLevelText;
     public PlayerWeaponData SwordWeapons;
     public PlayerWeaponData SyntheWeapons;
+    public PlayerWeaponData PistolWeapons;
+    public PlayerWeaponData ShotGunWeapons;
 
     public int Gold
     {
@@ -80,6 +84,18 @@ public class InvenMain : MonoBehaviour
                     {
                         price = SyntheWeapons.GetPrice(mysynthelevels.Synthemylevel);
                         weaponchange.mysynthelevels.Getlevel();
+                    }
+                    if(myWeaponData.myWeaponType == WEAPONTYPE.PISTOL)
+                    {
+                        price = PistolWeapons.GetPrice(myPistolLevels.PistolLevel);
+                        weaponchange.myPistolLevels.GetLevel();
+                        weaponchange.myPistilBulletLevels.Getlevel();
+                    }
+                    if (myWeaponData.myWeaponType == WEAPONTYPE.SHOTGUN)
+                    {
+                        price = ShotGunWeapons.GetPrice(myShotGunlevels.Shotgunlevel);
+                        weaponchange.myShotGunLevels.GetLevel();
+                        weaponchange.myShotGunBulletLevels.Getlevel();
                     }
                     Gold -= price;
                     //      weaponchange.myShotGunBulletLevels.Getlevel();

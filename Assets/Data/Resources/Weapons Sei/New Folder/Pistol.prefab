@@ -160,4 +160,4 @@ MonoBehaviour:
   myWeaponType: 2
   myweapondatas: {fileID: 11400000, guid: 6f57c0fa728efd34894d6bf700ebc8a6, type: 2}
   FirePosition: {fileID: 4539885185807125493}
-  PistolLevel: 0
+  PistolLevel: 1

@@ -99,7 +99,7 @@ MonoBehaviour:
   ShotGunBulletData: {fileID: 11400000, guid: d0aa6b423ec5e3d47b3b1fe1d9fbf44f, type: 2}
   Damage: 0
   AttackDelay: 2
-  ShotGunlevelSetting: 0
+  ShotGunlevelSetting: 1
   Speed: 10
 --- !u!58 &9098817412580489742
 CircleCollider2D:

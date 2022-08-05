@@ -128,9 +128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myWeaponType: 3
   myweapondatas: {fileID: 11400000, guid: d0aa6b423ec5e3d47b3b1fe1d9fbf44f, type: 2}
-  emptyShell:
-  - {fileID: 0}
-  - {fileID: 0}
   FirePosition: {fileID: 128815105991764503}
   Shotgunlevel: 1
 --- !u!1 &8057340648120139258

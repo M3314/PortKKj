@@ -7,7 +7,7 @@ public class ShotGunBullet : MonoBehaviour
     public PlayerWeaponData ShotGunBulletData;
     public float Damage;
     public float AttackDelay;
-    public int ShotGunlevelSetting;
+    public int ShotGunlevelSetting = 1;
     public float Speed = 10.0f;
     private ShotGunBullet shotgunbullet_instance = null;
     // Start is called before the first frame update

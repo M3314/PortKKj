@@ -24,12 +24,6 @@ public class InvenUI : MonoBehaviour
 
         Debug.Log(WeaponImage + " : " + tempBtnIndex);
         weaponchangee.ChangeWeapon(tempBtnIndex);
-        /*
-        WeaponData.instance.WeaponsCurrents = (WeaponSword)tempBtnIndex;
-        WeaponData.instance.WeaponSyntheCurrents = (WeaponSynthe)tempBtnIndex;
-        WeaponData.instance.PistolsCurrents = (Pistols)tempBtnIndex;
-        WeaponData.instance.WeaponsShotgunsCurrents = (WeaponShotguns)tempBtnIndex;
-        */
         return;
     }
 

@@ -3947,6 +3947,8 @@ MonoBehaviour:
   mysynthelevels: {fileID: 0}
   myShotgunbulletlevels: {fileID: 0}
   myShotGunlevels: {fileID: 0}
+  myPistolLevels: {fileID: 0}
+  myPistolBulletLevels: {fileID: 0}
   WeaponInventory: {fileID: 0}
   UpgradeText: {fileID: 0}
   weaponchange: {fileID: 0}
@@ -3955,6 +3957,8 @@ MonoBehaviour:
   UpgradeLevelText: {fileID: 0}
   SwordWeapons: {fileID: 0}
   SyntheWeapons: {fileID: 0}
+  PistolWeapons: {fileID: 0}
+  ShotGunWeapons: {fileID: 0}
 --- !u!4 &1127061299
 Transform:
   m_ObjectHideFlags: 0

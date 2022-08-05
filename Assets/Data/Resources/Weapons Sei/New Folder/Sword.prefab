@@ -96,13 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abdb9ddcff743554a853c52613d1ad85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerWeaponType: 0
-  myWeaponType: 0
   myDamageData: []
   myweapondatas: {fileID: 11400000, guid: 27f3532a38f507846a57a05a4aa5bfab, type: 2}
   Damage: 0
   Swordmylevel: 1
-  enemysworddamage: {fileID: 4065284415294889487, guid: f10048b06c7164b4c8ff2adec96040f9, type: 3}
 --- !u!60 &4904550795896849927
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class BuyButton : InvenMain
             mypistolButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);
             GoldInven.Gold = PlayerPrefs.GetInt("Gold");
-            PlayerPrefs.SetInt("Gold", Gold);
+      //      PlayerPrefs.SetInt("Gold", Gold);
         }
         
     }
@@ -49,6 +49,7 @@ public class BuyButton : InvenMain
         Gold = DontDestroyobject.instance.GoldInfo;
         Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
         GoldText.text = Gold.ToString();
+        PlayerPrefs.SetInt("Gold", Gold);
     }
 
 }

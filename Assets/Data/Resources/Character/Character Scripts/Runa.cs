@@ -145,7 +145,7 @@ public class Runa : MonoBehaviour
                 mainplayinfo = GameObject.Find("PlayMain").GetComponent<MainPlay>();
                 mainplayinfo.GameOverPopup.SetActive(false);
                 myAnim.ResetTrigger("Dead");
-                myAnim.SetTrigger("Start");
+           //     myAnim.SetTrigger("Start");
                 mainplayinfo.mystate = MainPlay.STATE.PLAY;
                 APChange = 9f;
                 EXChange = 0f;
@@ -162,6 +162,7 @@ public class Runa : MonoBehaviour
                 myAnim.ResetTrigger("Start");
                 myAnim.ResetTrigger("IdleChange2");
                 myAnim.ResetTrigger("ShotGunAttack");
+                myAnim.ResetTrigger("initialization");
                 myAnim.SetBool("RUN", false);
                 moveSpeedSetting.moveSpeed = 0.0f;
                 break;

@@ -18,4 +18,5 @@ public class GameInfoUi : MonoBehaviour
     }
 
 
+
 }

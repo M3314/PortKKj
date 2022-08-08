@@ -98,8 +98,6 @@ public class InvenMain : MonoBehaviour
                         weaponchange.myShotGunBulletLevels.Getlevel();
                     }
                     Gold -= price;
-                    //      weaponchange.myShotGunBulletLevels.Getlevel();
-                    //      weaponchange.myShotGunLevels.GetLevel();
                     WeaponUpgradeMenu();
                     PlayerPrefs.SetInt("Gold", Gold);
                     PlayerPrefs.Save();
@@ -119,11 +117,10 @@ public class InvenMain : MonoBehaviour
         }
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
-        Gold = PlayerPrefs.GetInt("Gold");
+         Gold = PlayerPrefs.GetInt("Gold");    
         ChangeState(STATE.START);
     }
 

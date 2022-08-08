@@ -20,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/In Game 1-1.unity
     guid: 42880873b8440cd4c834f9bb892304bf
-  - enabled: 1
-    path: Assets/Scenes/WeaponSelect.unity
-    guid: 580fce4d7b48a4442b02e609e5b6554d
   m_configObjects: {}

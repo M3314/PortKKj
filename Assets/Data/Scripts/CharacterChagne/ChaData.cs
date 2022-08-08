@@ -270,7 +270,7 @@ public class ChaData : MonoBehaviour
             myAnim.ResetTrigger("PistolAttacking");
         }
 
-        if (myAnim.GetCurrentAnimatorStateInfo(1).IsName("Dead"))
+        if (myAnim.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
         {
             myAnim.SetBool("RUN", false);
             moveSpeed = 0.0f;

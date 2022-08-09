@@ -16,21 +16,23 @@ public class BuyButton : InvenMain
     void Start()
     {
         weaponBuyButton.gameObject.SetActive(false);
-        
+
         if (PlayerPrefs.GetInt("BuyWeaponpistol") == 1)
         {
-            Gold = GoldInven.Gold - WeaponBuyPrices.WeaponBuyPrices;
+     //       Gold = GoldInven.Gold - WeaponBuyPrices.WeaponBuyPrices;
             GoldText.text = Gold.ToString();
             mypistolButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);
-            GoldInven.Gold = PlayerPrefs.GetInt("Gold");
-      //      PlayerPrefs.SetInt("Gold", Gold);
+            //      GoldInven.Gold = PlayerPrefs.GetInt("Gold");
+            PlayerPrefs.GetInt("KKJgameGold");
         }
+        
         
     }
     // Update is called once per frame
     void Update()
     {
+        
         if (PlayerPrefs.GetInt("BuyWeaponpistol") == 1)
         {
             mypistolButton.interactable = true;
@@ -46,10 +48,10 @@ public class BuyButton : InvenMain
         weaponBuyButton.gameObject.SetActive(false);
         Debug.Log("7원을 구매하고 사신 낫을 구매하였습니다. 한번 더 누르면 장착이 가능합니다.");
 
-        Gold = DontDestroyobject.instance.GoldInfo;
+        Gold = GoldClass.gold;
         Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
-        GoldText.text = Gold.ToString();
-        PlayerPrefs.SetInt("Gold", Gold);
+        GoldText.text = Gold.ToString();      
+        PlayerPrefs.SetInt("KKJgameGold", Gold);
     }
 
 }

@@ -22,9 +22,10 @@ public class ShotGunBuyButton : InvenMain
         {
             myShotGunButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);
-     Gold = GoldInven.Gold - WeaponBuyPrices.WeaponBuyPrices;
+    //        Gold = GoldInven.Gold - WeaponBuyPrices.WeaponBuyPrices;
             GoldText.text = Gold.ToString();
-            GoldInven.Gold = PlayerPrefs.GetInt("Gold");
+            PlayerPrefs.GetInt("KKJgameGold");
+            //   GoldInven.Gold = PlayerPrefs.GetInt("Gold");
         }
         
     }
@@ -32,11 +33,13 @@ public class ShotGunBuyButton : InvenMain
     // Update is called once per frame
     void Update()
     {
+        
         if (PlayerPrefs.GetInt("BuyWeaponshotgun") == 1)
         {
             myShotGunButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);
         }
+        
     }
     public void ShotGunButtonSetActiveTrue()
     {
@@ -48,7 +51,7 @@ public class ShotGunBuyButton : InvenMain
 
         Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
         GoldText.text = Gold.ToString();
-        Gold = DontDestroyobject.instance.GoldInfo;
-        PlayerPrefs.SetInt("Gold", Gold);
+        Gold = GoldClass.gold;
+        PlayerPrefs.SetInt("KKJgameGold", Gold);
     }
 }

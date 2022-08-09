@@ -26,12 +26,11 @@ public class ScytheSelect : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         Texture();
-        //   Select();
     }
 
     void Texture()
     {
-   //     myButton.interactable = false;
+        myButton.interactable = false;
         ScytheName.text = "Synthe";
         ScytheExplain.text = "사신이 쓰던 낫입니다. 사신이 까먹었는지 아니면 누군가 사신한테 협박(?)을 해서 얻어온건지는 모르겠군요. 출처가 불분명한 낫입니다.";
         ScytheGoldPrice.text = "G : 50";
@@ -39,10 +38,6 @@ public class ScytheSelect : MonoBehaviour, IPointerClickHandler
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void textSetActive()
     {

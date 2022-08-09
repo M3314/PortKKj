@@ -3,14 +3,29 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
+class GoldClass
+{
+    public static int gold
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("KKJgameGold");
+        }
+        set
+        {
+            PlayerPrefs.SetInt("KKJgameGold", value);
+        }
+    }
+}
+
 public class InvenMain : MonoBehaviour
 {
-    [SerializeField] public static int myGold = 350;
     [SerializeField] int myLevel = 1;
     public enum STATE
     {
         CREATE, START, PLAY, GAMEOVER, CLEAR
     }
+ 
     public GameInfoUi myInfoUI = null;
     public STATE myState = STATE.CREATE;
     public WeaponPopup weaponpopups = null;
@@ -34,16 +49,15 @@ public class InvenMain : MonoBehaviour
 
     public int Gold
     {
-        get { return myGold; }
+        get { return GoldClass.gold; }
         set
         {
-            myGold = value;
-            myInfoUI.Gold.text = myGold.ToString();
+            GoldClass.gold = value;
+            myInfoUI.Gold.text = GoldClass.gold.ToString();
             if (weaponchange != null)
             {
                 WeaponUpgradeMenu();
             }
-            DontDestroyobject.instance.GoldInfo = Gold;
         }
     }
 
@@ -59,7 +73,7 @@ public class InvenMain : MonoBehaviour
     }
     public static void UseGold(int price)
     {
-        myGold -= price;
+        GoldClass.gold -= price;
     }
     public void WeaponUpgradeMenu()
     {
@@ -99,8 +113,8 @@ public class InvenMain : MonoBehaviour
                     }
                     Gold -= price;
                     WeaponUpgradeMenu();
-                    PlayerPrefs.SetInt("Gold", Gold);
-                    PlayerPrefs.Save();
+           //         PlayerPrefs.SetInt("Gold", Gold);
+          //         PlayerPrefs.Save();
                     Debug.Log("업그레이드 완료");
                 });
         }
@@ -116,12 +130,19 @@ public class InvenMain : MonoBehaviour
             UpgradeText.text = "Not Enough Gold";
         }
     }
-
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("KKJgameFirstStart") == 0)
+        {
+            GoldClass.gold = 350;
+            PlayerPrefs.SetInt("KKJgameFirstStart", 1);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-         Gold = PlayerPrefs.GetInt("Gold");    
-        ChangeState(STATE.START);
+   //    Gold = PlayerPrefs.GetInt("Gold");    
+        ChangeState(STATE.START); 
     }
 
     // Update is called once per frame
@@ -142,11 +163,12 @@ public class InvenMain : MonoBehaviour
                 {
                     ChangeState(STATE.PLAY);
                 };
-                Gold = DontDestroyobject.instance.GoldInfo;
                 Level = DontDestroyobject.instance.LevelInfo;
+                Gold = GoldClass.gold;
+             //   Gold = 350;
                 break;
             case STATE.PLAY:
-                Gold = DontDestroyobject.instance.GoldInfo;
+                Gold = GoldClass.gold;
                 Level = DontDestroyobject.instance.LevelInfo;
                 break;
             case STATE.GAMEOVER:

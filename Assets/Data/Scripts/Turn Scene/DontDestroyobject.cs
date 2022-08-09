@@ -10,7 +10,7 @@ public class DontDestroyobject : MonoBehaviour
 
     public void Start()
     {
-
+   //     GoldInfo = PlayerPrefs.GetInt("Gold");
     }
 
     public void Update()
@@ -37,7 +37,6 @@ public class DontDestroyobject : MonoBehaviour
     }
     public int Chaselected = 0;
     public int WeaponSelected = 0;
-    public int GoldInfo = 350;
     public int LevelInfo = 1;
     public int weaponlevelinfo = 1;
 

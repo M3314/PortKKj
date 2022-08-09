@@ -6,6 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuScene : MonoBehaviour
 {
+    /*
+    private void Awake()
+    {
+        if(PlayerPrefs.GetInt("KKJgameFirstStart") == 0)
+        {
+            GoldClass.gold = 350;
+            PlayerPrefs.SetInt("KKJgameFirstStart", 1);
+        }
+    }
+    */
     // Start is called before the first frame update
     void Start()
     {

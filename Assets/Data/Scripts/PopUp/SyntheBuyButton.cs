@@ -18,27 +18,30 @@ public class SyntheBuyButton : InvenMain
 
     void Start()
     {
-   //    PlayerPrefs.SetInt("BuySynthe", 0); //테스트용임 암튼 테스트용임 
         synthebuyButton.gameObject.SetActive(false);
-        
+        mySyntheButton.interactable = false;
+    
+
         if (PlayerPrefs.GetInt("BuyWeaponsynthe") == 1) //값을 저장해서 사용을 한다.
         {
             mySyntheButton.interactable = true;
             synthebuyButton.gameObject.SetActive(false);
-            Gold = GoldInven.Gold - WeaponBuyPrices.WeaponBuyPrices;
+            //      Gold = GoldInven.Gold - WeaponBuyPrices.WeaponBuyPrices;
             GoldText.text = Gold.ToString();
-            GoldInven.Gold = PlayerPrefs.GetInt("Gold");
+            PlayerPrefs.GetInt("KKJgameGold");
         }
         
     }
     // Update is called once per frame
     void Update()
     {
+        
         if (PlayerPrefs.GetInt("BuyWeaponsynthe") == 1) //값을 저장해서 사용을 한다.
-        {
+       {
             mySyntheButton.interactable = true;
             synthebuyButton.gameObject.SetActive(false);
-        }
+       }
+        
     }
 
     public void SyntheButtonSetActiveTrue() //Buy버튼을 누르면 생기는일 
@@ -52,8 +55,8 @@ public class SyntheBuyButton : InvenMain
         //     WeaponData.GetComponent<WeaponData>().ChangeStateWeaponState(WEAPONTYPE.SYNTHE);
         Gold = Gold - WeaponBuyPrices.WeaponBuyPrices;
         GoldText.text = Gold.ToString();
-        Gold = DontDestroyobject.instance.GoldInfo;
-        PlayerPrefs.SetInt("Gold", Gold);
+        Gold = GoldClass.gold;
+        PlayerPrefs.SetInt("KKJgameGold", Gold);
     }
 
 }

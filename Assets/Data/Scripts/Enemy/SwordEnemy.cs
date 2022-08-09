@@ -16,6 +16,7 @@ public class SwordEnemy : MonoBehaviour
     {
         SWORD, SPEAR, RIFLE
     };
+    public InvenMain InvenMainGold;
     public MainPlay MainPlayer; //메인 플레이 연동
     public ChaData chadatas; //
     public GameObject Clearpopup; //클리어 팝업 
@@ -72,7 +73,8 @@ public class SwordEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Clearpopup = GameObject.Find("Canvas").transform.FindChild("ClearPopup").gameObject;
+        InvenMainGold = GameObject.Find("InvenMain").GetComponent<InvenMain>();
+           Clearpopup = GameObject.Find("Canvas").transform.FindChild("ClearPopup").gameObject;
         SwordEnemyData.MaxHP = 100;
         HpSet();
         ChangeState(State.BATTLE);
@@ -95,7 +97,7 @@ public class SwordEnemy : MonoBehaviour
         }
         GoldInfo = GameObject.Find("GoldText").GetComponent<TMP_Text>();
         LevelInfomation = GameObject.Find("LevelText").GetComponent<TMP_Text>();
-        GoldInfo.text = DontDestroyobject.instance.GoldInfo.ToString();
+        GoldInfo.text = GoldClass.gold.ToString();
         LevelInfomation.text = DontDestroyobject.instance.LevelInfo.ToString();
     }
     // Update is called once per frame
@@ -267,8 +269,8 @@ public class SwordEnemy : MonoBehaviour
                 myAnim.SetTrigger("Dead");
                 myAnim.SetBool("Run", false);
                 myAnim.ResetTrigger("GameOver");
-                GoldInfo.text = (DontDestroyobject.instance.GoldInfo + SwordEnemyData.ScoreGold).ToString();
-                DontDestroyobject.instance.GoldInfo = (DontDestroyobject.instance.GoldInfo + SwordEnemyData.ScoreGold);
+                GoldInfo.text = (GoldClass.gold + SwordEnemyData.ScoreGold).ToString();
+                GoldClass.gold = (GoldClass.gold + SwordEnemyData.ScoreGold);
                 if (DontDestroyobject.instance.Chaselected == 1)
                 {
                     seiCharacterData.APChange = +SwordEnemyData.MaxAP;

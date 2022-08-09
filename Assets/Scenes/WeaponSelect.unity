@@ -3040,7 +3040,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7581229e51ed724ca9731961baaa83d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myButton: {fileID: 970967132}
+  myShotGunButton: {fileID: 0}
+  ShotGunName: {fileID: 0}
+  ShotGunExplain: {fileID: 0}
+  Buttonbuy: {fileID: 0}
+  SyntheButtonBuy: {fileID: 0}
+  PistolButtonBuy: {fileID: 0}
+  PlayMainScript: {fileID: 0}
 --- !u!1 &661650968
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,7 +3921,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bdae83e3b039324ca88a4896b17409c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myButton: {fileID: 661650972}
+  mypistolButton: {fileID: 0}
+  PistolName: {fileID: 0}
+  PistolExplain: {fileID: 0}
+  Buttonbuy: {fileID: 0}
+  SyntheButtonBuy: {fileID: 0}
+  ShotGunButtonBuy: {fileID: 0}
+  PlayMainScript: {fileID: 0}
 --- !u!1 &941510020
 GameObject:
   m_ObjectHideFlags: 0
@@ -4478,6 +4490,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 1159128785}
+  Buttonbuy: {fileID: 0}
+  PistolbuyButton: {fileID: 0}
+  ShotGunBuyButton: {fileID: 0}
+  ScytheName: {fileID: 0}
+  ScytheExplain: {fileID: 0}
+  ScytheGoldPrice: {fileID: 0}
+  ScytheUpgradePrice: {fileID: 0}
+  PlayMainScript: {fileID: 0}
 --- !u!1 &1092807493
 GameObject:
   m_ObjectHideFlags: 0
@@ -4924,6 +4944,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myButton: {fileID: 1425344333}
+  SwordName: {fileID: 0}
+  SwordExplain: {fileID: 0}
+  SwordGoldPrice: {fileID: 0}
+  SwordUpgradePrice: {fileID: 0}
+  Buttonbuy: {fileID: 0}
+  PlayMainScript: {fileID: 0}
 --- !u!1 &1131620788
 GameObject:
   m_ObjectHideFlags: 0
@@ -6899,6 +6925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a9890a4bc24e544b925a6905e78b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeBtn: {fileID: 0}
   WeaponpopupActive: {fileID: 185716912}
 --- !u!4 &1566771732
 Transform:
@@ -7742,7 +7769,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534a040eeb1b21c47bd46098d1fbe321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponPosition: {fileID: 1721789193}
+  myWeaponData: {fileID: 0}
+  myswordlevels: {fileID: 0}
+  mysynthelevels: {fileID: 0}
+  myShotGunLevels: {fileID: 0}
+  myShotGunBulletLevels: {fileID: 0}
+  myPistolLevels: {fileID: 0}
+  myPistilBulletLevels: {fileID: 0}
+  Weaponlists: {fileID: 0}
+  WeaponImage: {fileID: 0}
 --- !u!1 &1729994260
 GameObject:
   m_ObjectHideFlags: 0

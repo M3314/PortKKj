@@ -5328,8 +5328,8 @@ MonoBehaviour:
   PistolName: {fileID: 2072611205}
   PistolExplain: {fileID: 583633860}
   Buttonbuy: {fileID: 1259180484}
-  SyntheButtonBuy: {fileID: 0}
-  ShotGunButtonBuy: {fileID: 0}
+  SyntheButtonBuy: {fileID: 594936959}
+  ShotGunButtonBuy: {fileID: 11118985}
   PlayMainScript: {fileID: 1403232518827242189, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
 --- !u!1 &941510020
 GameObject:
@@ -5612,7 +5612,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 970967130}
   m_OnClick:
     m_PersistentCalls:
@@ -6188,22 +6188,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069486776}
   m_CullTransparentMesh: 1
---- !u!4 &1085953687 stripped
+--- !u!1 &1085953686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1085953687}
+  - component: {fileID: 1085953688}
+  m_Layer: 0
+  m_Name: ScytheSelect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1085953687
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-  m_PrefabInstance: {fileID: 8515488913482579199}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1085953688 stripped
+  m_GameObject: {fileID: 1085953686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 746346861}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1085953688
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8515488912399772263, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-  m_PrefabInstance: {fileID: 8515488913482579199}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1085953686}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fcc4ff48b7f48142a3a5dbad62bf65a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myButton: {fileID: 1159128785}
+  Buttonbuy: {fileID: 594936959}
+  PistolbuyButton: {fileID: 1259180484}
+  ShotGunBuyButton: {fileID: 11118985}
+  ScytheName: {fileID: 2072611205}
+  ScytheExplain: {fileID: 583633860}
+  ScytheGoldPrice: {fileID: 965746115}
+  ScytheUpgradePrice: {fileID: 1069486778}
+  PlayMainScript: {fileID: 1403232518827242189, guid: 8d5cfc170ff025645b364fe467a6bfd6, type: 3}
 --- !u!1 &1096543860
 GameObject:
   m_ObjectHideFlags: 0
@@ -11397,7 +11433,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Chaselected: 0
   WeaponSelected: 0
-  GoldInfo: 350
   LevelInfo: 1
   weaponlevelinfo: 1
 --- !u!4 &2000149585
@@ -12561,91 +12596,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6698482152011568202}
   m_CullTransparentMesh: 1
---- !u!1001 &8515488913482579199
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 746346861}
-    m_Modifications:
-    - target: {fileID: 8515488912399772263, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: myButton
-      value: 
-      objectReference: {fileID: 1159128785}
-    - target: {fileID: 8515488912399772263, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: Buttonbuy
-      value: 
-      objectReference: {fileID: 594936959}
-    - target: {fileID: 8515488912399772263, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: ScytheName
-      value: 
-      objectReference: {fileID: 2072611205}
-    - target: {fileID: 8515488912399772263, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: ScytheExplain
-      value: 
-      objectReference: {fileID: 583633860}
-    - target: {fileID: 8515488912399772263, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: PistolbuyButton
-      value: 
-      objectReference: {fileID: 1259180484}
-    - target: {fileID: 8515488912399772263, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: ScytheGoldPrice
-      value: 
-      objectReference: {fileID: 965746115}
-    - target: {fileID: 8515488912399772263, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: ScytheUpgradePrice
-      value: 
-      objectReference: {fileID: 1069486778}
-    - target: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515488912399772264, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515488912399772265, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
-      propertyPath: m_Name
-      value: ScytheSelect
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 010da8d5aae7c1a4794996aba3382164, type: 3}
 --- !u!1 &9033442605319737174
 GameObject:
   m_ObjectHideFlags: 0

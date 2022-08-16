@@ -23,10 +23,8 @@ public class BuyButton : InvenMain
             GoldText.text = Gold.ToString();
             mypistolButton.interactable = true;
             weaponBuyButton.gameObject.SetActive(false);
-            //      GoldInven.Gold = PlayerPrefs.GetInt("Gold");
             PlayerPrefs.GetInt("KKJgameGold");
         }
-        
         
     }
     // Update is called once per frame
